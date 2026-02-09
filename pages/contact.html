@@ -5,6 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - QUASAR Collaboration</title>
+    <meta name="description" content="Contact information for the QUASAR Collaboration and its member universities.">
+    <link rel="canonical" href="https://quasarcollaboration.github.io/pages/contact.html">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Contact - QUASAR Collaboration">
+    <meta property="og:description"
+        content="Contact information for the QUASAR Collaboration and its member universities.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quasarcollaboration.github.io/pages/contact.html">
+    <meta property="og:image"
+        content="https://quasarcollaboration.github.io/assets/img/ASA_Logo_W_Text_New_420x110.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap"
@@ -41,7 +52,7 @@
                             Universities Astronomy & Space Research</p>
                     </div>
                 </div>
-                <nav class="flex items-center gap-1">
+                <nav class="flex items-center gap-1" aria-label="Main Navigation">
                     <a href="../index.html"
                         class="px-4 py-2 text-sm font-medium text-slate-700 hover:bg-indigo-50/50 rounded-lg transition-all">Home</a>
                     <a href="about.html"
@@ -51,7 +62,8 @@
                     <!-- Initiatives Dropdown -->
                     <div class="relative group">
                         <button
-                            class="px-4 py-2 text-sm font-medium text-slate-700 hover:bg-indigo-50/50 rounded-lg transition-all flex items-center gap-1">
+                            class="px-4 py-2 text-sm font-medium text-slate-700 hover:bg-indigo-50/50 rounded-lg transition-all flex items-center gap-1"
+                            aria-haspopup="true" aria-expanded="false">
                             Initiatives
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -73,7 +85,8 @@
                         class="px-4 py-2 text-sm font-medium text-slate-700 hover:bg-indigo-50/50 rounded-lg transition-all">News</a>
 
                     <a href="contact.html"
-                        class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg transition-all">Contact</a>
+                        class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg transition-all"
+                        aria-current="page">Contact</a>
                 </nav>
             </div>
         </div>

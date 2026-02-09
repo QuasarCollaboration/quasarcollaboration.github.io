@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://quasarcollaboration.github.io/sitemap.xml
