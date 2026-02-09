@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUASAR Collaboration - Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+        window.tailwindCSS = { ...window.tailwindCSS, suppressWarnings: true };
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="min-h-screen flex flex-col relative overflow-x-hidden">
+    <!-- Background handled by CSS body gradient -->
+
+    <header class="relative z-50 border-b border-indigo-100 glass-panel sticky top-0 backdrop-blur-xl shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
+                <div class="flex items-center gap-6">
+                    <img src="assets/img/ASA_Logo_W_Text_New_420x110.png" alt="ASA Logo"
+                        class="h-10 w-auto opacity-90 hover:opacity-100 transition-opacity invert">
+                    <div class="hidden md:block h-8 w-px bg-slate-300/50"></div>
+                    <div>
+                        <h1 class="text-xl font-display font-bold tracking-tight text-slate-800 leading-tight">QUASAR
+                            COLLABORATION</h1>
+                        <p class="text-[10px] text-indigo-700 uppercase tracking-widest font-semibold">Queensland
+                            Universities Astronomy & Space Research</p>
+                    </div>
+                </div>
+                <nav class="flex items-center gap-1">
+                    <a href="./"
+                        class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg transition-all">Home</a>
+                    <a href="pages/about.html"
+                        class="px-4 py-2 text-sm font-medium text-slate-700 hover:bg-indigo-50/50 rounded-lg transition-all">About</a>
+                    <a href="pages/members.html"
+                        class="px-4 py-2 text-sm font-medium text-slate-700 hover:bg-indigo-50/50 rounded-lg transition-all">Members</a>
+                    <!-- Initiatives Dropdown -->
+                    <div class="relative group">
+                        <button
+                            class="px-4 py-2 text-sm font-medium text-slate-700 hover:bg-indigo-50/50 rounded-lg transition-all flex items-center gap-1">
+                            Initiatives
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div
+                            class="absolute left-0 mt-1 w-48 bg-white rounded-lg shadow-xl border border-indigo-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform z-50 overflow-hidden">
+                            <div class="py-1">
+                                <a href="pages/projects.html"
+                                    class="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors">Projects</a>
+                                <a href="pages/schedule.html"
+                                    class="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors">Schedule</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="pages/news.html"
+                        class="px-4 py-2 text-sm font-medium text-slate-700 hover:bg-indigo-50/50 rounded-lg transition-all">News</a>
+
+                    <a href="pages/contact.html"
+                        class="px-4 py-2 text-sm font-medium text-slate-700 hover:bg-indigo-50/50 rounded-lg transition-all">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10 flex-grow container mx-auto px-4 py-12">
+        <!-- Hero Section -->
+        <div class="glass-panel rounded-3xl p-12 mb-12 text-center shadow-2xl">
+            <div class=" max-w-4xl mx-auto">
+                <h2 class="text-5xl font-display font-bold text-slate-800 mb-6">
+                    Queensland Universities<br>Astronomy & Space Research
+                </h2>
+                <p class="text-xl text-slate-600 mb-8 leading-relaxed">
+                    A collaborative initiative bringing together leading Queensland universities to advance astronomy
+                    and space science research, education, and outreach across the region.
+                </p>
+                <div class="flex justify-center gap-4">
+                    <a href="pages/about.html"
+                        class="px-8 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-bold transition-all shadow-lg hover:shadow-indigo-500/40">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Member Institutions Section -->
+        <section class="mb-16">
+            <h3 class="text-3xl font-display font-bold text-slate-800 text-center mb-8">Member Institutions</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div
+                    class="glass-panel rounded-2xl p-8 shadow-2xl text-center group hover:scale-105 transition-transform">
+                    <div class="w-full h-32 mx-auto mb-6 flex items-center justify-center">
+                        <a href="https://smp.uq.edu.au/research/astrophysics">
+                            <img src="assets/img/Logo_of_the_University_of_Queensland.svg.png"
+                                alt="University of Queensland"
+                                class="h-24 w-auto filter group-hover:scale-110 transition-transform">
+                        </a>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-800 mb-2">University of Queensland</h4>
+                    <p class="text-slate-600">UQ Astrophysics Research Group</p>
+                </div>
+
+                <div
+                    class="glass-panel rounded-2xl p-8 shadow-2xl text-center group hover:scale-105 transition-transform">
+                    <div class="w-full h-32 mx-auto mb-6 flex items-center justify-center">
+                        <a href="https://research.qut.edu.au/qutastrophysics/">
+                            <img src="assets/img/Queensland_University_of_Technology_logo.svg.png"
+                                alt="Queensland University of Technology"
+                                class="h-20 w-auto filter group-hover:scale-110 transition-transform">
+                        </a>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-800 mb-2">Queensland University of Technology</h4>
+                    <p class="text-slate-600">QUT Astrophysics Research Group</p>
+                </div>
+
+                <div
+                    class="glass-panel rounded-2xl p-8 shadow-2xl text-center group hover:scale-105 transition-transform">
+                    <div class="w-full h-32 mx-auto mb-6 flex items-center justify-center">
+                        <a
+                            href="https://www.unisq.edu.au/research/institutes-centres/institute-for-space-defence-and-advanced-technologies/centre-for-astrophysics">
+                            <img src="assets/img/University_of_Southern_Queensland_Logo.svg.png"
+                                alt="University of Southern Queensland"
+                                class="h-20 w-auto filter group-hover:scale-110 transition-transform">
+                        </a>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-800 mb-2">University of Southern Queensland</h4>
+                    <p class="text-slate-600">UniSQ Centre for Astrophysics</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Initiatives Section -->
+        <section class="mb-16">
+            <h3 class="text-3xl font-display font-bold text-slate-800 text-center mb-8">Key Initiatives</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <!-- Card 1: Research -->
+                <div class="glass-panel rounded-2xl p-10 shadow-2xl flex flex-col h-full">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="w-8 h-8 text-purple-600">
+                            <path fill-rule="evenodd"
+                                d="M2.25 13.5a8.25 8.25 0 018.25-8.25.75.75 0 01.75.75v6.75H18a.75.75 0 01.75.75 8.25 8.25 0 01-16.5 0z"
+                                clip-rule="evenodd" />
+                            <path fill-rule="evenodd"
+                                d="M12.75 3a.75.75 0 01.75-.75 8.25 8.25 0 018.25 8.25.75.75 0 01-.75.75h-7.5V3.75A.75.75 0 0112.75 3z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-slate-800 mb-4">Research Programs</h4>
+                    <p class="text-slate-600 mb-6 flex-grow">
+                        Collaborative research spanning observational astronomy, cosmology, gravitational waves, and
+                        space science.
+                    </p>
+                    <a href="pages/projects.html"
+                        class="inline-block px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-semibold transition-all shadow-lg hover:shadow-purple-500/30 text-center">
+                        Learn More →
+                    </a>
+                </div>
+
+                <!-- Card 2: Student Initiatives -->
+                <div class="glass-panel rounded-2xl p-10 shadow-2xl flex flex-col h-full">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="w-8 h-8 text-blue-600">
+                            <path
+                                d="M11.7 2.805a.75.75 0 01.6 0A60.65 60.65 0 0122.83 8.72a.75.75 0 01-.231 1.337 49.949 49.949 0 00-9.902 3.912l-.003.002-.34.18a.75.75 0 01-.707 0A50.009 50.009 0 007.5 12.174v-.224c0-.131.067-.248.182-.311a54.614 54.614 0 014.02-1.947V9.75a.75.75 0 00-.375-.65 55.2 55.2 0 00-3.83-2.12l.295-.16a.75.75 0 00-.231-1.337A60.653 60.653 0 0111.7 2.805z" />
+                            <path
+                                d="M13.06 15.473a48.45 48.45 0 017.666-3.282c.134 1.414.22 2.843.255 4.285a.75.75 0 01-.46.71 47.878 47.878 0 00-8.105 4.342.75.75 0 01-.832 0 47.877 47.877 0 00-8.104-4.342.75.75 0 01-.461-.71c.035-1.442.121-2.87.255-4.286A48.4 48.4 0 016 13.18v1.27a1.5 1.5 0 00-.14 2.508c-.09.38-.222.753-.397 1.11.452.213.901.434 1.346.66a6.729 6.729 0 00.551-1.608 1.5 1.5 0 00.14-2.67v-.645a48.549 48.549 0 013.44 1.667 2.25 2.25 0 002.12 0z" />
+                            <path
+                                d="M4.462 19.462c.42-.419.753-.89 1-1.394.453.213.902.434 1.347.661a6.743 6.743 0 01-1.286 1.794.75.75 0 11-1.06-1.06z" />
+                        </svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-slate-800 mb-4">Schedule</h4>
+                    <p class="text-slate-600 mb-6 flex-grow">
+                        A comprehensive schedule of seminars, workshops, and events.
+                    </p>
+                    <a href="pages/schedule.html"
+                        class="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-semibold transition-all shadow-lg hover:shadow-blue-500/30 text-center">
+                        View Schedule →
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="relative z-10 border-t border-indigo-100 glass-panel mt-auto">
+        <div class="container mx-auto px-6 py-8">
+            <div class="text-center text-slate-600 text-sm">
+                <p class="mb-2">&copy; 2026 QUASAR Collaboration. All rights reserved.</p>
+                <p>Queensland Universities Astronomy & Space Research</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
