@@ -5,15 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QUASAR Collaboration - Home</title>
-    <meta name="description" content="Joint Astronomy Meetings and collaboration between Queensland universities (UQ, QUT, UniSQ) advancing astronomy and space research.">
+    <meta name="description"
+        content="Joint Astronomy Meetings and collaboration between Queensland universities (UQ, QUT, UniSQ) advancing astronomy and space research.">
     <link rel="canonical" href="https://quasarcollaboration.github.io/">
 
     <!-- Open Graph Tags -->
     <meta property="og:title" content="QUASAR Collaboration - Queensland Universities Astronomy & Space Research">
-    <meta property="og:description" content="Collaborative initiative bringing together UQ, QUT, and UniSQ to advance astronomy and space science.">
+    <meta property="og:description"
+        content="Collaborative initiative bringing together UQ, QUT, and UniSQ to advance astronomy and space science.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quasarcollaboration.github.io/">
-    <meta property="og:image" content="https://quasarcollaboration.github.io/assets/img/ASA_Logo_W_Text_New_420x110.png">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -23,7 +24,6 @@
       "name": "QUASAR Collaboration",
       "alternateName": "Queensland Universities Astronomy & Space Research",
       "url": "https://quasarcollaboration.github.io/",
-      "logo": "https://quasarcollaboration.github.io/assets/img/ASA_Logo_W_Text_New_420x110.png",
       "member": [
         {
           "@type": "Organization",
@@ -83,54 +83,82 @@
 
     <header class="relative z-50 border-b border-indigo-100 glass-panel sticky top-0 backdrop-blur-xl shadow-sm">
         <div class="container mx-auto px-6 py-4">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
+            <div class="flex flex-wrap md:flex-nowrap justify-between items-center">
+                <!-- Branding Section -->
                 <div class="flex items-center gap-6">
-                    <img src="assets/img/ASA_Logo_W_Text_New_420x110.png" alt="ASA Logo"
-                        class="h-10 w-auto opacity-90 hover:opacity-100 transition-opacity invert">
-                    <div class="hidden md:block h-8 w-px bg-slate-300/50"></div>
-                    <div>
-                        <h1 class="text-xl font-display font-bold tracking-tight text-slate-800 leading-tight">QUASAR
+                    <!-- Removed ASA Logo -->
+                    <a href="./" class="block group">
+                        <h1
+                            class="text-xl font-display font-bold tracking-tight text-slate-800 leading-tight group-hover:text-indigo-700 transition-colors">
+                            QUASAR
                             COLLABORATION</h1>
                         <p class="text-[10px] text-indigo-700 uppercase tracking-widest font-semibold">Queensland
                             Universities Astronomy & Space Research</p>
-                    </div>
+                    </a>
                 </div>
-                <nav class="flex items-center gap-1" aria-label="Main Navigation">
-                    <a href="./"
-                        class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg transition-all" aria-current="page">Home</a>
-                    <a href="pages/about.html"
-                        class="px-4 py-2 text-sm font-medium text-slate-700 hover:bg-indigo-50/50 rounded-lg transition-all">About</a>
-                    <a href="pages/members.html"
-                        class="px-4 py-2 text-sm font-medium text-slate-700 hover:bg-indigo-50/50 rounded-lg transition-all">Members</a>
-                    <!-- Initiatives Dropdown -->
-                    <div class="relative group">
-                        <button
-                            class="px-4 py-2 text-sm font-medium text-slate-700 hover:bg-indigo-50/50 rounded-lg transition-all flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
-                            Initiatives
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-                        <div
-                            class="absolute left-0 mt-1 w-48 bg-white rounded-lg shadow-xl border border-indigo-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform z-50 overflow-hidden">
-                            <div class="py-1">
-                                <a href="pages/projects.html"
-                                    class="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors">Projects</a>
-                                <a href="pages/schedule.html"
-                                    class="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors">Schedule</a>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn"
+                    class="md:hidden p-2 text-slate-600 hover:text-indigo-600 focus:outline-none transition-colors"
+                    aria-label="Toggle Navigation">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+
+                <!-- Navigation -->
+                <nav id="main-nav"
+                    class="hidden w-full md:block md:w-auto mt-4 md:mt-0 transition-all duration-300 ease-in-out origin-top"
+                    aria-label="Main Navigation">
+                    <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-1">
+                        <a href="./"
+                            class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg transition-all text-center md:text-left shadow-sm shadow-indigo-200"
+                            aria-current="page">Home</a>
+                        <a href="pages/about.html"
+                            class="px-4 py-2 text-sm font-medium text-slate-700 hover:bg-indigo-50/50 rounded-lg transition-all text-center md:text-left">About</a>
+                        <a href="pages/members.html"
+                            class="px-4 py-2 text-sm font-medium text-slate-700 hover:bg-indigo-50/50 rounded-lg transition-all text-center md:text-left">Members</a>
+
+                        <!-- Initiatives Dropdown -->
+                        <div class="relative group text-center md:text-left">
+                            <button
+                                class="w-full md:w-auto px-4 py-2 text-sm font-medium text-slate-700 hover:bg-indigo-50/50 rounded-lg transition-all flex items-center justify-center md:justify-start gap-1"
+                                aria-haspopup="true" aria-expanded="false">
+                                Initiatives
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                            <!-- Dropdown Menu (Desktop: Hover, Mobile: Always Visible if needed or click - for simplicity, making it hover on desktop, slightly indented on mobile) -->
+                            <div
+                                class="md:absolute md:left-0 md:mt-1 w-full md:w-48 bg-indigo-50/30 md:bg-white rounded-lg md:shadow-xl md:border md:border-indigo-50 md:opacity-0 md:invisible md:group-hover:opacity-100 md:group-hover:visible transition-all duration-200 transform z-50 overflow-hidden mb-2 md:mb-0">
+                                <div class="py-1 flex flex-col items-center md:items-stretch">
+                                    <a href="pages/projects.html"
+                                        class="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors w-full text-center md:text-left">Projects</a>
+                                    <a href="pages/schedule.html"
+                                        class="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors w-full text-center md:text-left">Schedule</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <a href="pages/news.html"
-                        class="px-4 py-2 text-sm font-medium text-slate-700 hover:bg-indigo-50/50 rounded-lg transition-all">News</a>
 
-                    <a href="pages/contact.html"
-                        class="px-4 py-2 text-sm font-medium text-slate-700 hover:bg-indigo-50/50 rounded-lg transition-all">Contact</a>
+                        <a href="pages/news.html"
+                            class="px-4 py-2 text-sm font-medium text-slate-700 hover:bg-indigo-50/50 rounded-lg transition-all text-center md:text-left">News</a>
+
+                        <a href="pages/contact.html"
+                            class="px-4 py-2 text-sm font-medium text-slate-700 hover:bg-indigo-50/50 rounded-lg transition-all text-center md:text-left">Contact</a>
+                    </div>
                 </nav>
             </div>
         </div>
+        <script>
+            document.getElementById('mobile-menu-btn').addEventListener('click', function () {
+                const nav = document.getElementById('main-nav');
+                nav.classList.toggle('hidden');
+            });
+        </script>
     </header>
 
     <main class="relative z-10 flex-grow container mx-auto px-4 py-12">
@@ -145,8 +173,7 @@
                     and space science research, education, and outreach across the region.
                 </p>
                 <div class="flex justify-center gap-4">
-                    <a href="pages/about.html"
-                        aria-label="Learn more about QUASAR Collaboration"
+                    <a href="pages/about.html" aria-label="Learn more about QUASAR Collaboration"
                         class="px-8 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-bold transition-all shadow-lg hover:shadow-indigo-500/40">
                         Learn More
                     </a>
@@ -163,8 +190,7 @@
                     <div class="w-full h-32 mx-auto mb-6 flex items-center justify-center">
                         <a href="https://smp.uq.edu.au/research/astrophysics">
                             <img src="assets/img/Logo_of_the_University_of_Queensland.svg.png"
-                                alt="University of Queensland"
-                                loading="lazy"
+                                alt="University of Queensland" loading="lazy"
                                 class="h-24 w-auto filter group-hover:scale-110 transition-transform">
                         </a>
                     </div>
@@ -177,8 +203,7 @@
                     <div class="w-full h-32 mx-auto mb-6 flex items-center justify-center">
                         <a href="https://research.qut.edu.au/qutastrophysics/">
                             <img src="assets/img/Queensland_University_of_Technology_logo.svg.png"
-                                alt="Queensland University of Technology"
-                                loading="lazy"
+                                alt="Queensland University of Technology" loading="lazy"
                                 class="h-20 w-auto filter group-hover:scale-110 transition-transform">
                         </a>
                     </div>
@@ -192,8 +217,7 @@
                         <a
                             href="https://www.unisq.edu.au/research/institutes-centres/institute-for-space-defence-and-advanced-technologies/centre-for-astrophysics">
                             <img src="assets/img/University_of_Southern_Queensland_Logo.svg.png"
-                                alt="University of Southern Queensland"
-                                loading="lazy"
+                                alt="University of Southern Queensland" loading="lazy"
                                 class="h-20 w-auto filter group-hover:scale-110 transition-transform">
                         </a>
                     </div>
@@ -225,8 +249,7 @@
                         Collaborative research spanning observational astronomy, cosmology, gravitational waves, and
                         space science.
                     </p>
-                    <a href="pages/projects.html"
-                        aria-label="Learn more about Research Programs"
+                    <a href="pages/projects.html" aria-label="Learn more about Research Programs"
                         class="inline-block px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-semibold transition-all shadow-lg hover:shadow-purple-500/30 text-center">
                         Learn More →
                     </a>
@@ -249,8 +272,7 @@
                     <p class="text-slate-600 mb-6 flex-grow">
                         A comprehensive schedule of seminars, workshops, and events.
                     </p>
-                    <a href="pages/schedule.html"
-                        aria-label="View comprehensive schedule"
+                    <a href="pages/schedule.html" aria-label="View comprehensive schedule"
                         class="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-semibold transition-all shadow-lg hover:shadow-blue-500/30 text-center">
                         View Schedule →
                     </a>
