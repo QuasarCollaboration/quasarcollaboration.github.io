@@ -69,6 +69,20 @@
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         display: ['Outfit', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'gradient': 'gradient 8s linear infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        gradient: {
+                            '0%, 100%': { 'background-position': '0% 50%' },
+                            '50%': { 'background-position': '100% 50%' },
+                        }
                     }
                 }
             }
@@ -163,23 +177,69 @@
 
     <main class="relative z-10 flex-grow container mx-auto px-4 py-12">
         <!-- Hero Section -->
-        <div class="glass-panel rounded-3xl p-12 mb-12 text-center shadow-2xl">
-            <div class=" max-w-4xl mx-auto">
-                <h2 class="text-5xl font-display font-bold text-slate-800 mb-6">
-                    Queensland Universities<br>Astronomy & Space Research
+        <section
+            class="relative rounded-3xl overflow-hidden mb-16 shadow-2xl bg-slate-900 border border-slate-800 isolate">
+            <!-- Cosmic Background Effects -->
+            <div class="absolute inset-0 z-0">
+                <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950"></div>
+                <!-- Nebular Glows -->
+                <div
+                    class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-indigo-600/20 rounded-full blur-[100px] -translate-y-1/2 pointer-events-none mix-blend-screen">
+                </div>
+                <div
+                    class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[100px] translate-y-1/2 pointer-events-none mix-blend-screen">
+                </div>
+                <!-- Stars (Simple CSS dots) -->
+                <div class="absolute inset-0 opacity-20"
+                    style="background-image: radial-gradient(white 1px, transparent 1px); background-size: 50px 50px;">
+                </div>
+            </div>
+
+            <!-- Hero Content -->
+            <div class="relative z-10 px-6 py-20 md:py-32 text-center max-w-5xl mx-auto">
+                <div
+                    class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-indigo-500/10 border border-indigo-400/20 text-indigo-300 text-sm font-medium tracking-wide mb-8 backdrop-blur-sm animate-fade-in-up">
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                    </span>
+                    Advancing Astrophysics in Queensland
+                </div>
+
+                <h2
+                    class="text-5xl md:text-7xl font-display font-bold text-white mb-8 tracking-tight leading-tight drop-shadow-lg">
+                    QUASAR <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 animate-gradient bg-[length:300%_auto]">Collaboration</span>
                 </h2>
-                <p class="text-xl text-slate-600 mb-8 leading-relaxed">
-                    A collaborative initiative bringing together leading Queensland universities to advance astronomy
-                    and space science research, education, and outreach across the region.
+
+                <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed font-light">
+                    A union of research excellence from <strong class="text-white font-semibold">UQ</strong>, <strong
+                        class="text-white font-semibold">QUT</strong>, and <strong
+                        class="text-white font-semibold">UniSQ</strong>. Pioneering discoveries from the early universe
+                    to the search for life.
                 </p>
-                <div class="flex justify-center gap-4">
-                    <a href="pages/about.html" aria-label="Learn more about QUASAR Collaboration"
-                        class="px-8 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-bold transition-all shadow-lg hover:shadow-indigo-500/40">
-                        Learn More
+
+                <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
+                    <a href="pages/projects.html"
+                        class="group relative px-8 py-4 bg-white text-slate-900 rounded-xl font-bold transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] hover:-translate-y-1 overflow-hidden">
+                        <span class="relative z-10 flex items-center gap-2">
+                            Explore Projects
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5 transform group-hover:translate-x-1 transition-transform" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="pages/contact.html"
+                        class="px-8 py-4 bg-slate-800/50 hover:bg-slate-700/50 text-white border border-slate-600 hover:border-indigo-400 rounded-xl font-bold transition-all backdrop-blur-md hover:-translate-y-1">
+                        Connect With Us
                     </a>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Member Institutions Section -->
         <section class="mb-16">
