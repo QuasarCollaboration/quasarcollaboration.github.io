@@ -1,46 +1,160 @@
-body {
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%);
-    min-height: 100vh;
-    color: #1e293b;
-    font-family: 'Inter', sans-serif;
+:root {
+    /* Light Mode (Default) */
+    --bg-gradient-start: #f0f9ff;
+    --bg-gradient-end: #e0e7ff;
+
+    --text-primary: #1e293b;
+    /* Slate 800 */
+    --text-secondary: #475569;
+    /* Slate 600 */
+    --text-muted: #64748b;
+    /* Slate 500 */
+    --text-inverted: #ffffff;
+
+    --accent-primary: #4f46e5;
+    /* Indigo 600 */
+    --accent-hover: #4338ca;
+    /* Indigo 700 */
+    --accent-light: rgba(79, 70, 229, 0.1);
+
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --glass-shadow: rgba(31, 38, 135, 0.07);
+
+    --card-bg: rgba(255, 255, 255, 0.5);
+    --card-border: rgba(255, 255, 255, 0.5);
+    --card-shadow-hover: rgba(0, 0, 0, 0.05);
+
+    --input-bg: rgba(255, 255, 255, 0.8);
+    --input-border: #cbd5e1;
+    --input-focus-ring: rgba(99, 102, 241, 0.2);
+
+    --scrollbar-track: rgba(15, 23, 42, 0.5);
+    --scrollbar-thumb: #64748b;
 }
 
-/* Frosted Glass Utilities - Light Theme Optimized */
+/* Dark Mode Override */
+.dark-mode {
+    --bg-gradient-start: #0f172a;
+    /* Slate 900 - Lighter than Deep Blue/Black */
+    --bg-gradient-end: #1e1b4b;
+    /* Indigo 950 */
+
+    --text-primary: #f8fafc;
+    /* Slate 50 */
+    --text-secondary: #cbd5e1;
+    /* Slate 300 */
+    --text-muted: #94a3b8;
+    /* Slate 400 */
+    --text-inverted: #0b0d17;
+
+    --accent-primary: #a78bfa;
+    /* Luminous Purple */
+    --accent-hover: #8b5cf6;
+    /* Violet 500 */
+    --accent-light: rgba(167, 139, 250, 0.1);
+
+    --glass-bg: rgba(15, 23, 42, 0.5);
+    /* More transparent/glassy (was 0.8) */
+    --glass-border: rgba(255, 255, 255, 0.15);
+    /* Increased opacity for better visibility */
+    --glass-shadow: rgba(0, 0, 0, 0.6);
+
+    --card-bg: rgba(0, 0, 0, 0.2);
+    --card-border: rgba(167, 139, 250, 0.3);
+    /* Vibrant purple tint */
+    --card-shadow-hover: rgba(167, 139, 250, 0.1);
+
+    --input-bg: rgba(255, 255, 255, 0.05);
+    --input-border: #334155;
+    --input-focus-ring: rgba(167, 139, 250, 0.2);
+    /* Ensure text is readable in dark mode inputs */
+    --input-text: #f8fafc;
+
+    /* Toggle Slider Offset (2rem = 32px roughly matching width) */
+    --toggle-offset: 1.5rem;
+
+    --scrollbar-track: rgba(0, 0, 0, 0.5);
+    --scrollbar-thumb: #475569;
+}
+
+/* Base Input Styles */
+input,
+textarea,
+select {
+    color: var(--text-primary);
+    background-color: var(--input-bg);
+}
+
+/* Light Mode Input Override */
+:not(.dark-mode) input,
+:not(.dark-mode) textarea,
+:not(.dark-mode) select {
+    color: #1e293b;
+    /* Slate 800 - Dark text for light mode */
+    background-color: #ffffff;
+    /* White background */
+    border: 1px solid #cbd5e1;
+    /* Slate 300 */
+}
+
+/* Dark Mode Input Override */
+.dark-mode input,
+.dark-mode textarea,
+.dark-mode select {
+    color: var(--input-text);
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+}
+
+body {
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    min-height: 100vh;
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Frosted Glass Utilities */
 .glass-panel {
-    background: rgba(255, 255, 255, 0.7);
+    background: var(--glass-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-    color: #1e293b;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 var(--glass-shadow);
+    color: var(--text-primary);
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 .glass-card {
-    background: rgba(255, 255, 255, 0.5);
+    background: var(--card-bg);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid var(--card-border);
     transition: all 0.3s ease;
-    color: #334155;
+    color: var(--text-secondary);
 }
 
 .glass-card:hover {
-    background: rgba(255, 255, 255, 0.6);
+    background: var(--glass-bg);
+    /* Slightly more opaque on hover if needed, using glass-bg for now */
     transform: translateY(-2px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 15px -3px var(--card-shadow-hover);
+    border-color: var(--accent-primary);
 }
 
 .glass-input {
-    background: rgba(255, 255, 255, 0.8);
-    border: 1px solid #cbd5e1;
-    color: #1e293b;
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    color: var(--text-primary);
     transition: all 0.2s ease;
 }
 
 .glass-input:focus {
-    border-color: #6366f1;
-    background: #ffffff;
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    border-color: var(--accent-primary);
+    background: var(--input-bg);
+    /* Keep transparent/glassy */
+    box-shadow: 0 0 0 3px var(--input-focus-ring);
     outline: none;
 }
 
@@ -49,7 +163,8 @@ body {
     position: relative;
     padding-left: 2rem;
     padding-bottom: 2rem;
-    border-left: 2px solid #e2e8f0;
+    border-left: 2px solid var(--input-border);
+    /* Using input border color for subtlety */
 }
 
 .timeline-item:last-child {
@@ -63,7 +178,9 @@ body {
     width: 1.2rem;
     height: 1.2rem;
     border-radius: 50%;
-    border: 2px solid #fff;
+    border: 2px solid var(--bg-gradient-start);
+    /* Dynamic border based on bg */
+    background: var(--accent-primary);
     transition: all 0.3s ease;
 }
 
@@ -73,16 +190,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-    background: rgba(15, 23, 42, 0.5);
+    background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #64748b;
+    background: var(--scrollbar-thumb);
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #64748b;
+    background: var(--text-muted);
 }
 
 .chart-container {
@@ -115,21 +232,22 @@ body {
 /* Checkbox Styling */
 .roadmap-checkbox:checked+span {
     text-decoration: line-through;
-    color: #64748b;
+    color: var(--text-muted);
 }
 
-/* Adjustments for light mode readability on dark bg */
+/* Nav Button Styles */
 .nav-btn {
-    color: #475569;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
 }
 
 .nav-btn.active {
-    background: #4f46e5 !important;
-    color: white !important;
-    box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4);
+    background: var(--accent-primary) !important;
+    color: var(--text-inverted) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .nav-btn:not(.active):hover {
-    background: rgba(79, 70, 229, 0.1);
-    color: #1e293b;
+    background: var(--accent-light);
+    color: var(--text-primary);
 }

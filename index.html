@@ -64,8 +64,26 @@
         rel="stylesheet">
     <script>
         tailwind.config = {
+            darkMode: ['class', '.dark-mode'],
             theme: {
                 extend: {
+                    colors: {
+                        slate: {
+                            800: 'var(--text-primary)',
+                            700: 'var(--text-secondary)',
+                            600: 'var(--text-secondary)',
+                            500: 'var(--text-muted)',
+                            400: 'var(--text-muted)',
+                            900: 'var(--bg-gradient-end)',
+                            200: 'var(--glass-border)',
+                            50: 'var(--glass-bg)',
+                        },
+                        indigo: {
+                            600: 'var(--accent-primary)',
+                            100: 'var(--glass-border)',
+                            50: 'var(--glass-border)',
+                        }
+                    },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         display: ['Outfit', 'sans-serif'],
@@ -89,24 +107,38 @@
         }
         window.tailwindCSS = { ...window.tailwindCSS, suppressWarnings: true };
     </script>
+    <script>
+        // Anti-Flicker & Default Light Mode
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            } else {
+                document.documentElement.classList.remove('dark-mode');
+            }
+        })();
+    </script>
+    <script src="assets/js/theme-toggle.js" defer></script>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body class="min-h-screen flex flex-col relative overflow-x-hidden">
     <!-- Background handled by CSS body gradient -->
 
-    <header class="relative z-50 border-b border-indigo-100 glass-panel sticky top-0 backdrop-blur-xl shadow-sm">
+    <header
+        class="relative z-50 border-b border-indigo-100 glass-panel sticky top-0 backdrop-blur-xl shadow-sm transition-colors duration-300">
         <div class="container mx-auto px-6 py-4">
             <div class="flex flex-wrap md:flex-nowrap justify-between items-center">
                 <!-- Branding Section -->
                 <div class="flex items-center gap-6">
-                    <!-- Removed ASA Logo -->
                     <a href="./" class="block group">
                         <h1
                             class="text-xl font-display font-bold tracking-tight text-slate-800 leading-tight group-hover:text-indigo-700 transition-colors">
                             QUASAR
                             COLLABORATION</h1>
-                        <p class="text-[10px] text-indigo-700 uppercase tracking-widest font-semibold">Queensland
+                        <p
+                            class="text-[10px] text-indigo-700 uppercase tracking-widest font-semibold dark:text-indigo-400">
+                            Queensland
                             Universities Astronomy & Space Research</p>
                     </a>
                 </div>
@@ -134,12 +166,12 @@
                         <a href="pages/members.html"
                             class="px-4 py-2 text-sm font-medium text-slate-700 hover:bg-indigo-50/50 rounded-lg transition-all text-center md:text-left">Members</a>
 
-                        <!-- Initiatives Dropdown -->
+                        <!-- Collaboration Dropdown -->
                         <div class="relative group text-center md:text-left">
-                            <button id="initiatives-btn"
+                            <button id="collaboration-btn"
                                 class="w-full md:w-auto px-4 py-2 text-sm font-medium text-slate-700 hover:bg-indigo-50/50 rounded-lg transition-all flex items-center justify-center md:justify-start gap-1"
                                 aria-haspopup="true" aria-expanded="false">
-                                Initiatives
+                                Collaboration
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -147,13 +179,14 @@
                                 </svg>
                             </button>
                             <!-- Dropdown Menu -->
-                            <div id="initiatives-menu"
-                                class="hidden md:block md:absolute md:left-0 md:mt-1 w-full md:w-48 bg-indigo-50/30 md:bg-white rounded-lg md:shadow-xl md:border md:border-indigo-50 md:opacity-0 md:invisible md:group-hover:opacity-100 md:group-hover:visible transition-all duration-200 transform z-50 overflow-hidden mb-2 md:mb-0">
+                            <div id="collaboration-menu"
+                                class="hidden md:block md:absolute md:left-0 md:mt-1 w-full md:w-48 bg-indigo-50/30 md:bg-white dark:bg-gray-900 rounded-lg md:shadow-xl md:border md:border-indigo-50 dark:border-slate-700 md:opacity-0 md:invisible md:group-hover:opacity-100 md:group-hover:visible transition-all duration-200 transform z-50 overflow-hidden mb-2 md:mb-0">
                                 <div class="py-1 flex flex-col items-center md:items-stretch">
-                                    <a href="pages/projects.html"
-                                        class="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors w-full text-center md:text-left">Projects</a>
+                                    <a href="pages/research.html"
+                                        class="block px-4 py-2 text-sm text-slate-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-slate-700 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors w-full text-center md:text-left">Research
+                                        Themes</a>
                                     <a href="pages/schedule.html"
-                                        class="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors w-full text-center md:text-left">Schedule</a>
+                                        class="block px-4 py-2 text-sm text-slate-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-slate-700 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors w-full text-center md:text-left">Schedule</a>
                                 </div>
                             </div>
                         </div>
@@ -163,6 +196,29 @@
 
                         <a href="pages/contact.html"
                             class="px-4 py-2 text-sm font-medium text-slate-700 hover:bg-indigo-50/50 rounded-lg transition-all text-center md:text-left">Contact</a>
+
+                        <!-- Theme Toggle Button (Slider Switch) -->
+                        <button id="theme-toggle"
+                            class="relative w-14 h-7 ml-5 rounded-full bg-slate-200 dark:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            aria-label="Toggle Dark Mode">
+                            <div class="absolute left-1 top-1 text-yellow-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                                </svg>
+                            </div>
+                            <div class="absolute right-1 top-1 text-slate-400 dark:text-indigo-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                                </svg>
+                            </div>
+                            <div
+                                class="toggle-indicator absolute left-1 top-1 w-5 h-5 bg-white rounded-full shadow-md transform transition-transform duration-300 ease-in-out dark:translate-x-7">
+                            </div>
+                        </button>
                     </div>
                 </nav>
             </div>
@@ -173,8 +229,8 @@
                 nav.classList.toggle('hidden');
             });
 
-            document.getElementById('initiatives-btn').addEventListener('click', function () {
-                const menu = document.getElementById('initiatives-menu');
+            document.getElementById('collaboration-btn').addEventListener('click', function () {
+                const menu = document.getElementById('collaboration-menu');
                 menu.classList.toggle('hidden');
             });
         </script>
@@ -183,16 +239,15 @@
     <main class="relative z-10 flex-grow container mx-auto px-4 py-12">
         <!-- Hero Section -->
         <section
-            class="relative rounded-3xl overflow-hidden mb-16 shadow-2xl bg-slate-900 border border-slate-800 isolate">
+            class="relative rounded-3xl overflow-hidden mb-16 shadow-2xl isolate bg-gradient-to-br from-slate-900 via-slate-950 to-indigo-950 transition-colors duration-500">
             <!-- Cosmic Background Effects -->
             <div class="absolute inset-0 z-0">
-                <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950"></div>
                 <!-- Nebular Glows -->
                 <div
-                    class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-indigo-600/20 rounded-full blur-[100px] -translate-y-1/2 pointer-events-none mix-blend-screen">
+                    class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-white/10 rounded-full blur-[100px] -translate-y-1/2 pointer-events-none mix-blend-overlay">
                 </div>
                 <div
-                    class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[100px] translate-y-1/2 pointer-events-none mix-blend-screen">
+                    class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-400/20 rounded-full blur-[100px] translate-y-1/2 pointer-events-none mix-blend-overlay">
                 </div>
                 <!-- Stars (Simple CSS dots) -->
                 <div class="absolute inset-0 opacity-20"
@@ -202,16 +257,6 @@
 
             <!-- Hero Content -->
             <div class="relative z-10 px-6 py-20 md:py-32 text-center max-w-5xl mx-auto">
-                <div
-                    class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-indigo-500/10 border border-indigo-400/20 text-indigo-300 text-sm font-medium tracking-wide mb-8 backdrop-blur-sm animate-fade-in-up">
-                    <span class="relative flex h-2 w-2">
-                        <span
-                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
-                    </span>
-                    Advancing Astrophysics in Queensland
-                </div>
-
                 <h2
                     class="text-5xl md:text-7xl font-display font-bold text-white mb-8 tracking-tight leading-tight drop-shadow-lg">
                     QUASAR <span
@@ -226,10 +271,10 @@
                 </p>
 
                 <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
-                    <a href="pages/projects.html"
+                    <a href="pages/research.html"
                         class="group relative px-8 py-4 bg-white text-slate-900 rounded-xl font-bold transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] hover:-translate-y-1 overflow-hidden">
                         <span class="relative z-10 flex items-center gap-2">
-                            Explore Projects
+                            Explore Research Themes
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="h-5 w-5 transform group-hover:translate-x-1 transition-transform" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
