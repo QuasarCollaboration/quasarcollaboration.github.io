@@ -59,25 +59,44 @@ def process_members(rows):
     if not rows:
         return []
 
-    # Assume first row is headers
+    # Map headers based on inspection of "Quasar Members.xlsx"
+    # A: Name, B: Affiliation, C: Location, D: Role, E: Career Stage, 
+    # F: Sub-field, G: Years Since PhD, H: Gender, I: Email, J: Notes
+    
+    # We can try to identify them dynamically or just use the known structure if headers match
+    # Let's try to be robust with dynamic mapping first, falling back to known structure
+    
     headers = rows[0]
-    # Map column letters to header names
     col_map = {k: v for k, v in headers.items()}
     
-    # Identify key columns based on known headers
-    # Headers found: ['Name ', 'Affiliation', 'Location/Campus', 'Research Interests (Keywords)', 'Photo Link', 'Website Link', 'Position / Which career stage do you fall into?']
-    
     key_map = {}
+    
+    # Heuristic mapping
     for col, header in col_map.items():
         h = header.lower().strip()
         if 'name' in h: key_map['name'] = col
         elif 'affiliation' in h: key_map['affiliation'] = col
         elif 'location' in h: key_map['location'] = col
-        elif 'interests' in h: key_map['interests'] = col
+        elif 'career stage' in h: key_map['career_stage'] = col
+        elif 'sub-field' in h or 'primary field' in h: key_map['primary_field'] = col
+        elif 'years since phd' in h: key_map['role'] = col # Old role for filtering
+        elif 'email' in h: key_map['email'] = col
         elif 'photo' in h: key_map['photo'] = col
         elif 'website' in h: key_map['website'] = col
-        elif 'position' in h or 'career' in h: key_map['role'] = col
-        elif 'sub-field' in h or 'primary field' in h: key_map['primary_field'] = col
+        elif 'research interests' in h: key_map['interests'] = col
+
+    # If we didn't find essential columns, fall back to hardcoded assumption if it looks like the right sheet
+    if 'name' not in key_map and 'A' in headers and 'Name' in headers['A']:
+         key_map = {
+             'name': 'A',
+             'affiliation': 'B',
+             'location': 'C',
+             # 'position': 'D', # "Role" in excel, likely Staff/Student
+             'career_stage': 'E',
+             'primary_field': 'F',
+             'role': 'G', # Years since PhD
+             'email': 'I'
+         }
 
     members = []
     for row in rows[1:]: # Skip header
@@ -97,11 +116,17 @@ def process_members(rows):
         member['photo'] = row.get(key_map.get('photo', ''), "")
         member['website'] = row.get(key_map.get('website', ''), "")
         member['role'] = row.get(key_map.get('role', ''), "")
+        member['career_stage'] = row.get(key_map.get('career_stage', ''), "")
+        member['email'] = row.get(key_map.get('email', ''), "")
         
         # Clean up Data
         # Ensure external links have https
         if member['website'] and not member['website'].startswith('http'):
              member['website'] = 'https://' + member['website']
+        
+        # Fallback for empty photo/website to keep JSON clean but exist
+        if not member['photo']: member['photo'] = ""
+        if not member['website']: member['website'] = ""
 
         members.append(member)
 

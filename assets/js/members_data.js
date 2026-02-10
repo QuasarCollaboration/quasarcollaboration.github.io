@@ -1,33 +1,15 @@
 window.membersData = [
   {
-    "name": "Duncan Wright",
-    "affiliation": "UniSQ",
-    "location": "Toowoomba",
+    "name": "Tamara Davis",
+    "affiliation": "UQ",
+    "location": "Brisbane",
     "interests": "",
-    "primary_field": "Exoplanets",
+    "primary_field": "Cosmology",
     "photo": "",
     "website": "",
-    "role": ">10 yr post PhD"
-  },
-  {
-    "name": "George Zhou",
-    "affiliation": "UniSQ",
-    "location": "Toowoomba",
-    "interests": "",
-    "primary_field": "Exoplanets",
-    "photo": "",
-    "website": "",
-    "role": ">10 yr post PhD"
-  },
-  {
-    "name": "Chelsea Huang",
-    "affiliation": "UniSQ",
-    "location": "Toowoomba",
-    "interests": "",
-    "primary_field": "Exoplanets",
-    "photo": "",
-    "website": "",
-    "role": ">10 yr post PhD"
+    "role": ">10 yr post PhD",
+    "career_stage": "Professor",
+    "email": "tamarad@physics.uq.edu.au"
   },
   {
     "name": "Jonti Horner",
@@ -37,7 +19,9 @@ window.membersData = [
     "primary_field": "Solar system",
     "photo": "",
     "website": "",
-    "role": ">10 yr post PhD"
+    "role": ">10 yr post PhD",
+    "career_stage": "Professor",
+    "email": "jonti.horner@unisq.edu.au"
   },
   {
     "name": "Rob Wittenmyer",
@@ -47,37 +31,45 @@ window.membersData = [
     "primary_field": "Exoplanets",
     "photo": "",
     "website": "",
-    "role": ">10 yr post PhD"
+    "role": ">10 yr post PhD",
+    "career_stage": "Professor",
+    "email": "rob.wittenmyer@unisq.edu.au"
   },
   {
-    "name": "Gang Li",
-    "affiliation": "UniSQ",
-    "location": "Springfield",
-    "interests": "",
-    "primary_field": "Stars",
-    "photo": "",
-    "website": "",
-    "role": "<5 yr post PhD"
-  },
-  {
-    "name": "Alexander Wallace",
+    "name": "Duncan Wright",
     "affiliation": "UniSQ",
     "location": "Toowoomba",
     "interests": "",
     "primary_field": "Exoplanets",
     "photo": "",
     "website": "",
-    "role": "<5 yr post PhD"
+    "role": ">10 yr post PhD",
+    "career_stage": "Professor",
+    "email": "Duncan.Wright@unisq.edu.au"
   },
   {
-    "name": "Belinda Nicholson",
+    "name": "George Zhou",
     "affiliation": "UniSQ",
     "location": "Toowoomba",
     "interests": "",
     "primary_field": "Exoplanets",
     "photo": "",
     "website": "",
-    "role": "5-10 yr post PhD"
+    "role": ">10 yr post PhD",
+    "career_stage": "Associate Professor",
+    "email": "george.zhou@unisq.edu.au"
+  },
+  {
+    "name": "Chelsea Huang",
+    "affiliation": "UniSQ",
+    "location": "Toowoomba",
+    "interests": "",
+    "primary_field": "Exoplanets",
+    "photo": "",
+    "website": "",
+    "role": ">10 yr post PhD",
+    "career_stage": "Associate Professor",
+    "email": "chelsea.huang@unisq.edu.au"
   },
   {
     "name": "Simon Murphy",
@@ -87,47 +79,9 @@ window.membersData = [
     "primary_field": "Stars",
     "photo": "",
     "website": "",
-    "role": ">10 yr post PhD"
-  },
-  {
-    "name": "Rebecca McElroy",
-    "affiliation": "UniSQ",
-    "location": "Remote",
-    "interests": "",
-    "primary_field": "Galaxies",
-    "photo": "",
-    "website": "",
-    "role": "5-10 yr post PhD"
-  },
-  {
-    "name": "Rossana Ruggeri",
-    "affiliation": "QUT",
-    "location": "Brisbane",
-    "interests": "",
-    "primary_field": "Cosmology",
-    "photo": "",
-    "website": "",
-    "role": "5-10 yr post PhD"
-  },
-  {
-    "name": "Michael Cowley",
-    "affiliation": "QUT",
-    "location": "Brisbane",
-    "interests": "",
-    "primary_field": "Galaxies",
-    "photo": "",
-    "website": "",
-    "role": "5-10 yr post PhD"
-  },
-  {
-    "name": "Tamara Davis",
-    "affiliation": "UQ",
-    "location": "Brisbane",
-    "interests": "",
-    "primary_field": "Cosmology",
-    "photo": "",
-    "website": "",
-    "role": ">10 yr post PhD"
+    "role": ">10 yr post PhD",
+    "career_stage": "Associate Professor",
+    "email": "Simon.Murphy@unisq.edu.au"
   },
   {
     "name": "Holger Baumgardt",
@@ -137,7 +91,21 @@ window.membersData = [
     "primary_field": "Stars",
     "photo": "",
     "website": "",
-    "role": ">10 yr post PhD"
+    "role": ">10 yr post PhD",
+    "career_stage": "Associate Professor",
+    "email": "h.baumgardt@uq.edu.au"
+  },
+  {
+    "name": "Michael Cowley",
+    "affiliation": "QUT",
+    "location": "Brisbane",
+    "interests": "",
+    "primary_field": "Galaxies",
+    "photo": "",
+    "website": "",
+    "role": "5-10 yr post PhD",
+    "career_stage": "Senior Lecturer",
+    "email": "michael.cowley@qut.edu.au"
   },
   {
     "name": "Cullan Howlett",
@@ -147,17 +115,9 @@ window.membersData = [
     "primary_field": "Cosmology",
     "photo": "",
     "website": "",
-    "role": ">10 yr post PhD"
-  },
-  {
-    "name": "Khaled Said",
-    "affiliation": "UQ",
-    "location": "Brisbane",
-    "interests": "",
-    "primary_field": "Cosmology",
-    "photo": "",
-    "website": "",
-    "role": "5-10 yr post PhD"
+    "role": ">10 yr post PhD",
+    "career_stage": "Senior Lecturer",
+    "email": "c.howlett@uq.edu.au"
   },
   {
     "name": "Benjamin Roberts",
@@ -167,27 +127,9 @@ window.membersData = [
     "primary_field": "Astroparticle",
     "photo": "",
     "website": "",
-    "role": "5-10 yr post PhD"
-  },
-  {
-    "name": "Nandita Khetan",
-    "affiliation": "UQ",
-    "location": "Remote",
-    "interests": "",
-    "primary_field": "Cosmology",
-    "photo": "",
-    "website": "",
-    "role": "<5 yr post PhD"
-  },
-  {
-    "name": "Simon Deeley",
-    "affiliation": "UQ",
-    "location": "Brisbane",
-    "interests": "",
-    "primary_field": "Galaxies",
-    "photo": "",
-    "website": "",
-    "role": "<5 yr post PhD"
+    "role": "5-10 yr post PhD",
+    "career_stage": "Senior Lecturer",
+    "email": "b.roberts@uq.edu.au"
   },
   {
     "name": "Sarah Sweet",
@@ -197,237 +139,105 @@ window.membersData = [
     "primary_field": "Galaxies",
     "photo": "",
     "website": "",
-    "role": ">10 yr post PhD"
+    "role": ">10 yr post PhD",
+    "career_stage": "Senior Lecturer",
+    "email": "s.sweet@uq.edu.au"
   },
   {
-    "name": "Amber Tilly",
+    "name": "Rossana Ruggeri",
+    "affiliation": "QUT",
+    "location": "Brisbane",
+    "interests": "",
+    "primary_field": "Cosmology",
+    "photo": "",
+    "website": "",
+    "role": "5-10 yr post PhD",
+    "career_stage": "Lecturer",
+    "email": "rossana.ruggeri@qut.edu.au"
+  },
+  {
+    "name": "Belinda Nicholson",
     "affiliation": "UniSQ",
     "location": "Toowoomba",
     "interests": "",
     "primary_field": "Exoplanets",
     "photo": "",
     "website": "",
-    "role": "in PhD"
+    "role": "5-10 yr post PhD",
+    "career_stage": "Research Fellow",
+    "email": "Belinda.Nicholson@unisq.edu.au"
   },
   {
-    "name": "Anuj Gautam",
-    "affiliation": "UniSQ",
-    "location": "Toowoomba",
-    "interests": "",
-    "primary_field": "Stars",
-    "photo": "",
-    "website": "",
-    "role": "in PhD"
-  },
-  {
-    "name": "David Petit",
-    "affiliation": "UniSQ",
-    "location": "Toowoomba",
-    "interests": "",
-    "primary_field": "Exoplanets",
-    "photo": "",
-    "website": "",
-    "role": "in PhD"
-  },
-  {
-    "name": "Joachim Kruger",
-    "affiliation": "UniSQ",
-    "location": "Toowoomba",
-    "interests": "",
-    "primary_field": "Stars",
-    "photo": "",
-    "website": "",
-    "role": "in PhD"
-  },
-  {
-    "name": "Joshua Bardwell",
+    "name": "Rebecca McElroy",
     "affiliation": "UniSQ",
     "location": "Remote",
     "interests": "",
     "primary_field": "Galaxies",
     "photo": "",
     "website": "",
-    "role": "in PhD"
+    "role": "5-10 yr post PhD",
+    "career_stage": "Research Fellow",
+    "email": "rebecca.mcelroy@unisq.edu.au"
   },
   {
-    "name": "Sakhee Bhure",
+    "name": "Khaled Said",
+    "affiliation": "UQ",
+    "location": "Brisbane",
+    "interests": "",
+    "primary_field": "Cosmology",
+    "photo": "",
+    "website": "",
+    "role": "5-10 yr post PhD",
+    "career_stage": "Research Fellow",
+    "email": "k.saidahmedsoliman@uq.edu.au"
+  },
+  {
+    "name": "Gang Li",
+    "affiliation": "UniSQ",
+    "location": "Springfield",
+    "interests": "",
+    "primary_field": "Stars",
+    "photo": "",
+    "website": "",
+    "role": "<5 yr post PhD",
+    "career_stage": "Postdoc",
+    "email": "Gang.Li@unisq.edu.au"
+  },
+  {
+    "name": "Alexander Wallace",
     "affiliation": "UniSQ",
     "location": "Toowoomba",
     "interests": "",
     "primary_field": "Exoplanets",
     "photo": "",
     "website": "",
-    "role": "in PhD"
+    "role": "<5 yr post PhD",
+    "career_stage": "Postdoc",
+    "email": "Alexander.Wallace@unisq.edu.au"
   },
   {
-    "name": "Shishir Dholakia",
-    "affiliation": "UniSQ",
+    "name": "Nandita Khetan",
+    "affiliation": "UQ",
     "location": "Remote",
     "interests": "",
-    "primary_field": "Stars",
+    "primary_field": "Cosmology",
     "photo": "",
     "website": "",
-    "role": "in PhD"
+    "role": "<5 yr post PhD",
+    "career_stage": "Postdoc",
+    "email": "n.khetan@uq.edu.au"
   },
   {
-    "name": "Nicole Jenkins",
-    "affiliation": "UniSQ",
-    "location": "Brisbane",
-    "interests": "",
-    "primary_field": "Galaxies",
-    "photo": "",
-    "website": "",
-    "role": "in PhD"
-  },
-  {
-    "name": "Mitchell Hooymans",
-    "affiliation": "UQ",
-    "location": "Brisbane",
-    "interests": "",
-    "primary_field": "Stars",
-    "photo": "",
-    "website": "",
-    "role": "in PhD"
-  },
-  {
-    "name": "Pratyush Kumar Das",
+    "name": "Simon Deeley",
     "affiliation": "UQ",
     "location": "Brisbane",
     "interests": "",
     "primary_field": "Galaxies",
     "photo": "",
     "website": "",
-    "role": "in PhD"
-  },
-  {
-    "name": "Lachlan Hobart",
-    "affiliation": "UQ",
-    "location": "Brisbane",
-    "interests": "",
-    "primary_field": "Stars",
-    "photo": "",
-    "website": "",
-    "role": "in PhD"
-  },
-  {
-    "name": "Narise Williams",
-    "affiliation": "UQ",
-    "location": "Brisbane",
-    "interests": "",
-    "primary_field": "Astroparticle",
-    "photo": "",
-    "website": "",
-    "role": "in PhD"
-  },
-  {
-    "name": "Ashlee Caddell",
-    "affiliation": "UQ",
-    "location": "Brisbane",
-    "interests": "",
-    "primary_field": "Astroparticle",
-    "photo": "",
-    "website": "",
-    "role": "in PhD"
-  },
-  {
-    "name": "Arshia Anjum",
-    "affiliation": "UQ",
-    "location": "Brisbane",
-    "interests": "",
-    "primary_field": "Stars",
-    "photo": "",
-    "website": "",
-    "role": "in PhD"
-  },
-  {
-    "name": "Scot Devlin",
-    "affiliation": "UQ",
-    "location": "Brisbane",
-    "interests": "",
-    "primary_field": "Stars",
-    "photo": "",
-    "website": "",
-    "role": "in PhD"
-  },
-  {
-    "name": "Rianna Bell",
-    "affiliation": "UQ",
-    "location": "Brisbane",
-    "interests": "",
-    "primary_field": "Cosmology",
-    "photo": "",
-    "website": "",
-    "role": "in PhD"
-  },
-  {
-    "name": "Maddy Cross-Parkin",
-    "affiliation": "UQ",
-    "location": "Brisbane",
-    "interests": "",
-    "primary_field": "Cosmology",
-    "photo": "",
-    "website": "",
-    "role": "in PhD"
-  },
-  {
-    "name": "Caitlin Ross",
-    "affiliation": "UQ",
-    "location": "Brisbane",
-    "interests": "",
-    "primary_field": "Cosmology",
-    "photo": "",
-    "website": "",
-    "role": "in PhD"
-  },
-  {
-    "name": "Hugh McDougall",
-    "affiliation": "UQ",
-    "location": "Brisbane",
-    "interests": "",
-    "primary_field": "Cosmology",
-    "photo": "",
-    "website": "",
-    "role": "in PhD"
-  },
-  {
-    "name": "Ryan Camilleri",
-    "affiliation": "UQ",
-    "location": "Brisbane",
-    "interests": "",
-    "primary_field": "Cosmology",
-    "photo": "",
-    "website": "",
-    "role": "in PhD"
-  },
-  {
-    "name": "James Simpson",
-    "affiliation": "UQ",
-    "location": "Brisbane",
-    "interests": "",
-    "primary_field": "Cosmology",
-    "photo": "",
-    "website": "",
-    "role": "in PhD"
-  },
-  {
-    "name": "Julian Groth",
-    "affiliation": "UQ",
-    "location": "Brisbane",
-    "interests": "",
-    "primary_field": "Galaxies",
-    "photo": "",
-    "website": "",
-    "role": "in PhD"
-  },
-  {
-    "name": "Pratyush Mishra",
-    "affiliation": "UQ",
-    "location": "Brisbane",
-    "interests": "",
-    "primary_field": "Cosmology",
-    "photo": "",
-    "website": "",
-    "role": "in PhD"
+    "role": "<5 yr post PhD",
+    "career_stage": "Research Assistant",
+    "email": "s.deeley@uq.edu.au"
   },
   {
     "name": "Vanessa Porchet",
@@ -437,7 +247,9 @@ window.membersData = [
     "primary_field": "Galaxies",
     "photo": "",
     "website": "",
-    "role": "in PhD"
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": "vanessajaehee.porchet@hdr.qut.edu.au"
   },
   {
     "name": "Lily Gustafson",
@@ -447,7 +259,285 @@ window.membersData = [
     "primary_field": "Galaxies",
     "photo": "",
     "website": "",
-    "role": "in PhD"
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": "lily.gustafson@hdr.qut.edu.au"
+  },
+  {
+    "name": "Amber Tilly",
+    "affiliation": "UniSQ",
+    "location": "Toowoomba",
+    "interests": "",
+    "primary_field": "Exoplanets",
+    "photo": "",
+    "website": "",
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": "Amber.Tilly@unisq.edu.au"
+  },
+  {
+    "name": "Anuj Gautam",
+    "affiliation": "UniSQ",
+    "location": "Toowoomba",
+    "interests": "",
+    "primary_field": "Stars",
+    "photo": "",
+    "website": "",
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": ""
+  },
+  {
+    "name": "David Petit",
+    "affiliation": "UniSQ",
+    "location": "Toowoomba",
+    "interests": "",
+    "primary_field": "Exoplanets",
+    "photo": "",
+    "website": "",
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": ""
+  },
+  {
+    "name": "Joachim Kruger",
+    "affiliation": "UniSQ",
+    "location": "Toowoomba",
+    "interests": "",
+    "primary_field": "Stars",
+    "photo": "",
+    "website": "",
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": ""
+  },
+  {
+    "name": "Joshua Bardwell",
+    "affiliation": "UniSQ",
+    "location": "Remote",
+    "interests": "",
+    "primary_field": "Galaxies",
+    "photo": "",
+    "website": "",
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": ""
+  },
+  {
+    "name": "Sakhee Bhure",
+    "affiliation": "UniSQ",
+    "location": "Toowoomba",
+    "interests": "",
+    "primary_field": "Exoplanets",
+    "photo": "",
+    "website": "",
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": ""
+  },
+  {
+    "name": "Shishir Dholakia",
+    "affiliation": "UniSQ",
+    "location": "Remote",
+    "interests": "",
+    "primary_field": "Stars",
+    "photo": "",
+    "website": "",
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": ""
+  },
+  {
+    "name": "Nicole Jenkins",
+    "affiliation": "UniSQ",
+    "location": "Brisbane",
+    "interests": "",
+    "primary_field": "Galaxies",
+    "photo": "",
+    "website": "",
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": ""
+  },
+  {
+    "name": "Mitchell Hooymans",
+    "affiliation": "UQ",
+    "location": "Brisbane",
+    "interests": "",
+    "primary_field": "Stars",
+    "photo": "",
+    "website": "",
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": "m.hooymans@uq.edu.au"
+  },
+  {
+    "name": "Pratyush Kumar Das",
+    "affiliation": "UQ",
+    "location": "Brisbane",
+    "interests": "",
+    "primary_field": "Galaxies",
+    "photo": "",
+    "website": "",
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": "p.das@uq.edu.au"
+  },
+  {
+    "name": "Lachlan Hobart",
+    "affiliation": "UQ",
+    "location": "Brisbane",
+    "interests": "",
+    "primary_field": "Stars",
+    "photo": "",
+    "website": "",
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": "l.hobart@uq.edu.au"
+  },
+  {
+    "name": "Narise Williams",
+    "affiliation": "UQ",
+    "location": "Brisbane",
+    "interests": "",
+    "primary_field": "Astroparticle",
+    "photo": "",
+    "website": "",
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": "narise.williams@uq.edu.au"
+  },
+  {
+    "name": "Ashlee Caddell",
+    "affiliation": "UQ",
+    "location": "Brisbane",
+    "interests": "",
+    "primary_field": "Astroparticle",
+    "photo": "",
+    "website": "",
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": "ashlee.caddell@uq.net.au"
+  },
+  {
+    "name": "Arshia Anjum",
+    "affiliation": "UQ",
+    "location": "Brisbane",
+    "interests": "",
+    "primary_field": "Stars",
+    "photo": "",
+    "website": "",
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": "a.anjum@uq.edu.au"
+  },
+  {
+    "name": "Scot Devlin",
+    "affiliation": "UQ",
+    "location": "Brisbane",
+    "interests": "",
+    "primary_field": "Stars",
+    "photo": "",
+    "website": "",
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": "s.devlin@uq.edu.au"
+  },
+  {
+    "name": "Rianna Bell",
+    "affiliation": "UQ",
+    "location": "Brisbane",
+    "interests": "",
+    "primary_field": "Cosmology",
+    "photo": "",
+    "website": "",
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": "rianna.bell@uq.net.au"
+  },
+  {
+    "name": "Maddy Cross-Parkin",
+    "affiliation": "UQ",
+    "location": "Brisbane",
+    "interests": "",
+    "primary_field": "Cosmology",
+    "photo": "",
+    "website": "",
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": "m.crossparkin@uq.net.au"
+  },
+  {
+    "name": "Caitlin Ross",
+    "affiliation": "UQ",
+    "location": "Brisbane",
+    "interests": "",
+    "primary_field": "Cosmology",
+    "photo": "",
+    "website": "",
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": "c.ross1@uq.net.au"
+  },
+  {
+    "name": "Hugh McDougall",
+    "affiliation": "UQ",
+    "location": "Brisbane",
+    "interests": "",
+    "primary_field": "Cosmology",
+    "photo": "",
+    "website": "",
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": "h.mcdougall@uq.edu.au"
+  },
+  {
+    "name": "Ryan Camilleri",
+    "affiliation": "UQ",
+    "location": "Brisbane",
+    "interests": "",
+    "primary_field": "Cosmology",
+    "photo": "",
+    "website": "",
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": "r.camilleri@uq.net.au"
+  },
+  {
+    "name": "James Simpson",
+    "affiliation": "UQ",
+    "location": "Brisbane",
+    "interests": "",
+    "primary_field": "Cosmology",
+    "photo": "",
+    "website": "",
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": "j.simpson1@uq.edu.au"
+  },
+  {
+    "name": "Julian Groth",
+    "affiliation": "UQ",
+    "location": "Brisbane",
+    "interests": "",
+    "primary_field": "Galaxies",
+    "photo": "",
+    "website": "",
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": "julian.groth@uq.edu.au"
+  },
+  {
+    "name": "Pratyush Mishra",
+    "affiliation": "UQ",
+    "location": "Brisbane",
+    "interests": "",
+    "primary_field": "Cosmology",
+    "photo": "",
+    "website": "",
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": "pratyush.mishra@uq.edu.au"
   },
   {
     "name": "Jessica Stewart",
@@ -457,6 +547,20 @@ window.membersData = [
     "primary_field": "Galaxies",
     "photo": "",
     "website": "",
-    "role": "in MPhil"
+    "role": "in MPhil",
+    "career_stage": "Masters Student",
+    "email": "j38.stewart@hdr.qut.edu.au"
+  },
+  {
+    "name": "Carmen Isabel Martinez Harris",
+    "affiliation": "QUT",
+    "location": "Brisbane",
+    "interests": "",
+    "primary_field": "Galaxies",
+    "photo": "",
+    "website": "",
+    "role": "in MPhil",
+    "career_stage": "Masters Student",
+    "email": "c.martinezharris@qut.edu.au"
   }
 ];
