@@ -7,21 +7,21 @@ The official website for the **QUASAR Collaboration** (Queensland Universities A
 
 The website serves as a hub for showcasing research themes, member profiles, news, and upcoming events/seminars.
 
-## 🚀 Features
+## Features
 
 *   **Responsive Design**: Fully responsive layout using **Tailwind CSS**.
 *   **Dark Mode**: Native dark mode support with a theme toggle.
 *   **Dynamic Member Loading**: Member profiles are generated from an Excel spreadsheet and loaded dynamically via JSON/JS to avoid manual HTML editing.
 *   **Glassmorphism UI**: Modern aesthetic with glass-panel effects.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 *   **HTML5**
 *   **Tailwind CSS** (via CDN for simplicity, no build step required for CSS).
 *   **JavaScript (Vanilla)**
 *   **Python 3** (for data processing utilities).
 
-## 📂 Project Structure
+## Project Structure
 
 ```bash
 ├── assets/
@@ -36,7 +36,7 @@ The website serves as a hub for showcasing research themes, member profiles, new
 └── README.md           # This file
 ```
 
-## 💻 Local Development
+## Local Development
 
 1.  **Clone the repository**:
     ```bash
@@ -51,7 +51,7 @@ The website serves as a hub for showcasing research themes, member profiles, new
     ```
     Open `http://localhost:8000` in your browser.
 
-## 🔄 Updating Members
+## Updating Members
 
 The members list on the "Members" page is populated dynamically from an Excel file. **Do not edit `pages/members.html` manually to add/remove members.**
 
@@ -80,6 +80,6 @@ The members list on the "Members" page is populated dynamically from an Excel fi
     git push
     ```
 
-## 📝 License
+## License
 
 &copy; 2026 QUASAR Collaboration. All rights reserved.
