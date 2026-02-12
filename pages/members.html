@@ -201,6 +201,16 @@
         <div class="max-w-7xl mx-auto mb-8 px-4">
             <div class="flex flex-wrap justify-center gap-4">
                 <div class="relative">
+                    <input type="text" id="member-search" placeholder="Search members..."
+                        class="appearance-none bg-white dark:bg-gray-900 border border-indigo-100 dark:border-gray-700 text-slate-700 dark:text-gray-200 py-2 px-4 pr-10 rounded-lg leading-tight focus:outline-none focus:bg-white dark:focus:bg-gray-800 focus:border-indigo-500 shadow-sm min-w-[200px] transition-colors">
+                    <div class="absolute inset-y-0 right-0 flex items-center px-3 text-slate-400">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="relative">
                     <select id="filter-discipline"
                         class="appearance-none bg-white dark:bg-gray-900 border border-indigo-100 dark:border-gray-700 text-slate-700 dark:text-gray-200 py-2 px-4 pr-8 rounded-lg leading-tight focus:outline-none focus:bg-white dark:focus:bg-gray-800 focus:border-indigo-500 shadow-sm cursor-pointer min-w-[200px] transition-colors">
                         <option value="">All Disciplines</option>
@@ -250,6 +260,7 @@
                 const grid = document.getElementById('members-grid');
                 const filterDiscipline = document.getElementById('filter-discipline');
                 const filterUniversity = document.getElementById('filter-university');
+                const searchInput = document.getElementById('member-search');
 
                 // Populate Filters
                 const disciplines = [...new Set(allMembers.map(m => m.primary_field).filter(Boolean))].sort();
@@ -273,11 +284,24 @@
                 function filterMembers() {
                     const discipline = filterDiscipline.value;
                     const university = filterUniversity.value;
+                    const searchTerm = searchInput.value.toLowerCase();
 
                     const filtered = allMembers.filter(member => {
                         const matchDiscipline = !discipline || member.primary_field === discipline;
                         const matchUniversity = !university || member.affiliation === university;
-                        return matchDiscipline && matchUniversity;
+
+                        const name = (member.name || '').toLowerCase();
+                        const interests = (member.interests || '').toLowerCase();
+                        const field = (member.primary_field || '').toLowerCase();
+                        const affiliation = (member.affiliation || '').toLowerCase();
+
+                        const matchSearch = !searchTerm ||
+                            name.includes(searchTerm) ||
+                            interests.includes(searchTerm) ||
+                            field.includes(searchTerm) ||
+                            affiliation.includes(searchTerm);
+
+                        return matchDiscipline && matchUniversity && matchSearch;
                     });
 
                     renderMembers(filtered);
@@ -285,6 +309,7 @@
 
                 filterDiscipline.addEventListener('change', filterMembers);
                 filterUniversity.addEventListener('change', filterMembers);
+                searchInput.addEventListener('input', filterMembers);
 
                 // Initial Render
                 renderMembers(allMembers);
