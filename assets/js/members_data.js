@@ -102,7 +102,7 @@ window.membersData = [
     "interests": "",
     "primary_field": "Galaxies",
     "photo": "",
-    "website": "",
+    "website": "https://mjcowley.github.io",
     "role": "5-10 yr post PhD",
     "career_stage": "Senior Lecturer",
     "email": "michael.cowley@qut.edu.au"
@@ -174,7 +174,7 @@ window.membersData = [
     "interests": "",
     "primary_field": "Galaxies",
     "photo": "",
-    "website": "",
+    "website": "https://rebeccamcelroy.github.io",
     "role": "5-10 yr post PhD",
     "career_stage": "Research Fellow",
     "email": "rebecca.mcelroy@unisq.edu.au"
@@ -366,7 +366,7 @@ window.membersData = [
     "interests": "",
     "primary_field": "Stars",
     "photo": "",
-    "website": "",
+    "website": "https://mitchellhooymans.com",
     "role": "in PhD",
     "career_stage": "PhD Student",
     "email": "m.hooymans@uq.edu.au"
@@ -486,7 +486,7 @@ window.membersData = [
     "interests": "",
     "primary_field": "Cosmology",
     "photo": "",
-    "website": "",
+    "website": "https://hughmcdougall.github.io/",
     "role": "in PhD",
     "career_stage": "PhD Student",
     "email": "h.mcdougall@uq.edu.au"

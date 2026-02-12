@@ -95,7 +95,8 @@ def process_members(rows):
              'career_stage': 'E',
              'primary_field': 'F',
              'role': 'G', # Years since PhD
-             'email': 'I'
+             'email': 'I',
+             'website': 'J'
          }
 
     members = []
