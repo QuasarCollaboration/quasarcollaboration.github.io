@@ -1,10 +1,10 @@
 // Theme Toggle Logic
-document.addEventListener('DOMContentLoaded', () => {
+function initializeThemeToggle() {
     const themeToggleBtn = document.getElementById('theme-toggle');
     const root = document.documentElement;
 
-    // Toggle Handler
-    if (themeToggleBtn) {
+    if (themeToggleBtn && !themeToggleBtn.dataset.initialized) {
+        themeToggleBtn.dataset.initialized = 'true';
         themeToggleBtn.addEventListener('click', () => {
             root.classList.toggle('dark-mode');
             const isDark = root.classList.contains('dark-mode');
@@ -13,4 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
         });
     }
-});
+}
+
+document.addEventListener('DOMContentLoaded', initializeThemeToggle);
+document.addEventListener('layout-header-connected', initializeThemeToggle);
+window.initializeThemeToggle = initializeThemeToggle;
