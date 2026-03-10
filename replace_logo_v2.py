@@ -23,7 +23,7 @@ for file_path in all_files:
     # We'll use a regex to find any img tag inside the flex container we made and replace it.
     # Or, more simply, just replace the exact img tag line.
     
-    new_img_tag = f'<img src="{img_src}" alt="QUASAR Logo" class="h-14 w-auto object-contain transition-transform group-hover:scale-105" />'
+    new_img_tag = f'<img src="{img_src}" alt="QUASAR Logo" class="h-[67px] w-auto object-contain transition-transform group-hover:scale-105" />'
     
     # Regex to find the img tag. It might have either the old or new src, and might have the dark classes.
     pattern = re.compile(r'<img src="[^"]+" alt="QUASAR Logo" class="[^"]+" />')
