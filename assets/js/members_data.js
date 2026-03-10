@@ -18,7 +18,7 @@ window.membersData = [
     "interests": "",
     "primary_field": "Solar system",
     "photo": "",
-    "website": "",
+    "website": "https://www.jontihorner.com/",
     "role": ">10 yr post PhD",
     "career_stage": "Professor",
     "email": "jonti.horner@unisq.edu.au"
@@ -54,7 +54,7 @@ window.membersData = [
     "interests": "",
     "primary_field": "Exoplanets",
     "photo": "",
-    "website": "",
+    "website": "https://georgezhouastro.wordpress.com/",
     "role": ">10 yr post PhD",
     "career_stage": "Associate Professor",
     "email": "george.zhou@unisq.edu.au"
@@ -66,7 +66,7 @@ window.membersData = [
     "interests": "",
     "primary_field": "Exoplanets",
     "photo": "",
-    "website": "",
+    "website": "https://chelseahuangexoplanets.com/",
     "role": ">10 yr post PhD",
     "career_stage": "Associate Professor",
     "email": "chelsea.huang@unisq.edu.au"
@@ -78,7 +78,7 @@ window.membersData = [
     "interests": "",
     "primary_field": "Stars",
     "photo": "",
-    "website": "",
+    "website": "https://simonjmurphy.github.io/",
     "role": ">10 yr post PhD",
     "career_stage": "Associate Professor",
     "email": "Simon.Murphy@unisq.edu.au"
@@ -90,7 +90,7 @@ window.membersData = [
     "interests": "",
     "primary_field": "Stars",
     "photo": "",
-    "website": "",
+    "website": "https://people.smp.uq.edu.au/HolgerBaumgardt/",
     "role": ">10 yr post PhD",
     "career_stage": "Associate Professor",
     "email": "h.baumgardt@uq.edu.au"
@@ -126,7 +126,7 @@ window.membersData = [
     "interests": "",
     "primary_field": "Astroparticle",
     "photo": "",
-    "website": "",
+    "website": "https://broberts.io/",
     "role": "5-10 yr post PhD",
     "career_stage": "Senior Lecturer",
     "email": "b.roberts@uq.edu.au"
@@ -138,7 +138,7 @@ window.membersData = [
     "interests": "",
     "primary_field": "Galaxies",
     "photo": "",
-    "website": "",
+    "website": "http://sarahsweet.com.au/",
     "role": ">10 yr post PhD",
     "career_stage": "Senior Lecturer",
     "email": "s.sweet@uq.edu.au"
@@ -150,7 +150,7 @@ window.membersData = [
     "interests": "",
     "primary_field": "Cosmology",
     "photo": "",
-    "website": "",
+    "website": "https://rossanaruggeri.github.io/",
     "role": "5-10 yr post PhD",
     "career_stage": "Lecturer",
     "email": "rossana.ruggeri@qut.edu.au"
@@ -186,7 +186,7 @@ window.membersData = [
     "interests": "",
     "primary_field": "Cosmology",
     "photo": "",
-    "website": "",
+    "website": "https://ksaid-1.github.io/Khaled-Said/",
     "role": "5-10 yr post PhD",
     "career_stage": "Research Fellow",
     "email": "k.saidahmedsoliman@uq.edu.au"
@@ -198,7 +198,7 @@ window.membersData = [
     "interests": "",
     "primary_field": "Stars",
     "photo": "",
-    "website": "",
+    "website": "https://ligangasteroseismic.github.io/index.html",
     "role": "<5 yr post PhD",
     "career_stage": "Postdoc",
     "email": "Gang.Li@unisq.edu.au"
@@ -522,7 +522,7 @@ window.membersData = [
     "interests": "",
     "primary_field": "Galaxies",
     "photo": "",
-    "website": "",
+    "website": "https://jutgr.github.io/",
     "role": "in PhD",
     "career_stage": "PhD Student",
     "email": "julian.groth@uq.edu.au"
