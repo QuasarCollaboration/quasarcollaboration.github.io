@@ -7,15 +7,34 @@ class LayoutHeader extends HTMLElement {
 
         // Helper function for active classes
         const getNavClass = (pageName) => {
-            const baseClass = "px-4 py-2 text-sm font-medium rounded-lg transition-all text-center md:text-left ";
+            const baseClass = "nav-btn px-4 py-2 text-sm font-medium rounded-full transition-all text-center md:text-left ";
             if (activePage === pageName) {
-                return baseClass + "text-white bg-indigo-600 shadow-sm shadow-indigo-200";
+                return baseClass + "active text-white bg-indigo-600 shadow-sm shadow-indigo-200";
             }
             return baseClass + "text-slate-700 hover:bg-indigo-50/50";
         };
 
+        const closeMenu = (menu, button) => {
+            if (!menu || !button) {
+                return;
+            }
+
+            menu.classList.add('hidden');
+            button.setAttribute('aria-expanded', 'false');
+        };
+
+        const openMenu = (menu, button) => {
+            if (!menu || !button) {
+                return;
+            }
+
+            menu.classList.remove('hidden');
+            button.setAttribute('aria-expanded', 'true');
+        };
+
         this.innerHTML = `
-        <header class="relative z-50 border-b border-indigo-100 glass-panel sticky top-0 backdrop-blur-xl shadow-sm transition-colors duration-300">
+        <a href="#main-content" class="skip-link">Skip to content</a>
+        <header class="site-header fixed inset-x-0 top-0 z-50 border-b border-indigo-100 glass-panel shadow-sm transition-all duration-300">
             <div class="container mx-auto px-6 py-4">
                 <div class="flex flex-wrap md:flex-nowrap justify-between items-center gap-4 md:gap-8">
                     <!-- Branding Section -->
@@ -42,8 +61,11 @@ class LayoutHeader extends HTMLElement {
 
                     <!-- Mobile Menu Button -->
                     <button id="mobile-menu-btn"
-                        class="md:hidden p-2 text-slate-600 hover:text-indigo-600 focus:outline-none transition-colors"
-                        aria-label="Toggle Navigation">
+                        class="md:hidden nav-icon-btn p-2 text-slate-600 hover:text-indigo-600 transition-colors"
+                        aria-label="Toggle navigation"
+                        aria-controls="main-nav"
+                        aria-expanded="false"
+                        type="button">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4 6h16M4 12h16M4 18h16"></path>
@@ -55,15 +77,18 @@ class LayoutHeader extends HTMLElement {
                         class="hidden w-full md:block md:w-auto mt-4 md:mt-0 transition-all duration-300 ease-in-out origin-top"
                         aria-label="Main Navigation">
                         <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-1">
-                            <a href="${basePath}index.html" class="${getNavClass('home')}">Home</a>
-                            <a href="${basePath}pages/about.html" class="${getNavClass('about')}">About</a>
-                            <a href="${basePath}pages/members.html" class="${getNavClass('members')}">Members</a>
+                            <a href="${basePath}index.html" class="${getNavClass('home')}"${activePage === 'home' ? ' aria-current="page"' : ''}>Home</a>
+                            <a href="${basePath}pages/about.html" class="${getNavClass('about')}"${activePage === 'about' ? ' aria-current="page"' : ''}>About</a>
+                            <a href="${basePath}pages/members.html" class="${getNavClass('members')}"${activePage === 'members' ? ' aria-current="page"' : ''}>Members</a>
 
                             <!-- Collaboration Dropdown -->
                             <div class="relative group text-center md:text-left">
                                 <button id="collaboration-btn"
-                                    class="w-full md:w-auto px-4 py-2 text-sm font-medium text-slate-700 hover:bg-indigo-50/50 rounded-lg transition-all flex items-center justify-center md:justify-start gap-1"
-                                    aria-haspopup="true" aria-expanded="false">
+                                    class="nav-btn w-full md:w-auto px-4 py-2 text-sm font-medium text-slate-700 hover:bg-indigo-50/50 rounded-full transition-all flex items-center justify-center md:justify-start gap-1"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                    aria-controls="collaboration-menu"
+                                    type="button">
                                     Collaboration
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                                         stroke="currentColor">
@@ -83,13 +108,14 @@ class LayoutHeader extends HTMLElement {
                                 </div>
                             </div>
 
-                            <a href="${basePath}pages/news.html" class="${getNavClass('news')}">News</a>
-                            <a href="${basePath}pages/contact.html" class="${getNavClass('contact')}">Contact</a>
+                            <a href="${basePath}pages/news.html" class="${getNavClass('news')}"${activePage === 'news' ? ' aria-current="page"' : ''}>News</a>
+                            <a href="${basePath}pages/contact.html" class="${getNavClass('contact')}"${activePage === 'contact' ? ' aria-current="page"' : ''}>Contact</a>
 
                             <!-- Theme Toggle Button (Slider Switch) -->
                             <button id="theme-toggle"
                                 class="relative w-14 h-7 ml-5 rounded-full bg-slate-200 dark:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                aria-label="Toggle Dark Mode">
+                                aria-label="Toggle dark mode"
+                                type="button">
                                 <div class="absolute left-1 top-1 text-yellow-500">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                                         stroke="currentColor">
@@ -115,12 +141,48 @@ class LayoutHeader extends HTMLElement {
         </header>
         `;
 
+        const mainContent = document.querySelector('main');
+        if (mainContent && !mainContent.id) {
+            mainContent.id = 'main-content';
+        }
+
+        const header = this.querySelector('header');
+        const updateHeaderState = () => {
+            if (!header) {
+                return;
+            }
+
+            document.documentElement.style.setProperty('--site-header-height', `${header.offsetHeight}px`);
+            header.classList.toggle('is-scrolled', window.scrollY > 12);
+        };
+
+        updateHeaderState();
+        window.addEventListener('scroll', updateHeaderState, { passive: true });
+        window.addEventListener('resize', updateHeaderState);
+
+        if (window.ResizeObserver && header) {
+            const resizeObserver = new ResizeObserver(() => {
+                document.documentElement.style.setProperty('--site-header-height', `${header.offsetHeight}px`);
+            });
+            resizeObserver.observe(header);
+        }
+
         // Attach event listeners
         const mobileMenuBtn = this.querySelector('#mobile-menu-btn');
         const nav = this.querySelector('#main-nav');
         if (mobileMenuBtn && nav) {
             mobileMenuBtn.addEventListener('click', () => {
-                nav.classList.toggle('hidden');
+                if (nav.classList.contains('hidden')) {
+                    openMenu(nav, mobileMenuBtn);
+                } else {
+                    closeMenu(nav, mobileMenuBtn);
+                }
+            });
+
+            nav.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', () => {
+                    closeMenu(nav, mobileMenuBtn);
+                });
             });
         }
 
@@ -128,9 +190,39 @@ class LayoutHeader extends HTMLElement {
         const menu = this.querySelector('#collaboration-menu');
         if (collaborationBtn && menu) {
             collaborationBtn.addEventListener('click', () => {
-                menu.classList.toggle('hidden');
+                if (menu.classList.contains('hidden')) {
+                    openMenu(menu, collaborationBtn);
+                } else {
+                    closeMenu(menu, collaborationBtn);
+                }
+            });
+
+            menu.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', () => {
+                    closeMenu(menu, collaborationBtn);
+                });
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!this.contains(event.target)) {
+                    closeMenu(menu, collaborationBtn);
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    closeMenu(menu, collaborationBtn);
+                    closeMenu(nav, mobileMenuBtn);
+                }
             });
         }
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                closeMenu(nav, mobileMenuBtn);
+                closeMenu(menu, collaborationBtn);
+            }
+        });
 
         if (window.initializeThemeToggle) {
             window.initializeThemeToggle();
