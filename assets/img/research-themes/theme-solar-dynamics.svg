@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+    <defs>
+        <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ffffff" />
+            <stop offset="30%" stop-color="#ffdd00" />
+            <stop offset="70%" stop-color="#ff8800" />
+            <stop offset="100%" stop-color="#110515" stop-opacity="0" />
+        </radialGradient>
+        
+        <radialGradient id="cometTail" cx="80%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ffffff" />
+            <stop offset="20%" stop-color="#00ffff" stop-opacity="0.8" />
+            <stop offset="100%" stop-color="#00ffff" stop-opacity="0" />
+        </radialGradient>
+
+        <style>
+            .orbit {
+                fill: none;
+                stroke: rgba(255, 255, 255, 0.15);
+                stroke-width: 1;
+                stroke-dasharray: 4, 4;
+            }
+            .planet-container {
+                animation-iteration-count: infinite;
+                animation-timing-function: linear;
+                transform-origin: 400px 225px;
+            }
+            .p1 { animation-name: orbitRotate; animation-duration: 8s; }
+            .p2 { animation-name: orbitRotate; animation-duration: 15s; }
+            .p3 { animation-name: orbitRotate; animation-duration: 25s; }
+            .p4 { animation-name: orbitRotate; animation-duration: 40s; }
+            
+            @keyframes orbitRotate {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+            
+            .comet-container {
+                transform-origin: 300px 225px;
+                animation: cometOrbit 12s cubic-bezier(0.8, 0, 0.2, 1) infinite;
+            }
+            @keyframes cometOrbit {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+
+            .asteroid {
+                fill: #aaaaaa;
+            }
+            .asteroid-belt {
+                transform-origin: 400px 225px;
+                animation: orbitRotate 60s linear infinite reverse;
+            }
+            
+            .comet-tail-orient {
+                animation: cometTailOrient 12s cubic-bezier(0.8, 0, 0.2, 1) infinite;
+            }
+            @keyframes cometTailOrient {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(-360deg); }
+            }
+        </style>
+    </defs>
+
+    <rect width="800" height="450" fill="#060812" />
+
+    <!-- Orbital Paths -->
+    <!-- Circular orbits for planets -->
+    <circle cx="400" cy="225" r="60" class="orbit" />
+    <circle cx="400" cy="225" r="100" class="orbit" />
+    <circle cx="400" cy="225" r="150" class="orbit" />
+    <circle cx="400" cy="225" r="250" class="orbit" />
+    
+    <!-- Eccentric comet orbit -->
+    <!-- The focal point is at the Sun (400,225). The center is offset. -->
+    <ellipse cx="300" cy="225" rx="300" ry="120" class="orbit" stroke="#00ffff" stroke-opacity="0.3" transform="rotate(-15, 400, 225)" />
+
+    <!-- Asteroid Belt -->
+    <g class="asteroid-belt">
+        <circle cx="400" cy="225" r="190" class="orbit" stroke-dasharray="1, 8" stroke-width="2" stroke="rgba(180, 180, 180, 0.4)" />
+        <circle cx="400" cy="225" r="195" class="orbit" stroke-dasharray="2, 12" stroke-width="1.5" stroke="rgba(180, 180, 180, 0.3)" />
+        <circle cx="400" cy="225" r="200" class="orbit" stroke-dasharray="1.5, 10" stroke-width="2.5" stroke="rgba(180, 180, 180, 0.5)" />
+        <circle cx="400" cy="225" r="205" class="orbit" stroke-dasharray="1, 15" stroke-width="1" stroke="rgba(180, 180, 180, 0.3)" />
+    </g>
+
+    <!-- Sun -->
+    <circle cx="400" cy="225" r="45" fill="url(#sun)" />
+
+    <!-- Planets -->
+    <g class="planet-container p1">
+        <circle cx="460" cy="225" r="4" fill="#a0522d" />
+    </g>
+    <g class="planet-container p2">
+        <circle cx="500" cy="225" r="6" fill="#f0e68c" />
+    </g>
+    <g class="planet-container p3">
+        <circle cx="550" cy="225" r="7" fill="#4169e1" />
+        <circle cx="560" cy="225" r="1.5" fill="#ffffff" /> <!-- Moon -->
+    </g>
+    <g class="planet-container p4">
+        <circle cx="650" cy="225" r="12" fill="#ff7f50" />
+        <!-- Rings -->
+        <ellipse cx="650" cy="225" rx="20" ry="4" fill="none" stroke="#eebb88" stroke-width="2" transform="rotate(20, 650, 225)" />
+    </g>
+
+    <!-- Comet -->
+    <g transform="rotate(-15, 400, 225)">
+        <g class="comet-container">
+            <!-- Positioned at the right edge of ellipse -->
+            <g transform="translate(600, 225)">
+                <!-- Rotate the tail so it points away from the sun -->
+                <g class="comet-tail-orient">
+                    <path d="M 0 -5 L 80 0 L 0 5 Z" fill="url(#cometTail)" />
+                </g>
+                <circle cx="0" cy="0" r="3" fill="#ffffff" />
+            </g>
+        </g>
+    </g>
+
+</svg>

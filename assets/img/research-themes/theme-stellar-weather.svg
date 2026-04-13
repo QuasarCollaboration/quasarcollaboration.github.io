@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+    <defs>
+        <radialGradient id="starSurface" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ffffff" />
+            <stop offset="40%" stop-color="#fff1b3" />
+            <stop offset="80%" stop-color="#ff9900" />
+            <stop offset="100%" stop-color="#cc3300" />
+        </radialGradient>
+        
+        <radialGradient id="corona" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ffcc00" stop-opacity="0.8" />
+            <stop offset="50%" stop-color="#ff6600" stop-opacity="0.3" />
+            <stop offset="100%" stop-color="#120e1f" stop-opacity="0" />
+        </radialGradient>
+        
+        <filter id="sunGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="8" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+
+        <style>
+            .flare {
+                fill: #ffeb3b;
+                filter: url(#sunGlow);
+                transform-origin: 400px 225px;
+                animation: flareErupt 4s ease-in-out infinite alternate;
+            }
+            .flare2 {
+                fill: #ffeb3b;
+                filter: url(#sunGlow);
+                transform-origin: 400px 225px;
+                animation: flareErupt 5s ease-in-out infinite alternate;
+                animation-delay: 1.5s;
+            }
+            @keyframes flareErupt {
+                0% { transform: scale(1) rotate(0deg); opacity: 0.4; }
+                100% { transform: scale(1.3) rotate(5deg); opacity: 0.9; }
+            }
+            
+            .mag-loop {
+                fill: none;
+                stroke: #ffeb3b;
+                stroke-width: 2;
+                opacity: 0.6;
+                stroke-dasharray: 300;
+                stroke-dashoffset: 300;
+                animation: drawLoop 3s linear infinite alternate;
+            }
+            .mag-loop2 {
+                animation-delay: 1.5s;
+                stroke: #ff9900;
+            }
+            @keyframes drawLoop {
+                0% { stroke-dashoffset: 300; opacity: 0; }
+                50% { opacity: 0.8; }
+                100% { stroke-dashoffset: 0; opacity: 0; }
+            }
+
+            .star-spin {
+                transform-origin: 400px 225px;
+                animation: spinSun 30s linear infinite;
+            }
+            @keyframes spinSun {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+        </style>
+    </defs>
+
+    <rect width="800" height="450" fill="#0a0505" />
+
+    <!-- Corona -->
+    <circle cx="400" cy="225" r="220" fill="url(#corona)" class="flare" />
+
+    <!-- Solar Flares / CME -->
+    <path class="flare" d="M 400 225 Q 550 50 650 100 Q 550 150 400 225" />
+    <path class="flare2" d="M 400 225 Q 250 400 150 350 Q 250 300 400 225" />
+    <path class="flare" d="M 400 225 Q 280 80 180 100 Q 300 150 400 225" style="animation-duration: 6s; animation-delay: 0.5s;" />
+
+    <g class="star-spin">
+        <!-- Main Star Body -->
+        <circle cx="400" cy="225" r="140" fill="url(#starSurface)" filter="url(#sunGlow)" />
+        
+        <!-- Sunspots -->
+        <circle cx="350" cy="200" r="8" fill="#661a00" opacity="0.8" filter="blur(1px)" />
+        <circle cx="340" cy="210" r="4" fill="#330d00" opacity="0.9" filter="blur(1px)" />
+        <circle cx="460" cy="180" r="12" fill="#661a00" opacity="0.8" filter="blur(2px)" />
+        <circle cx="455" cy="175" r="5" fill="#330d00" opacity="0.9" filter="blur(1px)" />
+        <circle cx="420" cy="280" r="10" fill="#661a00" opacity="0.8" filter="blur(1px)" />
+
+        <!-- Granulation Texture (Abstract) -->
+        <path d="M 280 160 Q 320 200 360 150 T 450 200" stroke="rgba(255, 255, 255, 0.4)" stroke-width="4" fill="none" stroke-linecap="round" />
+        <path d="M 320 280 Q 360 250 400 280 T 500 240" stroke="rgba(255, 255, 255, 0.3)" stroke-width="6" fill="none" stroke-linecap="round" />
+        
+        <!-- Magnetic field loops connecting sunspots -->
+        <path class="mag-loop" d="M 350 200 Q 400 130 460 180" />
+        <path class="mag-loop mag-loop2" d="M 350 200 Q 380 120 460 180" />
+        <path class="mag-loop" d="M 420 280 Q 480 350 520 280" />
+    </g>
+
+</svg>

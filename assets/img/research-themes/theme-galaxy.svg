@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+    <defs>
+        <radialGradient id="galacticCore" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#fffbde" />
+            <stop offset="20%" stop-color="#ffd571" />
+            <stop offset="50%" stop-color="#e94e77" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#120e1f" stop-opacity="0"/>
+        </radialGradient>
+        
+        <filter id="starGlow">
+            <feGaussianBlur stdDeviation="1.5" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+
+        <style>
+            .galaxy {
+                transform-origin: center;
+                animation: rotateGalaxy 40s linear infinite;
+            }
+            .galaxy-inner {
+                transform-origin: center;
+                animation: rotateGalaxy 20s linear infinite;
+            }
+            @keyframes rotateGalaxy {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+            .star-birth {
+                fill: #7afcff;
+                filter: url(#starGlow);
+                animation: twinkleBirth 3s alternate infinite;
+            }
+            @keyframes twinkleBirth {
+                0% { fill-opacity: 0.2; r: 1; }
+                100% { fill-opacity: 1; r: 2.5; }
+            }
+            .dust-lane {
+                fill: none;
+                stroke: #0d0914;
+                stroke-linecap: round;
+                animation: pulseDust 10s alternate infinite;
+            }
+            @keyframes pulseDust {
+                0% { stroke-opacity: 0.4; }
+                100% { stroke-opacity: 0.7; }
+            }
+        </style>
+    </defs>
+    
+    <rect width="800" height="450" fill="#080510" />
+
+    <!-- Background distant stars and galaxies -->
+    <g fill="white" opacity="0.3">
+        <circle cx="100" cy="100" r="1" />
+        <circle cx="250" cy="50" r="1.5" />
+        <circle cx="600" cy="80" r="0.5" />
+        <circle cx="700" cy="300" r="1" />
+        <circle cx="150" cy="380" r="1" />
+        <circle cx="50" cy="250" r="0.5" />
+        <circle cx="450" cy="400" r="1" />
+        <ellipse cx="650" cy="150" rx="3" ry="1" fill="#ffaaa0" transform="rotate(30, 650, 150)" />
+        <ellipse cx="200" cy="300" rx="2" ry="0.5" fill="#a0d8ef" transform="rotate(-45, 200, 300)" />
+    </g>
+
+    <g class="galaxy" transform="translate(400, 225) scale(1.1) rotate(15)">
+        <g class="galaxy-inner">
+            <!-- Core -->
+            <circle cx="0" cy="0" r="80" fill="url(#galacticCore)" />
+            
+            <!-- Spiral Arms - Gas & Stars -->
+            <path d="M 0 0 C 60 40, 150 20, 200 -50 C 250 -120, 150 -200, 0 -220 C -150 -240, -300 -120, -350 0" 
+                  fill="none" stroke="rgba(122, 252, 255, 0.15)" stroke-width="40" filter="url(#starGlow)" />
+            <path d="M 0 0 C -60 -40, -150 -20, -200 50 C -250 120, -150 200, 0 220 C 150 240, 300 120, 350 0" 
+                  fill="none" stroke="rgba(233, 78, 119, 0.15)" stroke-width="40" filter="url(#starGlow)" />
+
+            <path d="M 0 0 C 40 -60, 20 -150, -50 -200 C -120 -250, -200 -150, -220 0 C -240 150, -120 300, 0 350" 
+                  fill="none" stroke="rgba(255, 213, 113, 0.1)" stroke-width="30" filter="url(#starGlow)" />
+            <path d="M 0 0 C -40 60, -20 150, 50 200 C 120 250, 200 150, 220 0 C 240 -150, 120 -300, 0 -350" 
+                  fill="none" stroke="rgba(122, 252, 255, 0.1)" stroke-width="30" filter="url(#starGlow)" />
+
+            <!-- Dust Lanes -->
+            <path class="dust-lane" stroke-width="12" d="M 25 15 C 80 50, 130 50, 180 10" />
+            <path class="dust-lane" stroke-width="15" d="M -25 -15 C -80 -50, -130 -50, -180 -10" />
+            <path class="dust-lane" stroke-width="10" d="M 40 -10 C 100 -20, 160 -100, 120 -180" />
+            <path class="dust-lane" stroke-width="10" d="M -40 10 C -100 20, -160 100, -120 180" />
+            
+            <!-- Star birth regions -->
+            <circle class="star-birth" cx="120" cy="-60" style="animation-delay: 0s;" />
+            <circle class="star-birth" cx="150" cy="-30" style="animation-delay: 1.2s;" />
+            <circle class="star-birth" cx="-100" cy="80" style="animation-delay: 0.5s;" />
+            <circle class="star-birth" cx="-160" cy="20" style="animation-delay: 2.1s;" />
+            
+            <circle class="star-birth" cx="40" cy="-120" style="animation-delay: 1.8s;" />
+            <circle class="star-birth" cx="-50" cy="140" style="animation-delay: 0.9s;" />
+            <circle class="star-birth" cx="-180" cy="-40" style="animation-delay: 2.5s;" />
+            <circle class="star-birth" cx="200" cy="10" style="animation-delay: 0.3s;" />
+
+            <!-- Background Stars in the disk -->
+            <g fill="white" opacity="0.6">
+                <!-- Stars in arm 1 -->
+                <circle cx="80" cy="20" r="1.5" /><circle cx="100" cy="10" r="1" />
+                <circle cx="150" cy="-10" r="2" /><circle cx="180" cy="-40" r="1.5" />
+                <circle cx="210" cy="-80" r="1.2" /><circle cx="230" cy="-120" r="1.5" />
+                <!-- Stars in arm 2 -->
+                <circle cx="-80" cy="-20" r="1.5" /><circle cx="-100" cy="-10" r="1" />
+                <circle cx="-150" cy="10" r="2" /><circle cx="-180" cy="40" r="1.5" />
+                <circle cx="-210" cy="80" r="1.2" /><circle cx="-230" cy="120" r="1.5" />
+            </g>
+        </g>
+    </g>
+</svg>

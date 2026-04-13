@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+    <defs>
+        <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#0b0816" />
+            <stop offset="60%" stop-color="#1c1130" />
+            <stop offset="100%" stop-color="#412227" />
+        </linearGradient>
+
+        <radialGradient id="milkyWay" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3"/>
+            <stop offset="30%" stop-color="#ffd571" stop-opacity="0.15"/>
+            <stop offset="100%" stop-color="#1c1130" stop-opacity="0"/>
+        </radialGradient>
+
+        <style>
+            .star-twinkle {
+                animation: twinkle 4s ease-in-out infinite alternate;
+            }
+            .star-twinkle-fast {
+                animation: twinkle 2s ease-in-out infinite alternate;
+            }
+            @keyframes twinkle {
+                0% { opacity: 0.3; transform: scale(0.8); }
+                100% { opacity: 1; transform: scale(1.2); }
+            }
+            .meteor {
+                fill: none;
+                stroke: #ffffff;
+                stroke-width: 2;
+                stroke-linecap: round;
+                opacity: 0;
+                animation: shootingStar 8s linear infinite;
+            }
+            @keyframes shootingStar {
+                0% { stroke-dashoffset: 200; stroke-dasharray: 0, 200; opacity: 0; }
+                5% { opacity: 1; }
+                10% { stroke-dashoffset: 0; stroke-dasharray: 200, 0; opacity: 0; }
+                100% { opacity: 0; }
+            }
+            .emu-highlight {
+                stroke: rgba(255, 180, 100, 0.4);
+                stroke-width: 2;
+                stroke-dasharray: 4,4;
+                fill: none;
+                animation: emuPulse 5s infinite alternate;
+            }
+            @keyframes emuPulse {
+                0% { opacity: 0.2; }
+                100% { opacity: 0.8; }
+            }
+        </style>
+    </defs>
+
+    <rect width="800" height="450" fill="url(#skyGrad)" />
+
+    <!-- Milky way band -->
+    <path d="M -100 450 Q 300 200 900 50 L 900 -100 L -100 200 Z" fill="url(#milkyWay)" />
+    
+    <!-- Dust lanes (The Emu in the Sky) -->
+    <!-- The Coal Sack nebula forms the head near the Southern Cross -->
+    <g transform="translate(0, -20) scale(1.1)">
+        <!-- Emu silhouette (Dark dust) -->
+        <path d="M 600 150 Q 550 180 500 250 Q 400 350 300 380 Q 200 400 100 380 Q 200 320 300 280 Q 400 230 450 150 Q 500 100 550 100 Q 620 100 600 150 Z" 
+              fill="#060408" filter="blur(8px)" opacity="0.9" />
+              
+        <!-- Head / Coalsack -->
+        <circle cx="580" cy="130" r="30" fill="#040206" filter="blur(5px)" />
+        <circle cx="595" cy="125" r="10" fill="#040206" filter="blur(3px)" />
+        <!-- Neck -->
+        <path d="M 570 150 Q 500 200 450 250" stroke="#040206" stroke-width="40" stroke-linecap="round" filter="blur(10px)" fill="none" />
+    </g>
+
+    <!-- The Southern Cross (Crux) and Pointers - near the head -->
+    <!-- Crux -->
+    <g transform="translate(560, 60) scale(0.6)">
+        <circle cx="100" cy="20" r="4" fill="#ffffff" class="star-twinkle" style="animation-delay: 0s;" /> <!-- Gamma Crucis -->
+        <circle cx="100" cy="120" r="5" fill="#e0f0ff" class="star-twinkle" style="animation-delay: 1s;" /> <!-- Alpha Crucis -->
+        <circle cx="50" cy="70" r="4" fill="#ffffff" class="star-twinkle" style="animation-delay: 0.5s;" /> <!-- Beta Crucis -->
+        <circle cx="130" cy="80" r="3" fill="#ffffff" class="star-twinkle" style="animation-delay: 1.5s;" /> <!-- Delta Crucis -->
+        <circle cx="115" cy="95" r="1.5" fill="#ffffff" class="star-twinkle-fast" /> <!-- Epsilon Crucis -->
+        
+        <!-- Connecting lines -->
+        <path d="M 100 20 L 100 120 M 50 70 L 130 80" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+    </g>
+    <!-- Pointers (Alpha and Beta Centauri) -->
+    <circle cx="450" cy="90" r="5" fill="#fff5cc" class="star-twinkle" style="animation-delay: 0.2s;" />
+    <circle cx="500" cy="100" r="4" fill="#ffffff" class="star-twinkle" style="animation-delay: 0.8s;" />
+    <path d="M 450 90 L 500 100 L 590 100" stroke="rgba(255,255,255,0.1)" stroke-width="1" />
+
+    <!-- Connecting the Indigenous constellation outline -->
+    <path d="M 580 130 Q 500 200 480 300 Q 300 450 100 400" class="emu-highlight" />
+
+    <!-- General Starfield -->
+    <g fill="white" opacity="0.8">
+        <circle cx="50" cy="100" r="1" /><circle cx="150" cy="50" r="1.5" class="star-twinkle-fast" />
+        <circle cx="200" cy="200" r="2" class="star-twinkle" /><circle cx="300" cy="150" r="1" />
+        <circle cx="80" cy="300" r="1.5" /><circle cx="120" cy="250" r="0.5" />
+        <circle cx="250" cy="350" r="1.5" /><circle cx="350" cy="250" r="2" class="star-twinkle" />
+        <circle cx="400" cy="100" r="1" /><circle cx="500" cy="50" r="0.5" />
+        <circle cx="650" cy="250" r="1.5" /><circle cx="700" cy="150" r="2" class="star-twinkle-fast" />
+        <circle cx="750" cy="350" r="1" /><circle cx="680" cy="400" r="0.5" />
+        <circle cx="780" cy="100" r="1.5" /><circle cx="620" cy="300" r="1" />
+    </g>
+
+    <!-- Shooting star -->
+    <path class="meteor" d="M 800 0 L 500 300" />
+    <path class="meteor" d="M 400 0 L 100 300" style="animation-delay: 4s;" />
+
+</svg>

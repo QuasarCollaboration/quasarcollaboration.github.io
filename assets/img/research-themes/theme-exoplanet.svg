@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+    <defs>
+        <radialGradient id="starGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ffffff" />
+            <stop offset="20%" stop-color="#fff2cc" />
+            <stop offset="60%" stop-color="#ff9900" stop-opacity="0.8" />
+            <stop offset="100%" stop-color="#120e1f" stop-opacity="0" />
+        </radialGradient>
+        
+        <radialGradient id="planetGrad" cx="30%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="#111" />
+            <stop offset="100%" stop-color="#000" />
+        </radialGradient>
+
+        <style>
+            .planet-orbit {
+                animation: transit 8s linear infinite;
+            }
+            @keyframes transit {
+                0% { transform: translateX(600px); }
+                100% { transform: translateX(-600px); }
+            }
+            
+            .light-curve {
+                fill: none;
+                stroke: #00ffcc;
+                stroke-width: 3;
+                stroke-dasharray: 600;
+                stroke-dashoffset: 600;
+                animation: drawCurve 8s linear infinite;
+            }
+            
+            .curve-marker {
+                fill: #00ffcc;
+                animation: moveMarker 8s linear infinite;
+            }
+
+            @keyframes drawCurve {
+                0% { stroke-dashoffset: 600; }
+                100% { stroke-dashoffset: 0; }
+            }
+            
+            @keyframes moveMarker {
+                0% { transform: translate(100px, 350px); }
+                30% { transform: translate(280px, 350px); }
+                40% { transform: translate(340px, 420px); }
+                60% { transform: translate(460px, 420px); }
+                70% { transform: translate(520px, 350px); }
+                100% { transform: translate(700px, 350px); }
+            }
+            
+            .bg-stars {
+                animation: pan 40s linear infinite;
+            }
+            @keyframes pan {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-200px); }
+            }
+        </style>
+    </defs>
+
+    <rect width="800" height="450" fill="#080a10" />
+
+    <g class="bg-stars" fill="white" opacity="0.3">
+        <!-- Generous starfield -->
+        <circle cx="200" cy="50" r="1.5" /><circle cx="400" cy="150" r="1" />
+        <circle cx="100" cy="200" r="2" /><circle cx="600" cy="80" r="1" />
+        <circle cx="800" cy="120" r="1.5" /><circle cx="950" cy="250" r="2" />
+        <circle cx="1100" cy="50" r="1.5" /><circle cx="750" cy="300" r="1" />
+        <circle cx="300" cy="350" r="1.5" /><circle cx="500" cy="250" r="1" />
+    </g>
+
+    <!-- Host Star -->
+    <circle cx="400" cy="180" r="120" fill="url(#starGlow)" />
+    
+    <!-- Exoplanet in Transit -->
+    <g class="planet-orbit" transform="translate(400, 180)">
+        <circle cx="0" cy="20" r="25" fill="url(#planetGrad)" />
+        <!-- Slight atmospheric halo -->
+        <circle cx="0" cy="20" r="27" fill="none" stroke="#00ffff" stroke-width="2" opacity="0.4" />
+    </g>
+
+    <!-- HUD Overlay for Light Curve -->
+    <g transform="translate(0, 0)">
+        <!-- Grid -->
+        <rect x="100" y="320" width="600" height="110" fill="rgba(0,255,204,0.05)" stroke="rgba(0,255,204,0.3)" stroke-width="1" rx="5" />
+        <path d="M 100 350 H 700 M 100 385 H 700 M 100 420 H 700" stroke="rgba(0,255,204,0.1)" stroke-width="1" stroke-dasharray="4,4" />
+        <path d="M 250 320 V 430 M 400 320 V 430 M 550 320 V 430" stroke="rgba(0,255,204,0.1)" stroke-width="1" stroke-dasharray="4,4" />
+        
+        <!-- Y-Axis Labels -->
+        <text x="90" y="355" fill="#00ffcc" font-family="monospace" font-size="10" text-anchor="end">1.00</text>
+        <text x="90" y="390" fill="#00ffcc" font-family="monospace" font-size="10" text-anchor="end">0.99</text>
+        <text x="90" y="425" fill="#00ffcc" font-family="monospace" font-size="10" text-anchor="end">0.98</text>
+        
+        <!-- Title -->
+        <text x="110" y="340" fill="#00ffcc" font-family="monospace" font-size="12">RELATIVE FLUX (Light Curve)</text>
+
+        <!-- The Light Curve Line -->
+        <path class="light-curve" d="M 100 350 L 280 350 L 340 420 L 460 420 L 520 350 L 700 350" />
+        
+        <!-- Moving Marker matching the planet position (roughly mapped via keyframes) -->
+        <circle r="4" class="curve-marker" />
+    </g>
+
+</svg>

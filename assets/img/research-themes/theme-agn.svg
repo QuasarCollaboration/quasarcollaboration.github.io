@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+    <defs>
+        <radialGradient id="agnCore" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ffffff" />
+            <stop offset="10%" stop-color="#fff5e6" />
+            <stop offset="40%" stop-color="#ff8c00" stop-opacity="0.8" />
+            <stop offset="70%" stop-color="#8b0000" stop-opacity="0.4" />
+            <stop offset="100%" stop-color="#050010" stop-opacity="0" />
+        </radialGradient>
+        
+        <linearGradient id="jetGradTop" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stop-color="#ffffff" />
+            <stop offset="20%" stop-color="#ffb347" />
+            <stop offset="60%" stop-color="#ff4500" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="#4a0080" stop-opacity="0"/>
+        </linearGradient>
+
+        <linearGradient id="jetGradBottom" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#ffffff" />
+            <stop offset="20%" stop-color="#ffb347" />
+            <stop offset="60%" stop-color="#ff4500" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="#4a0080" stop-opacity="0"/>
+        </linearGradient>
+
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="5" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+
+        <style>
+            .accretion-disk {
+                transform-origin: center;
+                animation: spinDisk 8s linear infinite;
+            }
+            @keyframes spinDisk {
+                0% { transform: scaleY(0.2) rotate(0deg); }
+                100% { transform: scaleY(0.2) rotate(360deg); }
+            }
+            .jet-pulse {
+                animation: pulseJet 2s ease-in-out infinite alternate;
+                transform-origin: center;
+            }
+            @keyframes pulseJet {
+                0% { opacity: 0.7; transform: scaleY(0.9); }
+                100% { opacity: 1; transform: scaleY(1.1); }
+            }
+            .blob {
+                fill: #ffffff;
+                filter: url(#glow);
+                animation: shootTop 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            }
+            .blob-bot {
+                fill: #ffffff;
+                filter: url(#glow);
+                animation: shootBot 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            }
+            @keyframes shootTop {
+                0% { cy: 225; opacity: 1; r: 5; }
+                100% { cy: -50; opacity: 0; r: 25; }
+            }
+            @keyframes shootBot {
+                0% { cy: 225; opacity: 1; r: 5; }
+                100% { cy: 500; opacity: 0; r: 25; }
+            }
+        </style>
+    </defs>
+
+    <rect width="800" height="450" fill="#05020a" />
+
+    <g transform="translate(400, 225)">
+        <!-- AGN Core background glow -->
+        <circle cx="0" cy="0" r="150" fill="url(#agnCore)" />
+        
+        <!-- Relativistic Jets -->
+        <g class="jet-pulse">
+            <path d="M -15 -20 L 15 -20 L 70 -300 L -70 -300 Z" fill="url(#jetGradTop)" filter="url(#glow)" />
+            <path d="M -15 20 L 15 20 L 70 300 L -70 300 Z" fill="url(#jetGradBottom)" filter="url(#glow)" />
+        </g>
+    </g>
+
+    <!-- Jet Blobs -->
+    <circle cx="400" cy="225" r="5" class="blob" />
+    <circle cx="400" cy="225" r="5" class="blob" style="animation-delay: 0.7s;" />
+    <circle cx="400" cy="225" r="5" class="blob" style="animation-delay: 1.4s;" />
+
+    <circle cx="400" cy="225" r="5" class="blob-bot" style="animation-delay: 0.3s;" />
+    <circle cx="400" cy="225" r="5" class="blob-bot" style="animation-delay: 1.0s;" />
+    <circle cx="400" cy="225" r="5" class="blob-bot" style="animation-delay: 1.7s;" />
+    
+    <g transform="translate(400, 225)">
+        <!-- Accretion Disk (viewed edge on) -->
+        <g class="accretion-disk">
+            <circle cx="0" cy="0" r="280" fill="none" stroke="#ff8c00" stroke-width="50" opacity="0.6" filter="url(#glow)" />
+            <circle cx="0" cy="0" r="220" fill="none" stroke="#ffffff" stroke-width="25" opacity="0.8" filter="url(#glow)" />
+            <circle cx="0" cy="0" r="140" fill="none" stroke="#ff4500" stroke-width="80" opacity="0.4" filter="url(#glow)" />
+            <!-- Textures on disk -->
+            <path d="M 0 -240 A 240 240 0 0 1 240 0" fill="none" stroke="#ffffff" stroke-width="15" opacity="0.9" />
+            <path d="M 0 190 A 190 190 0 0 1 -190 0" fill="none" stroke="#ffbb77" stroke-width="25" opacity="0.7" />
+        </g>
+        
+        <!-- Black hole obscuring back of disk -->
+        <ellipse cx="0" cy="0" rx="40" ry="12" fill="#000000" />
+        <circle cx="0" cy="0" r="30" fill="#000000" />
+        <!-- Photon ring (strong lensing edge) -->
+        <circle cx="0" cy="0" r="32" fill="none" stroke="#ffffff" stroke-width="2" filter="url(#glow)" />
+        <path d="M -45 0 A 45 20 0 0 0 45 0" fill="none" stroke="#ff8c00" stroke-width="4" filter="url(#glow)" />
+    </g>
+
+</svg>
