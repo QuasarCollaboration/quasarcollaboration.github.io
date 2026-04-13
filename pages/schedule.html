@@ -64,6 +64,7 @@
     </script>
     <script src="../assets/js/components.js" defer></script>
     <script src="../assets/js/theme-toggle.js" defer></script>
+    <script src="../assets/js/schedule-videos.js" defer></script>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
@@ -152,9 +153,43 @@
                         The session will focus on modern, low-maintenance tools that allow researchers to maintain a professional digital presence without a massive time investment. We will cover how to easily link your publications and highlight your computational work. No prior web design expertise is needed! <i>This session is highly recommended for all students and early career
                             researchers.</i>
                     </p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="path/to/your/slides.pdf" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 px-3 py-1.5 border border-slate-200 rounded-lg text-xs font-bold text-slate-600 hover:bg-slate-50 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                                <polyline points="14 2 14 8 20 8" />
+                            </svg>
+                            Download Slides (PDF)
+                        </a>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/N6PCI_y3pcc?si=Uo4v_1dbm2RN3dFn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <button type="button"
+                            class="js-video-toggle inline-flex items-center gap-2 px-3 py-1.5 border border-red-100 rounded-lg text-xs font-bold text-red-600 hover:bg-red-50 transition-colors"
+                            aria-expanded="false" aria-controls="video-container-2026-apr-website"
+                            data-video-id="N6PCI_y3pcc"
+                            data-video-src="https://www.youtube.com/embed/N6PCI_y3pcc?si=Uo4v_1dbm2RN3dFn"
+                            data-video-title="YouTube video player">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.11 1 12 1 12s0 3.89.46 5.58a2.78 2.78 0 0 0 1.94 2c1.72.42 8.6.42 8.6.42s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.89 23 12 23 12s0-3.89-.46-5.58z" />
+                                <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
+                            </svg>
+                            <span class="js-video-toggle-label">Watch Recording</span>
+                        </button>
+                    </div>
+
+                    <div id="video-container-2026-apr-website" class="hidden mt-4">
+                        <div class="relative w-full overflow-hidden rounded-xl border border-red-100 bg-black aspect-video">
+                            <div class="js-video-embed absolute inset-0">
+                                
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
+                
             <!-- Available Slot 3 -->
             <div
                 class="glass-panel p-6 rounded-2xl shadow-md hover:shadow-lg transition-all border border-indigo-50 flex flex-col md:flex-row gap-6 items-start opacity-75">
