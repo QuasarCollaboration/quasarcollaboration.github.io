@@ -390,7 +390,7 @@ window.membersData = [
     "interests": "",
     "primary_field": "Stars",
     "photo": "",
-    "website": "",
+    "website": "https://lachlanhobart.github.io/",
     "role": "in PhD",
     "career_stage": "PhD Student",
     "email": "l.hobart@uq.edu.au"
