@@ -185,6 +185,14 @@ body {
     border-color: var(--accent-primary);
 }
 
+/* Research theme cards are informational, not interactive. */
+.research-theme-card:hover {
+    background: var(--card-bg);
+    transform: none;
+    box-shadow: none;
+    border-color: var(--card-border);
+}
+
 .glass-input {
     background: var(--input-bg);
     border: 1px solid var(--input-border);

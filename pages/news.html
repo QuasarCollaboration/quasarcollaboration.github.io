@@ -72,7 +72,7 @@
 
     <layout-header base-path="../" active-page="news"></layout-header>
 
-    <main class="relative z-10 flex-grow container mx-auto px-4 py-12">
+    <main id="main-content" class="relative z-10 flex-grow container mx-auto px-4 py-12">
         <div class="text-center mb-12">
             <h2 class="text-4xl font-display font-bold text-slate-800 mb-4">Latest News</h2>
             <p class="text-lg text-slate-600 max-w-2xl mx-auto">Updates from the collaboration and partner
@@ -82,25 +82,26 @@
 
         <div class="max-w-4xl mx-auto space-y-8">
             <!-- News Item 1 -->
-            <div
+            <article
                 class="glass-panel p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-indigo-50">
                 <img src="../assets/img/news/Brisbane_Sunrise.jpg"
                     alt="QUASAR Collaboration Launch (Image by Mitchell Hooymans)"
                     class="w-full h-64 object-cover rounded-xl mb-6 shadow-sm" />
                 <span class="text-xs font-bold text-indigo-500 uppercase tracking-wider mb-2 block">February 9,
                     2026</span>
-                <h3
-                    class="text-2xl font-bold text-slate-800 mb-3 hover:text-indigo-600 transition-colors cursor-pointer">
-                    QUASAR Collaboration Officially Launched</h3>
+                <h3 class="text-2xl font-bold text-slate-800 mb-3">
+                    <a href="news/quasar-collaboration-launch.html"
+                        class="hover:text-indigo-600 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 rounded">
+                        Queensland&rsquo;s major universities unveil QUASAR collaboration</a>
+                </h3>
                 <p class="text-slate-600 mb-4 leading-relaxed">
-                    The University of Queensland, Queensland University of Technology, and the University of Southern
-                    Queensland have formally launched the Queensland Universities
-                    Astronomy & Space Research (QUASAR) collaboration. This marks a new era for space science in the
-                    region bringing together a diverse range of expertise and skill from these leading institutions.
+                    UQ, QUT, and UniSQ launch QUASAR: a strategic partnership that lines up astronomy, astrophysics, and space
+                    science expertise as a cohesive front to strengthen Queensland&rsquo;s research impact and HDR pipeline under
+                    the southern sky.
                 </p>
-                <!-- <a href="#" class="text-indigo-600 font-semibold hover:text-indigo-800 text-sm">Read Full Story
-                    →</a> -->
-            </div>
+                <a href="news/quasar-collaboration-launch.html"
+                    class="text-indigo-600 font-semibold hover:text-indigo-800 text-sm">Read full story &rarr;</a>
+            </article>
         </div>
     </main>
 
