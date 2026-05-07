@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Theme Pages - QUASAR Collaboration</title>
+    <meta name="description"
+        content="Index of QUASAR research theme pages: cosmology, galaxy evolution, AGN, exoplanets, stellar astrophysics, and more.">
+    <link rel="canonical" href="https://quasarcollaboration.github.io/pages/research/">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Research Theme Pages - QUASAR Collaboration">
+    <meta property="og:description"
+        content="Browse the dedicated detail pages for each QUASAR research theme.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quasarcollaboration.github.io/pages/research/">
+    <meta property="og:site_name" content="QUASAR Collaboration">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700;800;900&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: ['class', '.dark-mode'],
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            800: 'var(--text-primary)',
+                            700: 'var(--text-secondary)',
+                            600: 'var(--text-secondary)',
+                            500: 'var(--text-muted)',
+                            400: 'var(--text-muted)',
+                            900: 'var(--bg-gradient-end)',
+                            200: 'var(--glass-border)',
+                            50: 'var(--glass-bg)',
+                        },
+                        indigo: {
+                            600: 'var(--accent-primary)',
+                            100: 'var(--glass-border)',
+                            50: 'var(--glass-border)',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+        window.tailwindCSS = { ...window.tailwindCSS, suppressWarnings: true };
+    </script>
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            } else {
+                document.documentElement.classList.remove('dark-mode');
+            }
+        })();
+    </script>
+    <script src="../../assets/js/components.js" defer></script>
+    <script src="../../assets/js/theme-toggle.js" defer></script>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+
+<body class="min-h-screen flex flex-col relative overflow-x-hidden text-slate-800">
+    <layout-header base-path="../../" active-page="research"></layout-header>
+
+    <main id="main-content" class="relative z-10 flex-grow container mx-auto px-4 py-12">
+        <div class="max-w-4xl mx-auto mb-8">
+            <a href="../research.html"
+                class="text-sm font-semibold text-indigo-600 hover:text-indigo-800 transition-colors inline-flex items-center gap-1">
+                <span aria-hidden="true">&larr;</span> Back to Research Themes
+            </a>
+        </div>
+
+        <article class="glass-panel p-8 md:p-12 rounded-3xl shadow-2xl border border-indigo-50 max-w-4xl mx-auto">
+            <p class="text-xs font-bold text-indigo-500 uppercase tracking-wider mb-2">Research</p>
+            <h1 class="text-3xl md:text-4xl font-display font-bold text-slate-800 mb-4">Research theme detail pages</h1>
+            <p class="text-lg text-slate-700 leading-relaxed mb-8">
+                Each card on the
+                <a href="../research.html" class="text-indigo-600 hover:text-indigo-800 underline">Research
+                    Themes</a> overview has a dedicated detail page below. These pages will progressively expand to
+                cover the science questions, methods, partner facilities, publications, and QUASAR members involved in
+                each theme.
+            </p>
+
+            <section class="space-y-3" aria-labelledby="theme-pages-heading">
+                <h2 id="theme-pages-heading" class="text-2xl font-display font-bold text-slate-800 mb-3">All themes</h2>
+                <ul class="grid sm:grid-cols-2 gap-3 text-slate-700">
+                    <li class="px-4 py-3 rounded-xl border border-indigo-50 bg-white/40 dark:bg-slate-900/30">
+                        <span class="block text-xs font-bold text-indigo-500 uppercase tracking-wider mb-1">Cosmology</span>
+                        Fundamental Cosmology &amp; The Dark Universe
+                    </li>
+                    <li class="px-4 py-3 rounded-xl border border-indigo-50 bg-white/40 dark:bg-slate-900/30">
+                        <span class="block text-xs font-bold text-purple-500 uppercase tracking-wider mb-1">Galaxies</span>
+                        Galaxy Evolution &amp; Formation
+                    </li>
+                    <li class="px-4 py-3 rounded-xl border border-indigo-50 bg-white/40 dark:bg-slate-900/30">
+                        <span class="block text-xs font-bold text-pink-500 uppercase tracking-wider mb-1">High Energy</span>
+                        Dense Stellar Systems &amp; High-Energy Astrophysics
+                    </li>
+                    <li class="px-4 py-3 rounded-xl border border-indigo-50 bg-white/40 dark:bg-slate-900/30">
+                        <span class="block text-xs font-bold text-orange-500 uppercase tracking-wider mb-1">AGN</span>
+                        Active Galactic Nuclei
+                    </li>
+                    <li class="px-4 py-3 rounded-xl border border-indigo-50 bg-white/40 dark:bg-slate-900/30">
+                        <span class="block text-xs font-bold text-blue-500 uppercase tracking-wider mb-1">Surveys</span>
+                        Multi-Wavelength Survey Science &amp; Data Analytics
+                    </li>
+                    <li class="px-4 py-3 rounded-xl border border-indigo-50 bg-white/40 dark:bg-slate-900/30">
+                        <span class="block text-xs font-bold text-amber-500 uppercase tracking-wider mb-1">Cultural</span>
+                        Cultural &amp; Indigenous Astronomy
+                    </li>
+                    <li class="px-4 py-3 rounded-xl border border-indigo-50 bg-white/40 dark:bg-slate-900/30">
+                        <span class="block text-xs font-bold text-emerald-500 uppercase tracking-wider mb-1">Exoplanets</span>
+                        Exoplanetary Science &amp; Habitability
+                    </li>
+                    <li class="px-4 py-3 rounded-xl border border-indigo-50 bg-white/40 dark:bg-slate-900/30">
+                        <span class="block text-xs font-bold text-yellow-600 uppercase tracking-wider mb-1">Stars</span>
+                        Stellar Astrophysics &amp; Space Weather
+                    </li>
+                    <li class="px-4 py-3 rounded-xl border border-indigo-50 bg-white/40 dark:bg-slate-900/30">
+                        <span class="block text-xs font-bold text-cyan-500 uppercase tracking-wider mb-1">Solar System</span>
+                        Solar System &amp; Orbital Dynamics
+                    </li>
+                </ul>
+                <p class="text-sm text-slate-500 mt-4">Detail pages are intentionally not linked from the Research
+                    Themes overview yet; they will be wired up once content is finalized.</p>
+            </section>
+        </article>
+    </main>
+
+    <layout-footer custom-classes="mt-auto"></layout-footer>
+</body>
+
+</html>

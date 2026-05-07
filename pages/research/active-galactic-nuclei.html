@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Galactic Nuclei - QUASAR Collaboration</title>
+    <meta name="description"
+        content="QUASAR research theme: supermassive black hole accretion, AGN feedback, jets, and the co-evolution of black holes and host galaxies.">
+    <link rel="canonical"
+        href="https://quasarcollaboration.github.io/pages/research/active-galactic-nuclei.html">
+
+    <meta property="og:title" content="Active Galactic Nuclei - QUASAR Collaboration">
+    <meta property="og:description"
+        content="Research theme detail: AGN, quasar feedback, radio galaxies, and black hole&ndash;galaxy co-evolution.">
+    <meta property="og:type" content="article">
+    <meta property="og:url"
+        content="https://quasarcollaboration.github.io/pages/research/active-galactic-nuclei.html">
+    <meta property="og:site_name" content="QUASAR Collaboration">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700;800;900&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: ['class', '.dark-mode'],
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            800: 'var(--text-primary)',
+                            700: 'var(--text-secondary)',
+                            600: 'var(--text-secondary)',
+                            500: 'var(--text-muted)',
+                            400: 'var(--text-muted)',
+                            900: 'var(--bg-gradient-end)',
+                            200: 'var(--glass-border)',
+                            50: 'var(--glass-bg)',
+                        },
+                        indigo: {
+                            600: 'var(--accent-primary)',
+                            100: 'var(--glass-border)',
+                            50: 'var(--glass-border)',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+        window.tailwindCSS = { ...window.tailwindCSS, suppressWarnings: true };
+    </script>
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            } else {
+                document.documentElement.classList.remove('dark-mode');
+            }
+        })();
+    </script>
+    <script src="../../assets/js/components.js" defer></script>
+    <script src="../../assets/js/theme-toggle.js" defer></script>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+
+<body class="min-h-screen flex flex-col relative overflow-x-hidden text-slate-800">
+    <layout-header base-path="../../" active-page="research"></layout-header>
+
+    <main id="main-content" class="relative z-10 flex-grow container mx-auto px-4 py-12">
+        <div class="max-w-4xl mx-auto mb-8">
+            <a href="../research.html"
+                class="text-sm font-semibold text-indigo-600 hover:text-indigo-800 transition-colors inline-flex items-center gap-1">
+                <span aria-hidden="true">&larr;</span> Back to Research Themes
+            </a>
+        </div>
+
+        <article class="glass-panel p-8 md:p-12 rounded-3xl shadow-2xl border border-indigo-50 max-w-4xl mx-auto">
+            <p class="text-xs font-bold text-orange-500 uppercase tracking-wider mb-2">Research Theme</p>
+            <h1 class="text-3xl md:text-4xl font-display font-bold text-slate-800 mb-4">Active Galactic Nuclei</h1>
+            <p class="text-lg text-slate-700 leading-relaxed mb-6">
+                Probing the life cycles of supermassive black holes &mdash; how they grow by accretion, launch
+                relativistic jets, and inject energy into their host galaxies, regulating star formation across cosmic
+                time.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-10">
+                <span class="px-3 py-1 text-xs font-semibold bg-orange-50 text-orange-700 rounded-full">AGN</span>
+                <span class="px-3 py-1 text-xs font-semibold bg-orange-50 text-orange-700 rounded-full">Quasar Feedback</span>
+                <span class="px-3 py-1 text-xs font-semibold bg-orange-50 text-orange-700 rounded-full">Radio Galaxies</span>
+                <span class="px-3 py-1 text-xs font-semibold bg-orange-50 text-orange-700 rounded-full">Accretion</span>
+                <span class="px-3 py-1 text-xs font-semibold bg-orange-50 text-orange-700 rounded-full">Jets</span>
+            </div>
+
+            <div class="space-y-8 text-slate-700 leading-relaxed text-base md:text-lg">
+                <section class="space-y-4" aria-labelledby="overview-heading">
+                    <h2 id="overview-heading" class="text-2xl font-display font-bold text-slate-800">Overview</h2>
+                    <p>
+                        Active galactic nuclei are among the most luminous persistent sources in the universe, powered
+                        by accretion onto supermassive black holes at the centres of galaxies. Their radiation, winds,
+                        and relativistic jets can outshine their host galaxies and reach far into the surrounding
+                        intergalactic medium.
+                    </p>
+                    <p>
+                        Understanding AGN is essential for galaxy evolution: feedback from accreting black holes appears
+                        to shape the upper end of the galaxy mass function and the thermodynamics of cluster-scale gas.
+                    </p>
+                </section>
+
+                <section class="space-y-4" aria-labelledby="questions-heading">
+                    <h2 id="questions-heading" class="text-2xl font-display font-bold text-slate-800">Key science
+                        questions</h2>
+                    <ul class="list-disc list-outside pl-6 space-y-2 marker:text-indigo-500">
+                        <li>How is energy released and channelled in accretion flows around supermassive black holes?
+                        </li>
+                        <li>How does AGN feedback couple to interstellar and circumgalactic gas?</li>
+                        <li>What launches and collimates relativistic jets, and how do they evolve through host
+                            environments?</li>
+                        <li>How do AGN luminosity functions and obscured populations evolve across cosmic time?</li>
+                        <li>How do supermassive black holes co-evolve with their host galaxies?</li>
+                    </ul>
+                </section>
+
+                <section class="space-y-4" aria-labelledby="methods-heading">
+                    <h2 id="methods-heading" class="text-2xl font-display font-bold text-slate-800">Approach &amp;
+                        methods</h2>
+                    <ul class="list-disc list-outside pl-6 space-y-2 marker:text-indigo-500">
+                        <li>Multi-wavelength imaging and spectroscopy from radio to X-ray.</li>
+                        <li>Reverberation mapping and variability studies of accretion flows.</li>
+                        <li>Radio interferometry of jets, lobes, and host environments.</li>
+                        <li>Coupled black-hole/galaxy evolution simulations.</li>
+                        <li>Statistical analysis of large AGN samples from wide-field surveys.</li>
+                    </ul>
+                </section>
+
+                <section class="space-y-4" aria-labelledby="related-areas-heading">
+                    <h2 id="related-areas-heading" class="text-2xl font-display font-bold text-slate-800">Related
+                        research areas</h2>
+                    <p class="text-slate-600">Linked surveys, facilities, and resources will be added as the theme page
+                        is finalized.</p>
+                    <ul class="list-disc list-outside pl-6 space-y-2 marker:text-indigo-500">
+                        <li>Placeholder: AGN-focused surveys and observing programs</li>
+                        <li>Placeholder: simulation suites and analysis tools</li>
+                        <li>Placeholder: representative QUASAR publications</li>
+                    </ul>
+                </section>
+
+                <section class="space-y-4" aria-labelledby="members-heading">
+                    <h2 id="members-heading" class="text-2xl font-display font-bold text-slate-800">Relevant QUASAR
+                        members</h2>
+                    <p class="text-slate-600">Members contributing to this theme will be listed here.</p>
+                    <ul class="list-disc list-outside pl-6 space-y-2 marker:text-indigo-500">
+                        <li>Placeholder: Lead investigators</li>
+                        <li>Placeholder: Collaborators and HDR researchers</li>
+                    </ul>
+                </section>
+            </div>
+        </article>
+    </main>
+
+    <layout-footer custom-classes="mt-auto"></layout-footer>
+</body>
+
+</html>
