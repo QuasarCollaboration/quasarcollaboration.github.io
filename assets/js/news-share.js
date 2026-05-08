@@ -1,4 +1,29 @@
 (function () {
+    function collapseWhitespace(str) {
+        return (str || '').toString().replace(/\s+/g, ' ').trim();
+    }
+
+    // Social scrapers and share dialogs tend to behave better with short copy.
+    // We take the first sentence from og:description, with fallbacks.
+    function getCatchySentence(text, fallback) {
+        const t = collapseWhitespace(text);
+        if (!t) {
+            return collapseWhitespace(fallback);
+        }
+
+        // Match up to the first sentence-ending punctuation mark.
+        const m = t.match(/(.+?[.!?])(\s|$)/);
+        if (m && m[1]) {
+            return m[1].trim();
+        }
+
+        // No obvious punctuation; keep it short.
+        if (t.length > 140) {
+            return t.slice(0, 137).trim() + '…';
+        }
+        return t;
+    }
+
     function getShareMeta() {
         const canonical = document.querySelector('link[rel="canonical"]');
         const url = (canonical && canonical.href) ? canonical.href.trim() : window.location.href;
@@ -6,14 +31,15 @@
         const title = (ogTitle && ogTitle.content) ? ogTitle.content.trim() : document.title;
         const ogDesc = document.querySelector('meta[property="og:description"]');
         const text = (ogDesc && ogDesc.content) ? ogDesc.content.trim() : '';
-        return { url, title, text };
+        const catchy = getCatchySentence(text, title);
+        return { url, title, text, catchy };
     }
 
     function init(root) {
         const nativeBtn = root.querySelector('[data-share-native]');
         const copyBtn = root.querySelector('[data-share-copy]');
         const feedback = root.querySelector('[data-share-feedback]');
-        const { url, title, text } = getShareMeta();
+        const { url, title, text, catchy } = getShareMeta();
 
         function showFeedback(message) {
             if (!feedback) {
@@ -31,7 +57,7 @@
             if (navigator.share) {
                 nativeBtn.classList.remove('hidden');
                 nativeBtn.addEventListener('click', function () {
-                    navigator.share({ title: title, text: text, url: url }).catch(function (err) {
+                    navigator.share({ title: title, text: catchy, url: url }).catch(function (err) {
                         if (err && err.name !== 'AbortError') {
                             showFeedback('Sharing was cancelled or is not available.');
                         }
@@ -77,23 +103,26 @@
         root.querySelectorAll('[data-share-href-template]').forEach(function (el) {
             var tpl = el.getAttribute('data-share-href-template');
             if (tpl === 'twitter') {
-                var tw = encodeURIComponent(title + (text ? '\n\n' + text : '') + '\n' + url);
+                var tw = encodeURIComponent(catchy + '\n' + url);
                 el.href = 'https://twitter.com/intent/tweet?text=' + tw;
             } else if (tpl === 'facebook') {
-                el.href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url);
+                // `quote` is optional; some clients ignore it but it doesn't hurt.
+                el.href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url)
+                    + '&quote=' + encodeURIComponent(catchy);
             } else if (tpl === 'linkedin') {
-                el.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(url);
+                // LinkedIn often uses OG tags; `summary`/`title` can help prefill where supported.
+                el.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(url)
+                    + '&title=' + encodeURIComponent(title)
+                    + '&summary=' + encodeURIComponent(catchy);
             } else if (tpl === 'whatsapp') {
-                var wa = encodeURIComponent(title + '\n' + url);
+                var wa = encodeURIComponent(catchy + '\n' + url);
                 el.href = 'https://api.whatsapp.com/send?text=' + wa;
             } else if (tpl === 'reddit') {
                 el.href = 'https://www.reddit.com/submit?url=' + encodeURIComponent(url)
-                    + '&title=' + encodeURIComponent(title);
+                    + '&title=' + encodeURIComponent(catchy);
             } else if (tpl === 'email') {
                 var subj = encodeURIComponent(title);
-                var body = encodeURIComponent(
-                    title + '\n\n' + url + (text ? '\n\n' + text : '')
-                );
+                var body = encodeURIComponent(catchy + '\n\n' + url);
                 el.href = 'mailto:?subject=' + subj + '&body=' + body;
             }
         });
