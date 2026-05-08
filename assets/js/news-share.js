@@ -77,10 +77,18 @@
         root.querySelectorAll('[data-share-href-template]').forEach(function (el) {
             var tpl = el.getAttribute('data-share-href-template');
             if (tpl === 'twitter') {
-                var tw = encodeURIComponent(title + (text ? ' — ' + text : '') + '\n' + url);
+                var tw = encodeURIComponent(title + (text ? '\n\n' + text : '') + '\n' + url);
                 el.href = 'https://twitter.com/intent/tweet?text=' + tw;
+            } else if (tpl === 'facebook') {
+                el.href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url);
             } else if (tpl === 'linkedin') {
                 el.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(url);
+            } else if (tpl === 'whatsapp') {
+                var wa = encodeURIComponent(title + '\n' + url);
+                el.href = 'https://api.whatsapp.com/send?text=' + wa;
+            } else if (tpl === 'reddit') {
+                el.href = 'https://www.reddit.com/submit?url=' + encodeURIComponent(url)
+                    + '&title=' + encodeURIComponent(title);
             } else if (tpl === 'email') {
                 var subj = encodeURIComponent(title);
                 var body = encodeURIComponent(
