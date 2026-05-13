@@ -3,8 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     videoToggles.forEach((button) => {
         button.addEventListener('click', () => {
+            const card = button.closest('[data-video-card]');
             const containerId = button.getAttribute('aria-controls');
-            const container = containerId ? document.getElementById(containerId) : null;
+            const container = card
+                ? card.querySelector('.js-video-container')
+                : containerId
+                    ? document.getElementById(containerId)
+                    : null;
             if (!container) {
                 return;
             }
@@ -25,10 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const embedSlot = container.querySelector('.js-video-embed');
-            const videoId = button.dataset.videoId;
+            const videoSource = button.dataset.videoSrc;
             const videoTitle = button.dataset.videoTitle || 'YouTube recording';
 
-            if (!embedSlot || !videoId || embedSlot.querySelector('iframe')) {
+            if (!embedSlot || !videoSource || embedSlot.querySelector('iframe')) {
                 return;
             }
 
@@ -36,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
             iframe.className = 'h-full w-full';
             iframe.width = '560';
             iframe.height = '315';
-            iframe.src = `https://www.youtube.com/embed/${videoId}?si=A4aYRxhzF4Ux7VEi`;
+            iframe.src = videoSource;
             iframe.title = videoTitle;
             iframe.frameBorder = '0';
             iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';

@@ -176,8 +176,7 @@
                         </a>
                         <button type="button"
                             class="js-video-toggle inline-flex items-center gap-2 px-3 py-1.5 border border-red-100 rounded-lg text-xs font-bold text-red-600 hover:bg-red-50 transition-colors"
-                            aria-expanded="false" aria-controls="video-container-2026-apr-website"
-                            data-video-id="N6PCI_y3pcc"
+                            aria-expanded="false"
                             data-video-src="https://www.youtube.com/embed/N6PCI_y3pcc?si=Uo4v_1dbm2RN3dFn"
                             data-video-title="YouTube video player">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
@@ -190,10 +189,10 @@
                         </button>
                     </div>
 
-                    <div id="video-container-2026-apr-website" class="hidden mt-4">
+                    <div class="js-video-container hidden mt-4">
                         <div class="relative w-full overflow-hidden rounded-xl border border-red-100 bg-black aspect-video">
                             <div class="js-video-embed absolute inset-0">
-                                
+
                             </div>
                         </div>
                     </div>
@@ -202,6 +201,7 @@
                 
             <!-- Available Slot 1 -->
             <div
+                data-video-card
                 class="glass-panel p-6 rounded-2xl shadow-md hover:shadow-lg transition-all border border-indigo-50 flex flex-col md:flex-row gap-6 items-start">
                 <div
                     class="flex-shrink-0 w-full md:w-20 bg-indigo-50 rounded-xl flex flex-col items-center justify-center p-3 text-white-700 border border-indigo-100">
@@ -221,6 +221,27 @@
                         offering a comprehensive look at the breadth of work across South-East Queensland. This session provides a key opportunity to identify potential avenues for future collaboration between neighboring institutions 
                         and to foster connections within our local astrophysics community.
                     </p>
+                    <div class="flex flex-wrap gap-3">
+                        <button type="button"
+                            class="js-video-toggle inline-flex items-center gap-2 px-3 py-1.5 border border-red-100 rounded-lg text-xs font-bold text-red-600 hover:bg-red-50 transition-colors"
+                            aria-expanded="false"
+                            data-video-src="https://www.youtube.com/embed/1xc_xB8Kt-I?si=pUQfYKYB-lf-n7ga"
+                            data-video-title="YouTube video player">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.11 1 12 1 12s0 3.89.46 5.58a2.78 2.78 0 0 0 1.94 2c1.72.42 8.6.42 8.6.42s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.89 23 12 23 12s0-3.89-.46-5.58z" />
+                                <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
+                            </svg>
+                            <span class="js-video-toggle-label">Watch Recording</span>
+                        </button>
+                    </div>
+
+                    <div class="js-video-container hidden mt-4">
+                        <div class="relative w-full overflow-hidden rounded-xl border border-red-100 bg-black aspect-video">
+                            <div class="js-video-embed absolute inset-0"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
