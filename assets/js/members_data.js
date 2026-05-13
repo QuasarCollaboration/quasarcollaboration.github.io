@@ -402,7 +402,7 @@ window.membersData = [
     "interests": "",
     "primary_field": "Astroparticle",
     "photo": "",
-    "website": "",
+    "website": "https://narisewilliams.github.io/",
     "role": "in PhD",
     "career_stage": "PhD Student",
     "email": "narise.williams@uq.edu.au"
