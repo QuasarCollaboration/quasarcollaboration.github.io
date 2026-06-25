@@ -573,62 +573,6 @@ body {
     border: 0;
 }
 
-.resource-recording-play {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    width: 100%;
-    height: 100%;
-    padding: 1rem;
-    color: #fff;
-    background: linear-gradient(160deg, #1e1b4b 0%, #312e81 45%, #1e293b 100%);
-    border: none;
-    cursor: pointer;
-    transition: filter 0.2s ease, transform 0.2s ease;
-}
-
-.resource-recording-play:hover {
-    filter: brightness(1.08);
-}
-
-.resource-recording-play:focus-visible {
-    outline: 2px solid var(--accent-primary);
-    outline-offset: 2px;
-}
-
-.resource-recording-play-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 4rem;
-    height: 4rem;
-    border-radius: 9999px;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(4px);
-    transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.resource-recording-play:hover .resource-recording-play-icon {
-    background: var(--accent-primary);
-    transform: scale(1.05);
-}
-
-.resource-recording-play-icon svg {
-    width: 1.75rem;
-    height: 1.75rem;
-    margin-left: 0.2rem;
-}
-
-.resource-recording-play-label {
-    font-size: 0.875rem;
-    font-weight: 600;
-    text-align: center;
-}
-
 .resource-collapse {
     overflow: hidden;
 }
