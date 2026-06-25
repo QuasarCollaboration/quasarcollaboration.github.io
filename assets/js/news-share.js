@@ -3,27 +3,6 @@
         return (str || '').toString().replace(/\s+/g, ' ').trim();
     }
 
-    // Social scrapers and share dialogs tend to behave better with short copy.
-    // We take the first sentence from og:description, with fallbacks.
-    function getCatchySentence(text, fallback) {
-        const t = collapseWhitespace(text);
-        if (!t) {
-            return collapseWhitespace(fallback);
-        }
-
-        // Match up to the first sentence-ending punctuation mark.
-        const m = t.match(/(.+?[.!?])(\s|$)/);
-        if (m && m[1]) {
-            return m[1].trim();
-        }
-
-        // No obvious punctuation; keep it short.
-        if (t.length > 140) {
-            return t.slice(0, 137).trim() + '…';
-        }
-        return t;
-    }
-
     function getShareMeta() {
         const canonical = document.querySelector('link[rel="canonical"]');
         const url = (canonical && canonical.href) ? canonical.href.trim() : window.location.href;
@@ -31,7 +10,10 @@
         const title = (ogTitle && ogTitle.content) ? ogTitle.content.trim() : document.title;
         const ogDesc = document.querySelector('meta[property="og:description"]');
         const text = (ogDesc && ogDesc.content) ? ogDesc.content.trim() : '';
-        const catchy = getCatchySentence(text, title);
+        const shareSentence = document.querySelector('meta[name="quasar:share-sentence"]');
+        const catchy = (shareSentence && shareSentence.content)
+            ? collapseWhitespace(shareSentence.content)
+            : collapseWhitespace(title);
         return { url, title, text, catchy };
     }
 
@@ -70,7 +52,7 @@
 
         if (copyBtn) {
             copyBtn.addEventListener('click', function () {
-                const bundle = text ? (title + '\n' + url + '\n\n' + text) : (title + '\n' + url);
+                const bundle = catchy + '\n\n' + url;
                 if (navigator.clipboard && navigator.clipboard.writeText) {
                     navigator.clipboard.writeText(bundle).then(function () {
                         showFeedback('Title, link, and summary copied. Paste anywhere to share.');
