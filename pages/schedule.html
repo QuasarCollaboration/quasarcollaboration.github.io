@@ -64,7 +64,6 @@
     </script>
     <script src="../assets/js/components.js" defer></script>
     <script src="../assets/js/theme-toggle.js" defer></script>
-    <script src="../assets/js/schedule-videos.js" defer></script>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
@@ -76,8 +75,13 @@
     <main class="relative z-10 flex-grow container mx-auto px-4 py-12">
         <div class="text-center mb-12">
             <h2 class="text-4xl font-display font-bold text-slate-800 mb-4">Schedule</h2>
-            <p class="text-lg text-slate-600 max-w-2xl mx-auto">A comprehensive schedule of seminars, workshops, and
-                events.</p>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto">Upcoming and past seminars, workshops, and events.</p>
+            <p class="text-sm text-slate-500 mt-3 max-w-2xl mx-auto">
+                Slides and recordings are on the
+                <a href="resources.html"
+                    class="font-semibold text-indigo-600 hover:text-indigo-800 underline-offset-2 hover:underline">Resources</a>
+                page.
+            </p>
         </div>
 
         <div class="max-w-4xl mx-auto space-y-6">
@@ -134,7 +138,6 @@
 
             <!-- Slot 2 -->
             <div
-                data-video-card
                 class="glass-panel p-6 rounded-2xl shadow-md hover:shadow-lg transition-all border border-indigo-50 flex flex-col md:flex-row gap-6 items-start">
                 <div
                     class="flex-shrink-0 w-full md:w-20 bg-indigo-50 rounded-xl flex flex-col items-center justify-center p-3 text-white-700 border border-indigo-100">
@@ -154,55 +157,16 @@
                         The session will focus on modern, low-maintenance tools that allow researchers to maintain a professional digital presence without a massive time investment. We will cover how to easily link your publications and highlight your work. No prior web design expertise is needed! <i>This session is highly recommended for all students and early career
                             researchers.</i>
                     </p>
-                    <div class="flex flex-wrap gap-3">
-                        <a href="..\assets\workshop_content\HowToWebsite\HowToMakeAWebsite_Workshop_QUASARMeeting.pdf" target="_blank" rel="noopener noreferrer"
-                            class="inline-flex items-center gap-2 px-3 py-1.5 border border-slate-200 rounded-lg text-xs font-bold text-slate-600 hover:bg-slate-50 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-                                <polyline points="14 2 14 8 20 8" />
-                            </svg>
-                            Download Slides (PDF)
-                        </a>
-                        <a href="..\assets\workshop_content\HowToWebsite\Templates.zip" 
-                            download="Templates.zip"
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            class="inline-flex items-center gap-2 px-3 py-1.5 border border-slate-200 rounded-lg text-xs font-bold text-slate-600 hover:bg-slate-50 transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-                            <polyline points="14 2 14 8 20 8" />
-                        </svg>
-                        Download Templates (zip)
-                        </a>
-                        <button type="button"
-                            class="js-video-toggle inline-flex items-center gap-2 px-3 py-1.5 border border-red-100 rounded-lg text-xs font-bold text-red-600 hover:bg-red-50 transition-colors"
-                            aria-expanded="false"
-                            data-video-src="https://www.youtube.com/embed/N6PCI_y3pcc?si=Vf_G_xr2X4Hz854O"
-                            data-video-title="YouTube video player">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path
-                                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.11 1 12 1 12s0 3.89.46 5.58a2.78 2.78 0 0 0 1.94 2c1.72.42 8.6.42 8.6.42s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.89 23 12 23 12s0-3.89-.46-5.58z" />
-                                <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
-                            </svg>
-                            <span class="js-video-toggle-label">Watch Recording</span>
-                        </button>
-                    </div>
-
-                    <div class="js-video-container hidden mt-4">
-                        <div class="relative w-full overflow-hidden rounded-xl border border-red-100 bg-black aspect-video">
-                            <div class="js-video-embed absolute inset-0">
-
-                            </div>
-                        </div>
-                    </div>
+                    <a href="resources.html#2026-04-13-website-workshop"
+                        class="inline-flex items-center gap-1 text-sm font-semibold text-indigo-600 hover:text-indigo-800 transition-colors">
+                        View slides and recording
+                        <span aria-hidden="true">&rarr;</span>
+                    </a>
                 </div>
             </div>
                 
             <!-- Available Slot 1 -->
             <div
-                data-video-card
                 class="glass-panel p-6 rounded-2xl shadow-md hover:shadow-lg transition-all border border-indigo-50 flex flex-col md:flex-row gap-6 items-start">
                 <div
                     class="flex-shrink-0 w-full md:w-20 bg-indigo-50 rounded-xl flex flex-col items-center justify-center p-3 text-white-700 border border-indigo-100">
@@ -222,27 +186,11 @@
                         offering a comprehensive look at the breadth of work across South-East Queensland. This session provides a key opportunity to identify potential avenues for future collaboration between neighboring institutions 
                         and to foster connections within our local astrophysics community.
                     </p>
-                    <div class="flex flex-wrap gap-3">
-                        <button type="button"
-                            class="js-video-toggle inline-flex items-center gap-2 px-3 py-1.5 border border-red-100 rounded-lg text-xs font-bold text-red-600 hover:bg-red-50 transition-colors"
-                            aria-expanded="false"
-                            data-video-src="https://www.youtube.com/embed/1xc_xB8Kt-I?si=pUQfYKYB-lf-n7ga"
-                            data-video-title="YouTube video player">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path
-                                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.11 1 12 1 12s0 3.89.46 5.58a2.78 2.78 0 0 0 1.94 2c1.72.42 8.6.42 8.6.42s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.89 23 12 23 12s0-3.89-.46-5.58z" />
-                                <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
-                            </svg>
-                            <span class="js-video-toggle-label">Watch Recording</span>
-                        </button>
-                    </div>
-
-                    <div class="js-video-container hidden mt-4">
-                        <div class="relative w-full overflow-hidden rounded-xl border border-red-100 bg-black aspect-video">
-                            <div class="js-video-embed absolute inset-0"></div>
-                        </div>
-                    </div>
+                    <a href="resources.html#2026-05-11-astrophysics-queensland"
+                        class="inline-flex items-center gap-1 text-sm font-semibold text-indigo-600 hover:text-indigo-800 transition-colors">
+                        View slides and recording
+                        <span aria-hidden="true">&rarr;</span>
+                    </a>
                 </div>
             </div>
 

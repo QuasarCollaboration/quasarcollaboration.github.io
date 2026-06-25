@@ -104,6 +104,8 @@ class LayoutHeader extends HTMLElement {
                                             class="block px-4 py-2 text-sm text-slate-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-slate-700 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors w-full text-center md:text-left">Research Themes</a>
                                         <a href="${basePath}pages/schedule.html"
                                             class="block px-4 py-2 text-sm text-slate-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-slate-700 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors w-full text-center md:text-left">Schedule</a>
+                                        <a href="${basePath}pages/resources.html"
+                                            class="block px-4 py-2 text-sm text-slate-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-slate-700 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors w-full text-center md:text-left">Resources</a>
                                     </div>
                                 </div>
                             </div>
