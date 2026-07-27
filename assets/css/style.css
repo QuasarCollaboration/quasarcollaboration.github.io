@@ -480,6 +480,62 @@ body {
     outline-offset: 2px;
 }
 
+/* Schedule page year tabs */
+.schedule-year-toc {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    width: fit-content;
+    margin: 0 auto 2.5rem;
+    padding: 0.5rem;
+    border-radius: 9999px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 4px 16px var(--glass-shadow);
+}
+
+.schedule-year-toc-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    font-family: inherit;
+    color: var(--text-secondary);
+    background: transparent;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
+.schedule-year-toc-btn:hover {
+    color: var(--accent-primary);
+    background: var(--accent-light);
+}
+
+.schedule-year-toc-btn:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+}
+
+.schedule-year-toc-btn.is-active {
+    color: var(--text-inverted);
+    background: var(--accent-primary);
+}
+
+.schedule-year-toc-btn.is-active:hover {
+    color: var(--text-inverted);
+    background: var(--accent-hover);
+}
+
+.schedule-year-panel[hidden] {
+    display: none;
+}
+
 .resource-section {
     scroll-margin-top: 7rem;
 }
