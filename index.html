@@ -130,6 +130,7 @@
     </script>
     <script src="assets/js/components.js" defer></script>
     <script src="assets/js/theme-toggle.js" defer></script>
+    <script src="assets/js/hero-cosmos.js" defer></script>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -140,8 +141,8 @@
 
     <main class="relative z-10 flex-grow container mx-auto px-4 py-12">
         <!-- Hero Section -->
-        <section
-            class="relative rounded-3xl overflow-hidden mb-16 shadow-2xl isolate bg-gradient-to-br from-slate-900 via-slate-950 to-indigo-950 transition-colors duration-500">
+        <section id="hero"
+            class="group relative rounded-3xl overflow-hidden mb-16 shadow-2xl isolate bg-gradient-to-br from-[#0f172a] via-[#020617] to-[#1e1b4b]">
 
             <!-- Use a background image for the hero section -->
             <!-- <div class="absolute inset-0 z-0">
@@ -149,8 +150,10 @@
                     class="w-full h-full object-cover opacity-60">
             </div> -->
 
-            <!-- Cosmic Background Effects -->
-            <div class="absolute inset-0 z-0">
+            <!-- Cosmic Background Effects: an individually-twinkling starfield, gently animated.
+                 A random handful of stars flare brighter while hovering (see hero-cosmos.js).
+                 Also responds subtly to cursor movement via --mx/--my. -->
+            <div id="hero-cosmos" class="absolute inset-0 z-0 hero-cosmos">
                 <!-- Nebular Glows -->
                 <div
                     class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-white/10 rounded-full blur-[100px] -translate-y-1/2 pointer-events-none mix-blend-overlay">
@@ -158,10 +161,25 @@
                 <div
                     class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-400/20 rounded-full blur-[100px] translate-y-1/2 pointer-events-none mix-blend-overlay">
                 </div>
-                <!-- Stars (Simple CSS dots) -->
-                <div class="absolute inset-0 opacity-20"
-                    style="background-image: radial-gradient(white 1px, transparent 1px); background-size: 50px 50px;">
-                </div>
+
+                <!-- Starfield: populated by hero-cosmos.js with individually twinkling stars -->
+                <div class="hero-starfield" id="hero-starfield" aria-hidden="true"></div>
+
+                <!-- ORBIT WIDGET (disabled here — it crossed behind the title/paragraph and made
+                     the text harder to read). Styles live on in assets/css/style.css under
+                     "Reusable orbit widget" so this can be dropped into another spot (e.g. a card,
+                     a section divider, an about-page graphic) without re-building it. To reuse,
+                     paste this markup somewhere with more breathing room than the hero text block.
+                <svg class="hero-orbit" viewBox="0 0 600 600" aria-hidden="true">
+                    <ellipse class="hero-orbit-path" cx="300" cy="300" rx="270" ry="95" />
+                    <g class="hero-orbit-body">
+                        <animateMotion dur="24s" repeatCount="indefinite"
+                            path="M30,300 A270,95 0 1,1 570,300 A270,95 0 1,1 30,300" />
+                        <circle class="hero-orbit-glow" r="10" cx="0" cy="0" />
+                        <circle class="hero-orbit-planet" r="4" cx="0" cy="0" />
+                    </g>
+                </svg>
+                -->
             </div>
 
             <!-- Hero Content -->
