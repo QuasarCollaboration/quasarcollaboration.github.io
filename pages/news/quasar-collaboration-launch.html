@@ -71,13 +71,13 @@
         window.tailwindCSS = { ...window.tailwindCSS, suppressWarnings: true };
     </script>
     <script>
-        // Anti-Flicker & Default Light Mode
+        // Anti-Flicker & Default Dark Mode
         (function () {
             const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                document.documentElement.classList.add('dark-mode');
-            } else {
+            if (savedTheme === 'light') {
                 document.documentElement.classList.remove('dark-mode');
+            } else {
+                document.documentElement.classList.add('dark-mode');
             }
         })();
     </script>
