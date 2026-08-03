@@ -1,9 +1,8 @@
 // Hero Cosmos: builds an individually-twinkling starfield for the homepage
-// hero. Each star twinkles gently on its own schedule, and while the
-// visitor's cursor is over the hero, a randomized handful of stars flare
-// noticeably brighter every so often. Also drives a very light cursor-based
-// parallax on the whole field. No-ops safely if the hero markup isn't
-// present (i.e. on any other page).
+// hero. Each star twinkles gently on its own schedule, and a randomized
+// handful periodically sparkle into a brighter 4-point flare. Hovering the
+// hero densifies the sparkles; a light cursor parallax drifts the field.
+// No-ops safely if the hero markup isn't present (i.e. on any other page).
 (function () {
     'use strict';
 
@@ -36,55 +35,87 @@
         star.style.setProperty('--peak-opacity', peakOpacity.toFixed(2));
         star.style.setProperty('--duration', randomBetween(4, 9).toFixed(2) + 's');
         star.style.setProperty('--delay', randomBetween(0, 8).toFixed(2) + 's');
+        star.dataset.size = String(size);
 
         fragment.appendChild(star);
         stars.push(star);
     }
     starfield.appendChild(fragment);
 
-    if (prefersReducedMotion) return;
-
-    // While hovering, repeatedly light up a different random selection of
-    // stars for a brief "twinkle flare" — never all of them at once.
+    // Ambient sparkles always run (including under prefers-reduced-motion).
+    // Reduced motion only skips continuous twinkle + parallax; occasional
+    // flares are opacity-led via CSS and remain gentle.
     let flareTimer = null;
     const flareTimeouts = new Set();
+    let hovering = false;
 
-    function flareRandomStars() {
-        const count = Math.max(3, Math.round(stars.length * randomBetween(0.05, 0.09)));
-        const pool = stars.slice();
+    function sparkleCount() {
+        if (prefersReducedMotion) {
+            return Math.max(2, Math.round(stars.length * 0.03));
+        }
+        const fraction = hovering ? randomBetween(0.07, 0.11) : randomBetween(0.04, 0.07);
+        return Math.max(4, Math.round(stars.length * fraction));
+    }
+
+    function sparkleIntervalMs() {
+        if (prefersReducedMotion) return 1800;
+        return hovering ? 650 : 1100;
+    }
+
+    function pickSparkleStars(count) {
+        // Prefer slightly larger stars so the 4-point flare reads clearly.
+        const ranked = stars.slice().sort((a, b) => {
+            return (parseFloat(b.dataset.size) || 0) - (parseFloat(a.dataset.size) || 0);
+        });
+        const preferred = ranked.slice(0, Math.ceil(stars.length * 0.45));
+        const pool = preferred.slice();
+        const picked = [];
         for (let i = 0; i < count && pool.length; i++) {
             const index = Math.floor(Math.random() * pool.length);
-            const star = pool.splice(index, 1)[0];
+            picked.push(pool.splice(index, 1)[0]);
+        }
+        return picked;
+    }
+
+    function flareRandomStars() {
+        const chosen = pickSparkleStars(sparkleCount());
+        chosen.forEach((star) => {
+            if (star.classList.contains('is-flare')) return;
+            star.classList.remove('is-flare');
+            // Retrigger CSS animation if this star sparkled recently.
+            void star.offsetWidth;
             star.classList.add('is-flare');
-            const holdTime = randomBetween(750, 1150);
+            const holdTime = prefersReducedMotion ? 900 : randomBetween(850, 1200);
             const timeoutId = setTimeout(() => {
                 star.classList.remove('is-flare');
                 flareTimeouts.delete(timeoutId);
             }, holdTime);
             flareTimeouts.add(timeoutId);
-        }
+        });
     }
 
-    function stopFlaring() {
+    function restartFlareLoop() {
         if (flareTimer) {
             clearInterval(flareTimer);
             flareTimer = null;
         }
-        // Stop immediately rather than letting already-scheduled flares
-        // linger and fade out on their own — hovering away should visibly
-        // settle the starfield right away.
-        flareTimeouts.forEach((id) => clearTimeout(id));
-        flareTimeouts.clear();
-        stars.forEach((star) => star.classList.remove('is-flare'));
+        flareRandomStars();
+        flareTimer = setInterval(flareRandomStars, sparkleIntervalMs());
     }
 
+    restartFlareLoop();
+
     hero.addEventListener('mouseenter', function () {
-        stopFlaring();
-        flareRandomStars();
-        flareTimer = setInterval(flareRandomStars, 750);
+        hovering = true;
+        restartFlareLoop();
     });
 
-    hero.addEventListener('mouseleave', stopFlaring);
+    hero.addEventListener('mouseleave', function () {
+        hovering = false;
+        restartFlareLoop();
+    });
+
+    if (prefersReducedMotion) return;
 
     // Subtle cursor parallax for the whole starfield.
     const MAX_OFFSET = 16;
