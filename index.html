@@ -150,9 +150,10 @@
                     class="w-full h-full object-cover opacity-60">
             </div> -->
 
-            <!-- Cosmic Background Effects: an individually-twinkling starfield, gently animated.
-                 A random handful of stars sparkle into 4-point flares on their own (denser while
-                 hovering — see hero-cosmos.js). Also responds subtly to cursor movement via --mx/--my. -->
+            <!-- Cosmic Background Effects: a gently twinkling starfield, plus 6 curated
+                 "spark stars" that pulse in sync (see hero-cosmos.js). Click each spark star
+                 to light it; find all of them to open a hidden page. Also responds subtly
+                 to cursor movement via --mx/--my. -->
             <div id="hero-cosmos" class="absolute inset-0 z-0 hero-cosmos">
                 <!-- Nebular Glows -->
                 <div
@@ -182,8 +183,9 @@
                 -->
             </div>
 
-            <!-- Hero Content -->
-            <div class="relative z-10 px-6 py-20 md:py-32 text-center max-w-5xl mx-auto">
+            <!-- Hero Content: pointer-events-none so spark stars in the sky remain clickable;
+                 re-enable on interactive controls only. -->
+            <div class="relative z-10 px-6 py-20 md:py-32 text-center max-w-5xl mx-auto pointer-events-none">
                 <h2
                     class="text-5xl md:text-7xl font-display font-bold text-white mb-8 tracking-tight leading-tight drop-shadow-lg">
                     QUASAR <span
@@ -199,7 +201,7 @@
 
                 <div class="flex flex-col items-center gap-4 sm:gap-5">
                     <a href="#key-links"
-                        class="inline-flex items-center justify-center px-8 py-4 rounded-xl font-semibold text-base text-white bg-indigo-600 hover:bg-indigo-500 border border-indigo-400/70 transition-all duration-200 hover:-translate-y-1 shadow-lg hover:shadow-indigo-500/40">
+                        class="pointer-events-auto inline-flex items-center justify-center px-8 py-4 rounded-xl font-semibold text-base text-white bg-indigo-600 hover:bg-indigo-500 border border-indigo-400/70 transition-all duration-200 hover:-translate-y-1 shadow-lg hover:shadow-indigo-500/40">
                         Explore QUASAR
                     </a>
                 </div>

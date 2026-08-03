@@ -1,118 +1,177 @@
-// Hero Cosmos: builds an individually-twinkling starfield for the homepage
-// hero. Each star twinkles gently on its own schedule, and a randomized
-// handful periodically sparkle into a brighter 4-point flare. Hovering the
-// hero densifies the sparkles; a light cursor parallax drifts the field.
+// Hero Cosmos: builds a gently twinkling starfield for the homepage hero,
+// plus a curated set of "spark stars" that pulse in sync. Finding and
+// clicking every spark star opens a hidden page (first light).
 // No-ops safely if the hero markup isn't present (i.e. on any other page).
 (function () {
     'use strict';
 
     const hero = document.getElementById('hero');
+    const cosmos = document.getElementById('hero-cosmos');
     const starfield = document.getElementById('hero-starfield');
-    if (!hero || !starfield) return;
+    if (!hero || !cosmos || !starfield) return;
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const STAR_COUNT = 150;
-    const stars = [];
+    // Preset spark stars — slightly inset from the edges, uneven L/R placement,
+    // with the lower pair sitting farther down the panel (still above the CTA).
+    const SPARK_STARS = [
+        { x: 16, y: 15, size: 5.4 }, // upper-left
+        { x: 84, y: 20, size: 5.1 }, // upper-right (offset lower than left)
+        { x: 11, y: 36, size: 5.0 }, // mid-left
+        { x: 89, y: 31, size: 5.5 }, // mid-right (offset higher than left)
+        { x: 18, y: 64, size: 5.3 }, // lower-left
+        { x: 78, y: 68, size: 5.2 }  // lower-right (farther down, inset more)
+    ];
+
+    const HIDDEN_PAGE_URL = 'pages/first-light.html';
+    const BACKGROUND_STAR_COUNT = 140;
+    // Hit target = star radius + a few px of padding (not a large magnet).
+    const CLICK_PADDING_PX = 5;
+
+    const sparkStars = [];
 
     function randomBetween(min, max) {
         return min + Math.random() * (max - min);
     }
 
-    const fragment = document.createDocumentFragment();
-    for (let i = 0; i < STAR_COUNT; i++) {
+    function tooCloseToSpark(x, y) {
+        return SPARK_STARS.some((spark) => {
+            return Math.hypot(x - spark.x, y - spark.y) < 4.5;
+        });
+    }
+
+    function createStar(options) {
         const star = document.createElement('span');
-        star.className = 'hero-star';
+        star.className = options.className;
+        star.style.setProperty('--x', options.x.toFixed(2) + '%');
+        star.style.setProperty('--y', options.y.toFixed(2) + '%');
+        star.style.setProperty('--size', options.size.toFixed(2) + 'px');
+        star.style.setProperty('--base-opacity', options.baseOpacity.toFixed(2));
+        star.style.setProperty('--peak-opacity', options.peakOpacity.toFixed(2));
+        if (options.duration != null) {
+            star.style.setProperty('--duration', options.duration.toFixed(2) + 's');
+        }
+        if (options.delay != null) {
+            star.style.setProperty('--delay', options.delay.toFixed(2) + 's');
+        }
+        star.dataset.x = String(options.x);
+        star.dataset.y = String(options.y);
+        star.dataset.size = String(options.size);
+        if (options.index != null) {
+            star.dataset.sparkIndex = String(options.index);
+        }
+        return star;
+    }
 
-        const size = randomBetween(1.4, 3.4);
-        const baseOpacity = randomBetween(0.15, 0.45);
-        const peakOpacity = Math.min(0.85, baseOpacity + randomBetween(0.2, 0.4));
+    const fragment = document.createDocumentFragment();
 
-        star.style.setProperty('--x', randomBetween(0, 100).toFixed(2) + '%');
-        star.style.setProperty('--y', randomBetween(0, 100).toFixed(2) + '%');
-        star.style.setProperty('--size', size.toFixed(2) + 'px');
-        star.style.setProperty('--base-opacity', baseOpacity.toFixed(2));
-        star.style.setProperty('--peak-opacity', peakOpacity.toFixed(2));
-        star.style.setProperty('--duration', randomBetween(4, 9).toFixed(2) + 's');
-        star.style.setProperty('--delay', randomBetween(0, 8).toFixed(2) + 's');
-        star.dataset.size = String(size);
+    for (let i = 0; i < BACKGROUND_STAR_COUNT; i++) {
+        let x;
+        let y;
+        let attempts = 0;
+        do {
+            x = randomBetween(0, 100);
+            y = randomBetween(0, 100);
+            attempts += 1;
+        } while (tooCloseToSpark(x, y) && attempts < 12);
 
+        const size = randomBetween(1.3, 3.0);
+        const baseOpacity = randomBetween(0.12, 0.4);
+        fragment.appendChild(createStar({
+            className: 'hero-star',
+            x: x,
+            y: y,
+            size: size,
+            baseOpacity: baseOpacity,
+            peakOpacity: Math.min(0.7, baseOpacity + randomBetween(0.15, 0.3)),
+            duration: randomBetween(4, 9),
+            delay: randomBetween(0, 8)
+        }));
+    }
+
+    SPARK_STARS.forEach((preset, index) => {
+        const star = createStar({
+            className: 'hero-star hero-star--spark',
+            x: preset.x,
+            y: preset.y,
+            size: preset.size,
+            baseOpacity: 0.88,
+            peakOpacity: 1,
+            index: index
+        });
         fragment.appendChild(star);
-        stars.push(star);
-    }
-    starfield.appendChild(fragment);
-
-    // Ambient sparkles always run (including under prefers-reduced-motion).
-    // Reduced motion only skips continuous twinkle + parallax; occasional
-    // flares are opacity-led via CSS and remain gentle.
-    let flareTimer = null;
-    const flareTimeouts = new Set();
-    let hovering = false;
-
-    function sparkleCount() {
-        if (prefersReducedMotion) {
-            return Math.max(2, Math.round(stars.length * 0.03));
-        }
-        const fraction = hovering ? randomBetween(0.07, 0.11) : randomBetween(0.04, 0.07);
-        return Math.max(4, Math.round(stars.length * fraction));
-    }
-
-    function sparkleIntervalMs() {
-        if (prefersReducedMotion) return 1800;
-        return hovering ? 650 : 1100;
-    }
-
-    function pickSparkleStars(count) {
-        // Prefer slightly larger stars so the 4-point flare reads clearly.
-        const ranked = stars.slice().sort((a, b) => {
-            return (parseFloat(b.dataset.size) || 0) - (parseFloat(a.dataset.size) || 0);
-        });
-        const preferred = ranked.slice(0, Math.ceil(stars.length * 0.45));
-        const pool = preferred.slice();
-        const picked = [];
-        for (let i = 0; i < count && pool.length; i++) {
-            const index = Math.floor(Math.random() * pool.length);
-            picked.push(pool.splice(index, 1)[0]);
-        }
-        return picked;
-    }
-
-    function flareRandomStars() {
-        const chosen = pickSparkleStars(sparkleCount());
-        chosen.forEach((star) => {
-            if (star.classList.contains('is-flare')) return;
-            star.classList.remove('is-flare');
-            // Retrigger CSS animation if this star sparkled recently.
-            void star.offsetWidth;
-            star.classList.add('is-flare');
-            const holdTime = prefersReducedMotion ? 900 : randomBetween(850, 1200);
-            const timeoutId = setTimeout(() => {
-                star.classList.remove('is-flare');
-                flareTimeouts.delete(timeoutId);
-            }, holdTime);
-            flareTimeouts.add(timeoutId);
-        });
-    }
-
-    function restartFlareLoop() {
-        if (flareTimer) {
-            clearInterval(flareTimer);
-            flareTimer = null;
-        }
-        flareRandomStars();
-        flareTimer = setInterval(flareRandomStars, sparkleIntervalMs());
-    }
-
-    restartFlareLoop();
-
-    hero.addEventListener('mouseenter', function () {
-        hovering = true;
-        restartFlareLoop();
+        sparkStars.push(star);
     });
 
-    hero.addEventListener('mouseleave', function () {
-        hovering = false;
-        restartFlareLoop();
+    starfield.appendChild(fragment);
+
+    // ---- Easter egg: click every spark star → open the hidden page ----
+    const foundSet = new Set();
+    let eggActive = false;
+
+    function starClientPosition(star) {
+        const rect = star.getBoundingClientRect();
+        return {
+            x: rect.left + rect.width / 2,
+            y: rect.top + rect.height / 2
+        };
+    }
+
+    function clickRadiusFor(star) {
+        const size = parseFloat(star.dataset.size) || 4;
+        return size / 2 + CLICK_PADDING_PX;
+    }
+
+    function findNearestSparkStar(clientX, clientY) {
+        let best = null;
+        let bestDist = Infinity;
+        for (let i = 0; i < sparkStars.length; i++) {
+            const star = sparkStars[i];
+            const pos = starClientPosition(star);
+            const dist = Math.hypot(clientX - pos.x, clientY - pos.y);
+            const maxDist = clickRadiusFor(star);
+            if (dist <= maxDist && dist < bestDist) {
+                bestDist = dist;
+                best = star;
+            }
+        }
+        return best;
+    }
+
+    function updateSparkCursor(clientX, clientY) {
+        starfield.style.cursor = findNearestSparkStar(clientX, clientY) ? 'pointer' : 'default';
+    }
+
+    function triggerEasterEgg() {
+        if (eggActive) return;
+        eggActive = true;
+        // Brief beat so the last picked star can light before navigation.
+        const delayMs = prefersReducedMotion ? 120 : 420;
+        setTimeout(function () {
+            window.location.href = HIDDEN_PAGE_URL;
+        }, delayMs);
+    }
+
+    starfield.addEventListener('mousemove', function (event) {
+        updateSparkCursor(event.clientX, event.clientY);
+    });
+
+    starfield.addEventListener('mouseleave', function () {
+        starfield.style.cursor = 'default';
+    });
+
+    starfield.addEventListener('click', function (event) {
+        if (eggActive) return;
+
+        const star = findNearestSparkStar(event.clientX, event.clientY);
+        if (!star || foundSet.has(star)) return;
+
+        foundSet.add(star);
+        star.classList.add('is-picked');
+
+        if (foundSet.size >= sparkStars.length) {
+            triggerEasterEgg();
+        }
     });
 
     if (prefersReducedMotion) return;
