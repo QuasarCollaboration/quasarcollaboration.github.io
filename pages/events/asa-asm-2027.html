@@ -155,21 +155,101 @@
             border-color: var(--glass-border);
         }
 
-        .ev-accordion summary {
-            list-style: none;
-            cursor: pointer;
+        .ev-card-grid {
+            display: grid;
+            gap: 1rem;
         }
 
-        .ev-accordion summary::-webkit-details-marker {
-            display: none;
+        .ev-card {
+            position: relative;
+            padding: 1.5rem 1.35rem 1.45rem;
+            border-radius: 1.1rem;
+            border: 1px solid var(--glass-border);
+            background: color-mix(in srgb, var(--glass-bg) 88%, transparent);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition:
+                border-color 0.28s ease,
+                background 0.28s ease,
+                transform 0.28s ease,
+                box-shadow 0.28s ease;
         }
 
-        .ev-accordion summary .ev-chevron {
-            transition: transform 0.25s ease;
+        .ev-card::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto;
+            height: 2px;
+            border-radius: 1.1rem 1.1rem 0 0;
+            background: linear-gradient(
+                90deg,
+                transparent 0%,
+                color-mix(in srgb, var(--accent-primary) 75%, white) 35%,
+                color-mix(in srgb, var(--accent-primary) 35%, transparent) 100%
+            );
+            opacity: 0.55;
+            transition: opacity 0.28s ease;
         }
 
-        .ev-accordion[open] summary .ev-chevron {
-            transform: rotate(180deg);
+        .ev-card__title {
+            font-family: Outfit, sans-serif;
+            font-weight: 700;
+            font-size: 1.15rem;
+            line-height: 1.3;
+            color: var(--text-primary);
+            margin: 0 0 0.65rem;
+        }
+
+        .ev-card__body {
+            margin: 0;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            font-size: 0.975rem;
+        }
+
+        .ev-card--spotlight {
+            padding: 1.75rem 1.5rem;
+        }
+
+        .ev-card--spotlight .ev-card__label {
+            margin: 0 0 0.5rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--accent-primary);
+        }
+
+        .ev-card--spotlight .ev-card__title {
+            font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+            margin-bottom: 0;
+            max-width: 36rem;
+        }
+
+        @media (min-width: 768px) {
+            .ev-card-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 1.15rem;
+            }
+
+            .ev-card-grid--two {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .ev-card {
+                padding: 1.7rem 1.5rem 1.65rem;
+            }
+
+            .ev-card:hover {
+                border-color: color-mix(in srgb, var(--accent-primary) 42%, var(--glass-border));
+                background: color-mix(in srgb, var(--accent-primary) 7%, var(--glass-bg));
+                transform: translateY(-3px);
+                box-shadow: 0 14px 36px -22px color-mix(in srgb, var(--accent-primary) 55%, transparent);
+            }
+
+            .ev-card:hover::before {
+                opacity: 1;
+            }
         }
 
         .ev-tab.is-active {
@@ -347,6 +427,15 @@
                 animation: none !important;
             }
 
+            .ev-card {
+                transition: none;
+            }
+
+            .ev-card:hover {
+                transform: none;
+                box-shadow: none;
+            }
+
             .ev-reveal {
                 opacity: 1;
                 transform: none;
@@ -454,30 +543,24 @@
                 </div>
 
                 <div class="mt-12 border-t ev-rule pt-10">
-                    <p class="text-sm text-slate-500 mb-4">Programme focus</p>
-                    <div class="space-y-3 ev-accordion-group">
-                        <details class="ev-accordion group border-b ev-rule pb-3">
-                            <summary class="flex items-center justify-between gap-4 py-3 text-slate-800 font-display font-bold text-lg">
-                                Advanced Scientific Computing &amp; Data Infrastructure
-                                <span class="ev-chevron text-indigo-600 text-sm" aria-hidden="true">▾</span>
-                            </summary>
-                            <p class="pb-4 text-slate-600 leading-relaxed max-w-2xl">
+                    <p class="text-sm text-slate-500 mb-6">Programme focus</p>
+                    <div class="ev-card-grid ev-card-grid--two">
+                        <article class="ev-card">
+                            <h3 class="ev-card__title">Advanced Scientific Computing &amp; Data Infrastructure</h3>
+                            <p class="ev-card__body">
                                 Modular software toolkits, heterogeneous CPU/GPU architectures, green computing,
                                 and AI in science.
                             </p>
-                        </details>
-                        <details class="ev-accordion group border-b ev-rule pb-3">
-                            <summary class="flex items-center justify-between gap-4 py-3 text-slate-800 font-display font-bold text-lg">
-                                Community, Culture &amp; Diversity
-                                <span class="ev-chevron text-indigo-600 text-sm" aria-hidden="true">▾</span>
-                            </summary>
-                            <p class="pb-4 text-slate-600 leading-relaxed max-w-2xl">
+                        </article>
+                        <article class="ev-card">
+                            <h3 class="ev-card__title">Community, Culture &amp; Diversity</h3>
+                            <p class="ev-card__body">
                                 Inspiring future scientists, equity initiatives, and elevating Aboriginal and
                                 Torres Strait Islander astronomy.
                             </p>
-                        </details>
+                        </article>
                     </div>
-                    <p class="mt-8 text-slate-600 leading-relaxed max-w-2xl">
+                    <p class="mt-10 text-slate-600 leading-relaxed max-w-2xl">
                         Beyond these focus areas, the programme will cover the full breadth of Australian astronomy,
                         from stars and galaxies to cosmology, extreme physics, and planetary systems, drawing
                         expertise from research groups nationwide.
@@ -556,37 +639,28 @@
                 </div>
 
                 <div id="travel" class="scroll-mt-24">
-                    <h3 class="font-display font-bold text-xl text-slate-800 mb-4">Getting there &amp; staying</h3>
-                    <div class="space-y-2">
-                        <details class="ev-accordion border-b ev-rule">
-                            <summary class="flex items-center justify-between gap-4 py-4 font-semibold text-slate-800">
-                                From the airport
-                                <span class="ev-chevron text-indigo-600 text-sm" aria-hidden="true">▾</span>
-                            </summary>
-                            <p class="pb-4 text-slate-600 leading-relaxed max-w-2xl">
+                    <h3 class="font-display font-bold text-xl text-slate-800 mb-6">Getting there &amp; staying</h3>
+                    <div class="ev-card-grid">
+                        <article class="ev-card">
+                            <h3 class="ev-card__title">From the airport</h3>
+                            <p class="ev-card__body">
                                 About 30&ndash;40 minutes by taxi or rideshare, or take the Airtrain to the CBD.
                             </p>
-                        </details>
-                        <details class="ev-accordion border-b ev-rule">
-                            <summary class="flex items-center justify-between gap-4 py-4 font-semibold text-slate-800">
-                                Getting around
-                                <span class="ev-chevron text-indigo-600 text-sm" aria-hidden="true">▾</span>
-                            </summary>
-                            <p class="pb-4 text-slate-600 leading-relaxed max-w-2xl">
+                        </article>
+                        <article class="ev-card">
+                            <h3 class="ev-card__title">Getting around</h3>
+                            <p class="ev-card__body">
                                 Flat 50¢ fares across the Translink network make ferry, metro, and bus trips between
                                 the venue, South Bank, and the CBD simple and affordable.
                             </p>
-                        </details>
-                        <details class="ev-accordion border-b ev-rule">
-                            <summary class="flex items-center justify-between gap-4 py-4 font-semibold text-slate-800">
-                                Where to stay
-                                <span class="ev-chevron text-indigo-600 text-sm" aria-hidden="true">▾</span>
-                            </summary>
-                            <p class="pb-4 text-slate-600 leading-relaxed max-w-2xl">
+                        </article>
+                        <article class="ev-card">
+                            <h3 class="ev-card__title">Where to stay</h3>
+                            <p class="ev-card__body">
                                 CBD and South Bank options such as ibis Styles Brisbane Elizabeth Street,
                                 Mantra South Bank, and Rydges South Bank.
                             </p>
-                        </details>
+                        </article>
                     </div>
                 </div>
             </section>
