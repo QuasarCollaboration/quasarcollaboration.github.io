@@ -1,50 +1,12 @@
 /**
  * Shared UX for ASA ASM / HWSA event landing pages.
- * Features: mobile page index, .ics download, hero parallax, constellation trail, theme orbit.
+ * Features: mobile page index, hero parallax, constellation trail, theme orbit.
  */
 (function () {
     'use strict';
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-
-    function downloadIcs(event) {
-        const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
-        const lines = [
-            'BEGIN:VCALENDAR',
-            'VERSION:2.0',
-            'PRODID:-//QUASAR Collaboration//Event Pages//EN',
-            'CALSCALE:GREGORIAN',
-            'METHOD:PUBLISH',
-            'BEGIN:VEVENT',
-            'UID:' + (event.uid || (event.filename + '@quasarcollaboration.github.io')),
-            'DTSTAMP:' + stamp,
-            'DTSTART;VALUE=DATE:' + event.start,
-            'DTEND;VALUE=DATE:' + event.end,
-            'SUMMARY:' + escapeIcs(event.title),
-            'DESCRIPTION:' + escapeIcs(event.description || ''),
-            'LOCATION:' + escapeIcs(event.location || ''),
-            'URL:' + escapeIcs(event.url || window.location.href),
-            'END:VEVENT',
-            'END:VCALENDAR',
-        ];
-        const blob = new Blob([lines.join('\r\n')], { type: 'text/calendar;charset=utf-8' });
-        const a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
-        a.download = event.filename || 'event.ics';
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        setTimeout(() => URL.revokeObjectURL(a.href), 1000);
-    }
-
-    function escapeIcs(value) {
-        return String(value)
-            .replace(/\\/g, '\\\\')
-            .replace(/\n/g, '\\n')
-            .replace(/,/g, '\\,')
-            .replace(/;/g, '\\;');
-    }
 
     function initMobileIndex() {
         const nav = document.querySelector('.ev-nav');
@@ -216,16 +178,6 @@
         orbit.classList.add('ev-orbit-live');
     }
 
-    function initCalendarButtons(config) {
-        if (!config) return;
-        document.querySelectorAll('[data-add-to-calendar]').forEach((btn) => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                downloadIcs(config);
-            });
-        });
-    }
-
     window.EventPage = {
         init(options) {
             options = options || {};
@@ -233,7 +185,6 @@
             initParallax();
             initConstellation();
             if (options.orbit) initOrbit();
-            initCalendarButtons(options.calendar);
         },
     };
 })();

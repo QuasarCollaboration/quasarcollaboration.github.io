@@ -278,6 +278,10 @@
             color: var(--accent-primary);
         }
 
+        .ev-title-year {
+            color: #c4b5fd;
+        }
+
         @media (max-width: 767px) {
             .ev-nav-toggle {
                 display: flex;
@@ -333,7 +337,7 @@
                     Ahead of ASA ASM 2027 · Hosted by QUASAR
                 </p>
                 <h1 class="font-display font-bold text-white tracking-tight leading-[0.95] text-4xl sm:text-5xl md:text-7xl max-w-4xl mb-6">
-                    Harley Wood<br class="hidden sm:block"> School for Astronomy
+                    HWSA <span class="ev-title-year">2027</span>
                 </h1>
                 <p class="text-white/80 text-lg md:text-xl max-w-xl leading-relaxed mb-8 font-light">
                     The ASA postgraduate school, 2&ndash;4 July 2027, right before the Annual Scientific Meeting.
@@ -343,10 +347,6 @@
                         class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-slate-900 font-semibold hover:bg-slate-100 transition-colors">
                         Dates &amp; schedule
                     </a>
-                    <button type="button" data-add-to-calendar
-                        class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/30 text-white font-semibold hover:bg-white/10 transition-colors">
-                        Add to calendar
-                    </button>
                 </div>
             </div>
         </section>
@@ -618,18 +618,7 @@
                 reveals.forEach((el) => el.classList.add('is-in'));
             }
 
-            EventPage.init({
-                calendar: {
-                    title: 'Harley Wood School for Astronomy 2027',
-                    start: '20270702',
-                    end: '20270705',
-                    location: 'Southeast Queensland (venue TBC)',
-                    description: 'Harley Wood School for Astronomy 2027, hosted by the QUASAR Collaboration, ahead of ASA ASM 2027.',
-                    filename: 'hwsa-2027.ics',
-                    uid: 'hwsa-2027@quasarcollaboration.github.io',
-                    url: 'https://quasarcollaboration.github.io/pages/events/hwsa-2027.html',
-                },
-            });
+            EventPage.init();
         })();
     </script>
 </body>
