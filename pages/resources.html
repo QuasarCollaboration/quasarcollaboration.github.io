@@ -121,6 +121,50 @@
                     <p class="text-sm text-slate-600 mt-1">Talks and presentations from QUASAR meetings.</p>
                 </div>
 
+                <details id="2026-08-10-specml-seminar"
+                    class="resource-card resource-collapse js-resource-entry glass-panel rounded-2xl shadow-md border border-indigo-50">
+                    <summary class="resource-collapse-summary">
+                        <div class="resource-collapse-heading">
+                            <div class="min-w-0">
+                                <h3 class="text-xl md:text-2xl font-bold text-slate-800 mb-2">SpecML: A Foundational
+                                    Transformer-Based Model for Interpreting Galaxy Spectra and Predicting Source
+                                    Classification and Galaxy Property Estimations</h3>
+                                <div
+                                    class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs resource-meta-muted">
+                                    <span class="resource-chip">Seminar</span>
+                                    <span aria-hidden="true">·</span>
+                                    <span>Via Zoom</span>
+                                    <span aria-hidden="true">·</span>
+                                    <time datetime="2026-08-10">August 10, 2026</time>
+                                </div>
+                            </div>
+                            <svg class="resource-collapse-chevron w-5 h-5" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <polyline points="6 9 12 15 18 9" />
+                            </svg>
+                        </div>
+                    </summary>
+
+                    <div class="resource-collapse-body space-y-4 pt-4">
+                        <p class="text-sm font-medium text-indigo-600">Carmen Martinez Harris</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Galaxy spectra encode detailed information including redshift, ionisation conditions, metallicity and stellar content, but the features needed to recover these quantities are often faint, blended or unmeasurable in faint and distant sources, and labelled training data remains limited. We present SpecML, a self supervised foundation model that learns general representations of galaxy spectra from unlabelled data and transfers them to tasks where labels are scarce. SpecML adapts the OmniSpectra architecture for use with JWST NIRSpec prism spectra drawn from the DAWN archive. Each spectrum is tokenised into overlapping flux patches, and a sinusoidal encoding of mean patch wavelength supplies global positional information. The model is pretrained with a masked reconstruction objective using a validity aware transformer that adds local structure through a depthwise convolution, allowing it to process variable length spectra at native resolution and to reconstruct masked regions from surrounding context. We assess the learned representations with downstream probes. SpecML recovers redshift with a coefficient of determination of 0.936 and a NMAD of 0.035 across 10746 sources, with the largest scatter confined to the low redshift population. We extend the same representations to source classification and galaxy property estimation, and test whether SpecML can predict the evolution of star forming galaxies and active galactic nuclei on the BPT diagram beyond z = 3, where the diagnostic lines typically become difficult to measure directly. These results show that self supervised pretraining recovers physically meaningful information that would otherwise require strong individual line detections.
+                        </p>
+
+                        <div>
+                            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Recording</p>
+                            <div class="resource-recording">
+                                <iframe src="https://www.youtube.com/embed/Zx2PmBUcTqE?si=r56CDaKXMaR1dV47"
+                                    title="SpecML: A Foundational Transformer-Based Model for Interpreting Galaxy Spectra — QUASAR seminar recording"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+                                    loading="lazy"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
                 <details id="2026-05-11-astrophysics-queensland"
                     class="resource-card resource-collapse js-resource-entry glass-panel rounded-2xl shadow-md border border-indigo-50">
                     <summary class="resource-collapse-summary">
