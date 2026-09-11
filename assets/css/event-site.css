@@ -66,6 +66,8 @@ body::before {
         linear-gradient(90deg, rgba(105, 212, 232, 0.055) 1px, transparent 1px),
         linear-gradient(rgba(105, 212, 232, 0.04) 1px, transparent 1px);
     background-size: 5rem 5rem;
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 42%, rgba(0, 0, 0, 0.7) 72%, transparent 112%);
+    mask-image: radial-gradient(ellipse at center, #000 42%, rgba(0, 0, 0, 0.7) 72%, transparent 112%);
 }
 
 body::after {
@@ -175,6 +177,59 @@ a {
     gap: 1.25rem;
 }
 
+.ev-brand-lockup {
+    display: flex;
+    align-items: center;
+    gap: 0.72rem;
+    flex: 0 0 auto;
+}
+
+.ev-quasar-return {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.42rem;
+    padding: 0.48rem 0.56rem;
+    margin-left: -0.56rem;
+    border-radius: 999px;
+    color: var(--ev-text-muted);
+    font-size: 0.67rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+.ev-quasar-return::after {
+    content: "";
+    position: absolute;
+    inset: 50% auto auto 0.42rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 1px solid var(--ev-cyan);
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-20%, -50%) scale(0.45);
+    transition: opacity 220ms ease, transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ev-quasar-return:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.07);
+    transform: translateX(-2px);
+}
+
+.ev-quasar-return:hover::after {
+    opacity: 0.42;
+    transform: translate(-20%, -50%) scale(1);
+}
+
+.ev-brand-divider {
+    color: rgba(197, 208, 223, 0.24);
+    font-weight: 300;
+}
+
 .ev-wordmark {
     display: inline-flex;
     align-items: center;
@@ -240,6 +295,23 @@ a {
 
 .ev-header__desktop > a[data-nav-link]:not(.ev-header__cta) {
     position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.ev-header__desktop > a[data-nav-link]:not(.ev-header__cta)::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 2.6rem;
+    height: 2.6rem;
+    top: 50%;
+    left: 50%;
+    border: 1px solid rgba(105, 212, 232, 0.22);
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.25);
+    transition: opacity 180ms ease, transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .ev-header__desktop > a[data-nav-link]:not(.ev-header__cta)::after {
@@ -252,10 +324,18 @@ a {
     border-radius: 2px;
     background: var(--ev-cyan);
     transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 220ms ease;
+    transform-origin: center;
+    box-shadow: 0 0 0.6rem color-mix(in srgb, var(--ev-cyan) 55%, transparent);
+    transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.ev-header__desktop > a[data-nav-link]:not(.ev-header__cta):hover::before,
+.ev-header__desktop > a[data-nav-link][aria-current="location"]::before {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.ev-header__desktop > a[data-nav-link]:not(.ev-header__cta):hover::after,
 .ev-header__desktop > a[data-nav-link][aria-current="location"]::after {
     transform: scaleX(1);
 }
@@ -407,7 +487,10 @@ a {
     max-height: calc(100dvh - var(--ev-nav-height));
     overflow-y: auto;
     border-top: 1px solid var(--ev-border);
-    background: rgba(7, 17, 31, 0.98);
+    background:
+        radial-gradient(circle at 12% 88%, color-mix(in srgb, var(--ev-accent) 10%, transparent), transparent 18rem),
+        #07111f;
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.42);
 }
 
 .ev-mobile-menu nav {
@@ -445,6 +528,19 @@ a {
     border: 1px solid var(--ev-border-strong);
     border-radius: 0.7rem;
     color: var(--ev-cyan);
+}
+
+.ev-mobile-menu .ev-mobile-menu__parent {
+    margin-top: 0.5rem;
+    padding-inline: 0.9rem;
+    border-bottom: 0;
+    color: var(--ev-accent-bright);
+    font-size: 0.9rem;
+}
+
+.ev-mobile-menu .ev-mobile-menu__parent::after {
+    content: "↖";
+    color: currentColor;
 }
 
 /* Hero */
@@ -495,6 +591,7 @@ a {
     font-weight: 800;
     letter-spacing: -0.06em;
     line-height: 0.92;
+    text-shadow: 0 0 3.5rem rgba(180, 156, 255, 0.1);
 }
 
 .ev-hero__lead {
@@ -876,7 +973,11 @@ html:not(.ev-chapters-ready) .ev-chapter > section + section {
 
 .ev-card {
     padding: 1.55rem;
-    transition: border-color 220ms ease, transform 220ms ease, background-color 220ms ease;
+    transition:
+        border-color 220ms ease,
+        transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 220ms ease,
+        box-shadow 320ms ease;
 }
 
 .ev-card::before {
@@ -889,13 +990,38 @@ html:not(.ev-chapters-ready) .ev-chapter > section + section {
     transition: width 300ms ease;
 }
 
+.ev-card::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    width: 6.5rem;
+    height: 6.5rem;
+    right: -4rem;
+    bottom: -4rem;
+    border: 1px solid color-mix(in srgb, var(--ev-accent) 24%, transparent);
+    border-radius: 50%;
+    box-shadow: 0 0 0 1.1rem color-mix(in srgb, var(--ev-accent) 2.5%, transparent);
+    transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1), border-color 220ms ease;
+}
+
+.ev-card > * {
+    position: relative;
+    z-index: 1;
+}
+
 .ev-card:hover {
     border-color: var(--ev-border-strong);
-    transform: translateY(-3px);
+    transform: translateY(-4px) rotateX(1deg);
+    box-shadow: 0 22px 48px rgba(0, 0, 0, 0.18);
 }
 
 .ev-card:hover::before {
     width: 4rem;
+}
+
+.ev-card:hover::after {
+    border-color: color-mix(in srgb, var(--ev-cyan) 42%, transparent);
+    transform: translate(-1rem, -1rem) scale(1.18);
 }
 
 .ev-card__title {
@@ -1251,6 +1377,25 @@ event-footer {
         padding-inline: 1rem;
     }
 
+    .ev-brand-lockup {
+        gap: 0.48rem;
+    }
+
+    .ev-quasar-return {
+        margin-left: -0.45rem;
+        padding-inline: 0.45rem;
+        font-size: 0.62rem;
+    }
+
+    .ev-quasar-return__long,
+    .ev-brand-divider {
+        display: none;
+    }
+
+    .ev-wordmark {
+        font-size: 0.88rem;
+    }
+
     .ev-menu-button {
         position: absolute;
         top: 0.75rem;
@@ -1286,6 +1431,11 @@ event-footer {
 
     .ev-hero__visual {
         transform: none !important;
+    }
+
+    .ev-card:hover,
+    .ev-quasar-return:hover {
+        transform: none;
     }
 }
 

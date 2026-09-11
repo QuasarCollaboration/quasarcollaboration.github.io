@@ -86,7 +86,7 @@
         }
         window.tailwindCSS = { ...window.tailwindCSS, suppressWarnings: true };
     </script>
-    <link rel="stylesheet" href="../../assets/css/event-site.css">
+    <link rel="stylesheet" href="../../assets/css/event-site.css?v=20260911d">
     <noscript>
         <style>
             .ev-menu-button { display: none; }
@@ -101,10 +101,18 @@
 
     <header class="ev-header ev-header--hwsa" data-event-nav>
         <div class="ev-header__inner">
-            <a class="ev-wordmark" href="#top" aria-label="HWSA 2027 home">
-                <span class="ev-wordmark__mark" aria-hidden="true"></span>
-                <span>HWSA <strong>2027</strong></span>
-            </a>
+            <div class="ev-brand-lockup">
+                <a class="ev-quasar-return" href="../../index.html"
+                    aria-label="Return to the QUASAR Collaboration website">
+                    <span aria-hidden="true">←</span>
+                    <span>QUASAR<span class="ev-quasar-return__long"> Collaboration</span></span>
+                </a>
+                <span class="ev-brand-divider" aria-hidden="true">/</span>
+                <a class="ev-wordmark" href="#top" aria-label="HWSA 2027 home">
+                    <span class="ev-wordmark__mark" aria-hidden="true"></span>
+                    <span>HWSA <strong>2027</strong></span>
+                </a>
+            </div>
 
             <nav class="ev-header__desktop" aria-label="Primary navigation">
                 <a data-nav-link href="#overview">Overview</a>
@@ -130,6 +138,7 @@
                 <a data-nav-link href="#venue">Venue</a>
                 <a data-nav-link href="#community">Community</a>
                 <a class="ev-mobile-menu__sibling" href="asm.html" data-event-transition>Explore ASM 2027</a>
+                <a class="ev-mobile-menu__parent" href="../../index.html">Return to QUASAR Collaboration</a>
             </nav>
         </div>
     </header>
@@ -505,7 +514,7 @@
             <nav class="ev-site-footer__links" aria-label="Footer navigation">
                 <a href="mailto:quasarcollaboration@gmail.com">Contact</a>
                 <a href="asm.html" data-event-transition>ASM 2027</a>
-                <a href="../../index.html">QUASAR website →</a>
+                <a href="../../index.html">← Return to QUASAR</a>
             </nav>
         </div>
     </footer>
