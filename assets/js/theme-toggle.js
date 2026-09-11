@@ -17,4 +17,5 @@ function initializeThemeToggle() {
 
 document.addEventListener('DOMContentLoaded', initializeThemeToggle);
 document.addEventListener('layout-header-connected', initializeThemeToggle);
+document.addEventListener('event-header-connected', initializeThemeToggle);
 window.initializeThemeToggle = initializeThemeToggle;

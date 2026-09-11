@@ -107,9 +107,9 @@ class LayoutHeader extends HTMLElement {
                                         <a href="${basePath}pages/resources.html"
                                             class="block px-4 py-2 text-sm text-slate-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-slate-700 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors w-full text-center md:text-left">Resources</a>
                                         <div class="my-1 border-t border-indigo-50 dark:border-slate-700"></div>
-                                        <a href="${basePath}pages/events/asa-asm-2027.html"
+                                        <a href="${basePath}events/2027/asm.html"
                                             class="block px-4 py-2 text-sm text-slate-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-slate-700 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors w-full text-center md:text-left">ASM 2027</a>
-                                        <a href="${basePath}pages/events/hwsa-2027.html"
+                                        <a href="${basePath}events/2027/hwsa.html"
                                             class="block px-4 py-2 text-sm text-slate-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-slate-700 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors w-full text-center md:text-left">HWSA 2027</a>
                                     </div>
                                 </div>
