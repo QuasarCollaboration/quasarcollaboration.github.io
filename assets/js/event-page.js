@@ -16,7 +16,13 @@
 
     function setHeaderState() {
         if (!header) return;
-        header.classList.toggle('is-scrolled', window.scrollY > 24);
+        const landing = document.querySelector('.ev-landing');
+        header.classList.toggle(
+            'is-scrolled',
+            window.scrollY > 24 ||
+            (landing && landing.scrollTop > 24) ||
+            document.body.classList.contains('ev-chapter-active')
+        );
     }
 
     function getFocusable(container) {
@@ -122,54 +128,209 @@
         });
     }
 
-    function initScrollSpy() {
+    function initChapterRouter() {
+        const views = Array.from(document.querySelectorAll('[data-chapter-view]'));
         const links = Array.from(document.querySelectorAll('[data-nav-link][href^="#"]'));
-        if (!links.length || !('IntersectionObserver' in window)) return;
+        const homeLinks = Array.from(document.querySelectorAll('.ev-wordmark[href="#top"]'));
+        const status = document.querySelector('[data-chapter-status]');
+        if (!views.length) return;
 
-        const byTarget = new Map();
-        links.forEach((link) => {
-            const id = link.getAttribute('href').slice(1);
-            if (!byTarget.has(id)) byTarget.set(id, []);
-            byTarget.get(id).push(link);
-        });
+        const chapterOrder = ['top', 'overview', 'programme', 'attend', 'venue', 'community'];
+        const chapterLabels = {
+            top: 'Event home',
+            overview: 'Overview',
+            programme: 'Programme',
+            attend: 'Attend',
+            venue: 'Venue',
+            community: 'Community'
+        };
+        const anchorToChapter = {
+            top: 'top',
+            overview: 'overview',
+            theme: 'overview',
+            about: 'overview',
+            who: 'overview',
+            programme: 'programme',
+            'key-dates': 'programme',
+            schedule: 'programme',
+            attend: 'attend',
+            registration: 'attend',
+            abstracts: 'attend',
+            venue: 'venue',
+            host: 'venue',
+            travel: 'venue',
+            location: 'venue',
+            community: 'community',
+            organisers: 'community',
+            loc: 'community',
+            soc: 'community',
+            sponsors: 'community',
+            conduct: 'community',
+            contact: 'community'
+        };
+        const viewByChapter = new Map(views.map((view) => [view.dataset.chapter, view]));
+        let activeChapter = null;
+        let transitionTimer = null;
+        let focusTimer = null;
 
-        const sections = Array.from(byTarget.keys())
-            .map((id) => document.getElementById(id))
-            .filter(Boolean);
+        document.documentElement.classList.add('ev-chapters-ready');
 
-        function activate(id) {
-            links.forEach((link) => link.removeAttribute('aria-current'));
-            (byTarget.get(id) || []).forEach((link) => {
-                link.setAttribute('aria-current', 'location');
+        function anchorFromLocation() {
+            return decodeURIComponent(window.location.hash.slice(1)) || 'top';
+        }
+
+        function chapterForAnchor(anchor) {
+            return anchorToChapter[anchor] || 'top';
+        }
+
+        function setNavigationState(chapter) {
+            links.forEach((link) => {
+                const anchor = link.getAttribute('href').slice(1);
+                if (chapterForAnchor(anchor) === chapter) {
+                    link.setAttribute('aria-current', 'location');
+                } else {
+                    link.removeAttribute('aria-current');
+                }
             });
-            if (moreMenu) {
-                moreMenu.classList.toggle(
-                    'has-current',
-                    Boolean(moreMenu.querySelector('[aria-current="location"]'))
-                );
+        }
+
+        function scrollToAnchor(view, anchor, smooth) {
+            view.scrollTop = 0;
+            if (anchor === chapterForAnchor(anchor) || anchor === 'top') return;
+
+            const target = document.getElementById(anchor);
+            if (!target || !view.contains(target)) return;
+            const navHeight = header ? header.getBoundingClientRect().height : 76;
+            const top = Math.max(0, target.offsetTop - view.offsetTop - navHeight - 24);
+            view.scrollTo({
+                top: top,
+                behavior: smooth && !reduceMotion.matches ? 'smooth' : 'auto'
+            });
+        }
+
+        function finishTransition(oldView) {
+            document.querySelectorAll('[data-chapter-view].is-exiting').forEach((view) => {
+                if (view.classList.contains('is-active')) return;
+                view.classList.remove('is-exiting');
+                view.hidden = true;
+            });
+            document.body.classList.remove('ev-is-transitioning');
+        }
+
+        function activate(anchor, options) {
+            const settings = Object.assign({
+                history: 'push',
+                focus: true,
+                animate: true
+            }, options);
+            const chapter = chapterForAnchor(anchor);
+            const nextView = viewByChapter.get(chapter);
+            if (!nextView) return;
+
+            const oldView = activeChapter ? viewByChapter.get(activeChapter) : null;
+            const chapterChanged = activeChapter !== chapter;
+            const oldIndex = chapterOrder.indexOf(activeChapter);
+            const nextIndex = chapterOrder.indexOf(chapter);
+
+            window.clearTimeout(transitionTimer);
+            window.clearTimeout(focusTimer);
+
+            if (chapterChanged) {
+                document.body.dataset.chapterDirection = nextIndex < oldIndex ? 'backward' : 'forward';
+                if (oldView) {
+                    oldView.classList.remove('is-active');
+                    oldView.classList.add('is-exiting');
+                    oldView.setAttribute('aria-hidden', 'true');
+                    oldView.inert = true;
+                }
+
+                nextView.hidden = false;
+                nextView.inert = false;
+                nextView.setAttribute('aria-hidden', 'false');
+                nextView.classList.remove('is-exiting');
+                nextView.classList.add('is-entering');
+                void nextView.offsetWidth;
+                nextView.classList.remove('is-entering');
+                nextView.classList.add('is-active');
+
+                if (settings.animate && !reduceMotion.matches) {
+                    document.body.classList.add('ev-is-transitioning');
+                    transitionTimer = window.setTimeout(() => finishTransition(oldView), 720);
+                } else {
+                    finishTransition(oldView);
+                }
+            }
+
+            activeChapter = chapter;
+            document.body.dataset.activeChapter = chapter;
+            document.body.classList.toggle('ev-chapter-active', chapter !== 'top');
+            setNavigationState(chapter);
+            setHeaderState();
+            scrollToAnchor(nextView, anchor, !chapterChanged);
+
+            const hash = '#' + anchor;
+            if (settings.history === 'replace') {
+                window.history.replaceState({ chapter, anchor }, '', hash);
+            } else if (settings.history === 'push' && window.location.hash !== hash) {
+                window.history.pushState({ chapter, anchor }, '', hash);
+            }
+
+            if (chapterChanged && settings.focus) {
+                const heading = nextView.querySelector('h1, h2');
+                if (heading) {
+                    heading.tabIndex = -1;
+                    focusTimer = window.setTimeout(() => {
+                        heading.focus({ preventScroll: true });
+                    }, reduceMotion.matches ? 0 : 460);
+                }
+            }
+
+            if (status && chapterChanged) {
+                status.textContent = 'Showing ' + chapterLabels[chapter];
             }
         }
 
-        const visible = new Map();
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        visible.set(entry.target.id, entry.boundingClientRect.top);
-                    } else {
-                        visible.delete(entry.target.id);
-                    }
-                });
+        links.forEach((link) => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                const anchor = link.getAttribute('href').slice(1);
+                activate(anchor);
+                if (mobileMenu && !mobileMenu.hidden) {
+                    closeMobileMenu({ restoreFocus: false });
+                }
+            });
+        });
 
-                const current = Array.from(visible.entries()).sort((a, b) => {
-                    return Math.abs(a[1]) - Math.abs(b[1]);
-                })[0];
-                if (current) activate(current[0]);
-            },
-            { rootMargin: '-18% 0px -62% 0px', threshold: [0, 0.15, 0.5] }
-        );
+        homeLinks.forEach((link) => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                activate('top');
+            });
+        });
 
-        sections.forEach((section) => observer.observe(section));
+        window.addEventListener('popstate', () => {
+            activate(anchorFromLocation(), {
+                history: 'none',
+                focus: false
+            });
+        });
+
+        window.addEventListener('hashchange', () => {
+            const anchor = anchorFromLocation();
+            activate(anchor, { history: 'none', focus: false });
+        });
+
+        views.forEach((view) => {
+            view.hidden = true;
+            view.inert = true;
+            view.setAttribute('aria-hidden', 'true');
+        });
+
+        activate(anchorFromLocation(), {
+            history: 'replace',
+            focus: false,
+            animate: false
+        });
     }
 
     function initMoreMenu() {
@@ -223,6 +384,24 @@
         if (orbit && !reduceMotion.matches) orbit.classList.add('ev-orbit-live');
     }
 
+    function initHeroCardStack() {
+        document.querySelectorAll('[data-hero-card-stack]').forEach((stack) => {
+            const visual = stack.closest('.ev-hero__visual');
+            const captions = visual ? visual.querySelectorAll('[data-hero-caption]') : [];
+            const labelDefault = stack.dataset.labelDefault || 'Show the alternate hero image';
+            const labelSwapped = stack.dataset.labelSwapped || 'Show the primary hero image';
+
+            stack.addEventListener('click', () => {
+                const isSwapped = stack.classList.toggle('is-swapped');
+                stack.setAttribute('aria-pressed', String(isSwapped));
+                stack.setAttribute('aria-label', isSwapped ? labelSwapped : labelDefault);
+                captions.forEach((caption) => {
+                    caption.hidden = caption.dataset.heroCaption !== (isSwapped ? 'back' : 'front');
+                });
+            });
+        });
+    }
+
     async function initMotion() {
         if (reduceMotion.matches) return;
 
@@ -233,10 +412,8 @@
             return;
         }
 
-        const { animate, inView, scroll } = motionApi;
+        const { animate } = motionApi;
         const heroContent = document.querySelector('[data-hero-content]');
-        const heroMedia = document.querySelector('[data-hero-media]');
-        const hero = document.querySelector('.ev-hero');
 
         if (heroContent) {
             const items = Array.from(heroContent.children);
@@ -246,40 +423,19 @@
                 { duration: 0.7, delay: motionApi.stagger(0.08), easing: [0.22, 1, 0.36, 1] }
             );
         }
-
-        document.querySelectorAll('.ev-content > section').forEach((section) => {
-            inView(
-                section,
-                () => {
-                    animate(
-                        section,
-                        { opacity: [0, 1], transform: ['translateY(22px)', 'translateY(0)'] },
-                        { duration: 0.65, easing: [0.22, 1, 0.36, 1] }
-                    );
-                },
-                { amount: 0.12 }
-            );
-        });
-
-        if (heroMedia && hero) {
-            scroll(
-                (progress) => {
-                    heroMedia.style.transform =
-                        'translate3d(0,' + (progress * 2.5).toFixed(2) + '%,0)';
-                },
-                { target: hero, offset: ['start start', 'end start'] }
-            );
-        }
     }
 
     function init() {
         setHeaderState();
         window.addEventListener('scroll', setHeaderState, { passive: true });
         initMobileMenu();
-        initScrollSpy();
+        initChapterRouter();
+        const landing = document.querySelector('.ev-landing');
+        if (landing) landing.addEventListener('scroll', setHeaderState, { passive: true });
         initMoreMenu();
         initTabs();
         initOrbit();
+        initHeroCardStack();
         initMotion();
     }
 

@@ -107,21 +107,12 @@
             </a>
 
             <nav class="ev-header__desktop" aria-label="Primary navigation">
-                <a data-nav-link href="#theme">Overview</a>
+                <a data-nav-link href="#overview">Overview</a>
                 <a data-nav-link href="#programme">Programme</a>
+                <a data-nav-link href="#attend">Attend</a>
                 <a data-nav-link href="#venue">Venue</a>
-                <a data-nav-link href="#organisers">Organisers</a>
-                <details class="ev-more">
-                    <summary>More</summary>
-                    <div class="ev-more__menu">
-                        <a data-nav-link href="#sponsors">Sponsors</a>
-                        <a data-nav-link href="#conduct">Code of Conduct</a>
-                        <a data-nav-link href="#contact">Contact</a>
-                    </div>
-                </details>
+                <a data-nav-link href="#community">Community</a>
                 <a class="ev-header__sibling" href="hwsa.html" data-event-transition>HWSA 2027</a>
-                <a class="ev-header__action" data-nav-link href="#abstracts">Abstracts</a>
-                <a class="ev-header__cta" data-nav-link href="#registration">Registration</a>
             </nav>
 
             <button class="ev-menu-button" type="button" data-nav-toggle aria-expanded="false"
@@ -133,15 +124,11 @@
 
         <div class="ev-mobile-menu" id="event-mobile-menu" data-mobile-menu hidden>
             <nav aria-label="Mobile navigation">
-                <a data-nav-link href="#theme">Overview</a>
+                <a data-nav-link href="#overview">Overview</a>
                 <a data-nav-link href="#programme">Programme</a>
-                <a data-nav-link href="#registration">Registration</a>
-                <a data-nav-link href="#abstracts">Abstracts</a>
+                <a data-nav-link href="#attend">Attend</a>
                 <a data-nav-link href="#venue">Venue</a>
-                <a data-nav-link href="#organisers">Organisers</a>
-                <a data-nav-link href="#sponsors">Sponsors</a>
-                <a data-nav-link href="#conduct">Code of Conduct</a>
-                <a data-nav-link href="#contact">Contact</a>
+                <a data-nav-link href="#community">Community</a>
                 <a class="ev-mobile-menu__sibling" href="hwsa.html" data-event-transition>Explore HWSA 2027</a>
             </nav>
         </div>
@@ -149,6 +136,7 @@
 
     <main id="main-content" class="relative z-10 flex-grow">
 
+        <div class="ev-landing" data-chapter-view data-chapter="top">
         <!-- Hero -->
         <section class="ev-hero relative isolate overflow-hidden" aria-labelledby="event-title">
             <div class="ev-hero__ambient" aria-hidden="true"></div>
@@ -164,44 +152,60 @@
                         5&ndash;9 July at UQ St Lucia.
                     </p>
                     <div class="ev-hero__actions">
-                        <a href="#registration" class="ev-button ev-button--primary">
+                        <a href="#registration" data-nav-link class="ev-button ev-button--primary">
                             Registration opens soon
                         </a>
-                        <a href="#programme" class="ev-button ev-button--secondary">
+                        <a href="#programme" data-nav-link class="ev-button ev-button--secondary">
                             Programme &amp; dates
                         </a>
                     </div>
+                    <dl class="ev-hero__meta" aria-label="Event details">
+                        <div><dt>Date</dt><dd>5–9 July 2027</dd></div>
+                        <div><dt>Location</dt><dd>UQ St Lucia, Brisbane</dd></div>
+                        <div><dt>Format</dt><dd>In person</dd></div>
+                        <div><dt>Hosted by</dt><dd>UQ · QUT · UniSQ</dd></div>
+                    </dl>
                 </div>
 
                 <figure class="ev-hero__visual" data-hero-media>
-                    <div class="ev-hero__image-frame">
-                        <img src="../../assets/img/news/ASAASM2027/DarkSkyBrisbane-1600.jpg"
-                            srcset="../../assets/img/news/ASAASM2027/DarkSkyBrisbane-960.jpg 960w,
-                                    ../../assets/img/news/ASAASM2027/DarkSkyBrisbane-1600.jpg 1600w"
-                            sizes="(min-width: 900px) 48vw, 100vw"
-                            alt="The Story Bridge and Brisbane skyline beneath the Milky Way"
-                            width="1600" height="990" fetchpriority="high" decoding="async">
-                    </div>
+                    <button type="button" class="ev-hero__card-stack" data-hero-card-stack
+                        data-label-default="Show the UQ St Lucia campus"
+                        data-label-swapped="Show the Brisbane night sky"
+                        aria-label="Show the UQ St Lucia campus" aria-pressed="false">
+                        <span class="ev-hero__image-frame ev-hero__image-card ev-hero__image-card--front">
+                            <img src="../../assets/img/news/ASAASM2027/DarkSkyBrisbane-1600.jpg"
+                                srcset="../../assets/img/news/ASAASM2027/DarkSkyBrisbane-960.jpg 960w,
+                                        ../../assets/img/news/ASAASM2027/DarkSkyBrisbane-1600.jpg 1600w"
+                                sizes="(min-width: 900px) 48vw, 100vw"
+                                alt="The Story Bridge and Brisbane skyline beneath the Milky Way"
+                                width="1600" height="990" fetchpriority="high" decoding="async">
+                        </span>
+                        <span class="ev-hero__image-frame ev-hero__image-card ev-hero__image-card--back">
+                            <img src="../../assets/img/news/ASAASM2027/st-lucia-campus-hero.jpg"
+                                alt="Sandstone cloisters along the Great Court at UQ's St Lucia campus"
+                                width="764" height="336" loading="eager" decoding="async">
+                        </span>
+                    </button>
                     <figcaption>
-                        <span>Brisbane, Queensland</span>
-                        <strong>Under southern skies</strong>
+                        <span data-hero-caption="front">
+                            <span class="ev-hero__caption-kicker">Brisbane, Queensland</span>
+                            <strong>Under southern skies</strong>
+                        </span>
+                        <span data-hero-caption="back" hidden>
+                            <span class="ev-hero__caption-kicker">UQ St Lucia</span>
+                            <strong>Great Court cloisters</strong>
+                        </span>
                     </figcaption>
                 </figure>
             </div>
         </section>
+        </div>
 
-        <section class="ev-facts" aria-label="Event summary">
-            <div class="ev-facts__inner">
-                <div><span>Date</span><strong>5–9 July 2027</strong></div>
-                <div><span>Location</span><strong>UQ St Lucia, Brisbane</strong></div>
-                <div><span>Format</span><strong>In person</strong></div>
-                <div><span>Hosted by</span><strong>UQ · QUT · UniSQ</strong></div>
-            </div>
-        </section>
-
-        <div class="ev-content container mx-auto px-4 max-w-5xl">
+        <div class="ev-content ev-chapter-stage container mx-auto px-4 max-w-5xl" data-chapter-stage>
 
             <!-- Theme -->
+            <article id="overview" class="ev-chapter" data-chapter-view data-chapter="overview"
+                aria-labelledby="theme-heading">
             <section id="theme" class="ev-reveal scroll-mt-24" aria-labelledby="theme-heading">
                 <div class="grid md:grid-cols-[1fr_1.2fr] gap-10 md:gap-16 items-start">
                     <div>
@@ -230,7 +234,7 @@
                             Aligned with the 2026&ndash;2035 Astronomy Decadal Plan, the meeting brings the community
                             together across UQ, QUT, and UniSQ for a week of science, connection, and conversation.
                         </p>
-                        <dl class="ev-meta grid grid-cols-1 sm:grid-cols-3 gap-6 pt-2">
+                        <dl class="ev-meta grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
                             <div>
                                 <dt>Dates</dt>
                                 <dd>5&ndash;9 July 2027</dd>
@@ -247,7 +251,7 @@
                     </div>
                 </div>
 
-                <div class="mt-12 border-t ev-rule pt-10">
+                <div class="mt-12 pt-2">
                     <p class="text-sm text-slate-500 mb-6">Programme focus</p>
                     <div class="ev-card-grid ev-card-grid--two">
                         <article class="ev-card">
@@ -272,8 +276,11 @@
                     </p>
                 </div>
             </section>
+            </article>
 
             <!-- Programme / dates -->
+            <article class="ev-chapter" data-chapter-view data-chapter="programme"
+                aria-labelledby="programme-heading">
             <section id="programme" class="ev-reveal scroll-mt-24" aria-labelledby="programme-heading">
                 <p class="text-xs font-semibold tracking-[0.18em] uppercase text-indigo-600 mb-3">Programme</p>
                 <h2 id="programme-heading" class="font-display font-bold text-3xl md:text-4xl text-slate-800 mb-3">
@@ -310,8 +317,11 @@
                     </p>
                 </div>
             </section>
+            </article>
 
             <!-- Registration -->
+            <article id="attend" class="ev-chapter" data-chapter-view data-chapter="attend"
+                aria-labelledby="registration-heading">
             <section id="registration" class="ev-reveal scroll-mt-24" aria-labelledby="registration-heading">
                 <p class="text-xs font-semibold tracking-[0.18em] uppercase text-indigo-600 mb-3">Attend</p>
                 <h2 id="registration-heading" class="font-display font-bold text-3xl md:text-4xl text-slate-800 mb-3">
@@ -347,8 +357,11 @@
                     </p>
                 </div>
             </section>
+            </article>
 
             <!-- Venue -->
+            <article class="ev-chapter" data-chapter-view data-chapter="venue"
+                aria-labelledby="venue-heading">
             <section id="venue" class="ev-reveal scroll-mt-24" aria-labelledby="venue-heading">
                 <p class="text-xs font-semibold tracking-[0.18em] uppercase text-indigo-600 mb-3">Venue</p>
                 <h2 id="venue-heading" class="font-display font-bold text-3xl md:text-4xl text-slate-800 mb-3">
@@ -406,8 +419,11 @@
                     </div>
                 </div>
             </section>
+            </article>
 
             <!-- Organisers -->
+            <article id="community" class="ev-chapter" data-chapter-view data-chapter="community"
+                aria-labelledby="organisers-heading">
             <section id="organisers" class="ev-reveal scroll-mt-24" aria-labelledby="organisers-heading">
                 <p class="text-xs font-semibold tracking-[0.18em] uppercase text-indigo-600 mb-3">People</p>
                 <h2 id="organisers-heading" class="font-display font-bold text-3xl md:text-4xl text-slate-800 mb-3">
@@ -534,31 +550,6 @@
                 </div>
             </section>
 
-            <!-- HWSA -->
-            <section id="hwsa" class="ev-reveal scroll-mt-24">
-                <a href="hwsa.html"
-                    class="group block rounded-3xl overflow-hidden relative isolate min-h-[280px] md:min-h-[320px]">
-                    <img src="../../assets/img/news/ASAASM2027/DarkSkyBrisbane-960.jpg" alt=""
-                        width="960" height="594" loading="lazy" decoding="async"
-                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-r from-[#020617]/95 via-[#020617]/75 to-[#020617]/40"></div>
-                    <div class="relative z-10 p-8 md:p-12 flex flex-col justify-end h-full min-h-[280px] md:min-h-[320px]">
-                        <p class="text-white/60 text-xs font-semibold tracking-[0.18em] uppercase mb-3">
-                            2&ndash;4 July · For postgrad &amp; honours students
-                        </p>
-                        <h2 class="font-display font-bold text-3xl md:text-5xl text-white mb-3 tracking-tight">
-                            Harley Wood School for Astronomy 2027
-                        </h2>
-                        <p class="text-white/80 max-w-md mb-6 leading-relaxed">
-                            The ASA postgraduate school precedes the ASM. Venue details to be announced.
-                        </p>
-                        <span class="inline-flex items-center gap-2 text-white font-semibold group-hover:gap-3 transition-all">
-                            Explore HWSA 2027 <span aria-hidden="true">→</span>
-                        </span>
-                    </div>
-                </a>
-            </section>
-
             <!-- Contact -->
             <section id="contact" class="ev-reveal scroll-mt-24 pb-8" aria-labelledby="contact-heading">
                 <p class="text-xs font-semibold tracking-[0.18em] uppercase text-indigo-600 mb-3">Updates</p>
@@ -579,6 +570,12 @@
                     </a>
                 </div>
             </section>
+            </article>
+        </div>
+
+        <p class="sr-only" data-chapter-status aria-live="polite"></p>
+        <div class="ev-chapter-transition" aria-hidden="true">
+            <span></span><span></span><span></span>
         </div>
     </main>
 
