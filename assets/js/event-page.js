@@ -169,6 +169,7 @@
             contact: 'community'
         };
         const viewByChapter = new Map(views.map((view) => [view.dataset.chapter, view]));
+        const transitionMs = 400;
         let activeChapter = null;
         let transitionTimer = null;
         let focusTimer = null;
@@ -208,11 +209,12 @@
             });
         }
 
-        function finishTransition(oldView) {
+        function finishTransition() {
             document.querySelectorAll('[data-chapter-view].is-exiting').forEach((view) => {
-                if (view.classList.contains('is-active')) return;
                 view.classList.remove('is-exiting');
-                view.hidden = true;
+                if (!view.classList.contains('is-active')) {
+                    view.hidden = true;
+                }
             });
             document.body.classList.remove('ev-is-transitioning');
         }
@@ -236,9 +238,10 @@
             window.clearTimeout(focusTimer);
 
             if (chapterChanged) {
+                finishTransition();
                 document.body.dataset.chapterDirection = nextIndex < oldIndex ? 'backward' : 'forward';
                 if (oldView) {
-                    oldView.classList.remove('is-active');
+                    oldView.classList.remove('is-active', 'is-entering');
                     oldView.classList.add('is-exiting');
                     oldView.setAttribute('aria-hidden', 'true');
                     oldView.inert = true;
@@ -250,14 +253,13 @@
                 nextView.classList.remove('is-exiting');
                 nextView.classList.add('is-entering');
                 void nextView.offsetWidth;
-                nextView.classList.remove('is-entering');
                 nextView.classList.add('is-active');
+                nextView.classList.remove('is-entering');
 
-                if (settings.animate && !reduceMotion.matches) {
-                    document.body.classList.add('ev-is-transitioning');
-                    transitionTimer = window.setTimeout(() => finishTransition(oldView), 720);
+                if (settings.animate && !reduceMotion.matches && oldView) {
+                    transitionTimer = window.setTimeout(finishTransition, transitionMs);
                 } else {
-                    finishTransition(oldView);
+                    finishTransition();
                 }
             }
 
@@ -313,11 +315,6 @@
                 history: 'none',
                 focus: false
             });
-        });
-
-        window.addEventListener('hashchange', () => {
-            const anchor = anchorFromLocation();
-            activate(anchor, { history: 'none', focus: false });
         });
 
         views.forEach((view) => {
