@@ -86,7 +86,7 @@
         }
         window.tailwindCSS = { ...window.tailwindCSS, suppressWarnings: true };
     </script>
-    <link rel="stylesheet" href="../../assets/css/event-site.css?v=20260911d">
+    <link rel="stylesheet" href="../../assets/css/event-site.css?v=20260915p">
     <noscript>
         <style>
             .ev-menu-button { display: none; }
@@ -216,10 +216,10 @@
             <article id="overview" class="ev-chapter" data-chapter-view data-chapter="overview"
                 aria-labelledby="theme-heading">
             <section id="theme" class="ev-reveal scroll-mt-24" aria-labelledby="theme-heading">
-                <div class="grid md:grid-cols-[1fr_1.2fr] gap-10 md:gap-16 items-start">
+                <header class="ev-overview-heading">
                     <div>
-                        <p class="text-xs font-semibold tracking-[0.18em] uppercase text-indigo-600 mb-3">Theme</p>
-                        <div class="flex items-start gap-4">
+                        <p class="ev-section-kicker">Theme</p>
+                        <div class="ev-overview-title">
                             <svg class="ev-orbit mt-1" viewBox="0 0 64 64" fill="none" aria-hidden="true">
                                 <circle cx="32" cy="32" r="6" fill="currentColor" opacity="0.9" />
                                 <g class="ev-orbit-ring">
@@ -233,35 +233,81 @@
                                     <circle class="ev-orbit-dot" cx="32" cy="12" r="1.6" fill="currentColor" />
                                 </g>
                             </svg>
-                            <h2 id="theme-heading" class="font-display font-bold text-3xl md:text-4xl text-slate-800 leading-tight">
+                            <h2 id="theme-heading">
                                 The Next Decade in Australian Astronomy
                             </h2>
                         </div>
                     </div>
-                    <div class="space-y-6 text-slate-600 leading-relaxed text-base md:text-lg">
-                        <p>
-                            Aligned with the 2026&ndash;2035 Astronomy Decadal Plan, the meeting brings the community
-                            together across UQ, QUT, and UniSQ for a week of science, connection, and conversation.
-                        </p>
-                        <dl class="ev-meta grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-                            <div>
-                                <dt>Dates</dt>
-                                <dd>5&ndash;9 July 2027</dd>
-                            </div>
-                            <div>
-                                <dt>Venue</dt>
-                                <dd>UQ St Lucia</dd>
-                            </div>
-                            <div>
-                                <dt>Hosted by</dt>
-                                <dd>QUASAR</dd>
-                            </div>
-                        </dl>
+                    <div class="ev-overview-intro">
+                        <p>Eight years after Brisbane last hosted the ASM, a significantly expanded
+                            Queensland astronomy community welcomes the ASA back to the city.</p>
+                        <p>Presented jointly through QUASAR and aligned with the 2026&ndash;2035 Astronomy
+                            Decadal Plan, the meeting will set a national agenda for the decade ahead.</p>
                     </div>
-                </div>
+                </header>
 
-                <div class="mt-12 pt-2">
-                    <p class="text-sm text-slate-500 mb-6">Programme focus</p>
+                <dl class="ev-meta ev-overview-meta">
+                    <div><dt>Dates</dt><dd>5&ndash;9 July 2027</dd></div>
+                    <div><dt>Primary venue</dt><dd>UQ St Lucia</dd></div>
+                </dl>
+
+                <div class="ev-overview-programme">
+                    <div class="ev-overview-programme__grid">
+                        <div class="ev-pillar-map">
+                            <header class="ev-pillar-master">
+                                <div>
+                                    <p class="ev-section-kicker">Programme structure</p>
+                                    <h3>Four pillars for the decade ahead</h3>
+                                </div>
+                                <p>Together, these connected fields support a broad national programme aligned
+                                    with The Next Decade in Australian Astronomy.</p>
+                            </header>
+                            <ul class="ev-science-pillars">
+                                <li data-pillar="evolution">
+                                    <span class="ev-pillar-icon" aria-hidden="true"><i data-lucide="telescope"></i></span>
+                                    <div class="ev-pillar-content">
+                                        <h4>Cosmic evolution</h4>
+                                        <p>Trace how stars form and die, how galaxies assemble, and how matter
+                                            cycles through the intergalactic medium across cosmic time.</p>
+                                    </div>
+                                </li>
+                                <li data-pillar="dark-universe">
+                                    <span class="ev-pillar-icon" aria-hidden="true"><i data-lucide="network"></i></span>
+                                    <div class="ev-pillar-content">
+                                        <h4>The dark Universe</h4>
+                                        <p>Bring surveys, theory and precision cosmology together to investigate
+                                            large-scale structure, dark matter and dark energy.</p>
+                                    </div>
+                                </li>
+                                <li data-pillar="extreme">
+                                    <span class="ev-pillar-icon" aria-hidden="true"><i data-lucide="radio-tower"></i></span>
+                                    <div class="ev-pillar-content">
+                                        <h4>Extreme and dynamic skies</h4>
+                                        <p>Explore compact objects and extreme physics through gravitational waves,
+                                            electromagnetic signals and multi-messenger discovery.</p>
+                                    </div>
+                                </li>
+                                <li data-pillar="worlds">
+                                    <span class="ev-pillar-icon" aria-hidden="true"><i data-lucide="orbit"></i></span>
+                                    <div class="ev-pillar-content">
+                                        <h4>Worlds and life</h4>
+                                        <p>Connect planetary formation, exoplanet characterisation and habitability
+                                            with the environments created by host stars.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <aside class="ev-overview-community">
+                            <div>
+                                <p class="ev-section-kicker">Community participation</p>
+                                <h3>Town Halls for every ASA Chapter</h3>
+                            </div>
+                            <p>Dedicated Town Halls for every ASA Chapter—including the History of Australian
+                                Astronomy Chapter—will create space for collaboration and shared priorities.</p>
+                        </aside>
+                    </div>
+
+                    <p class="ev-overview-special-label">Dedicated special sessions</p>
                     <div class="ev-card-grid ev-card-grid--two">
                         <article class="ev-card">
                             <h3 class="ev-card__title">Advanced Scientific Computing &amp; Data Infrastructure</h3>
@@ -278,11 +324,6 @@
                             </p>
                         </article>
                     </div>
-                    <p class="mt-10 text-slate-600 leading-relaxed max-w-2xl">
-                        Beyond these focus areas, the programme will cover the full breadth of Australian astronomy,
-                        from stars and galaxies to cosmology, extreme physics, and planetary systems, drawing
-                        expertise from research groups nationwide.
-                    </p>
                 </div>
             </section>
             </article>
@@ -372,59 +413,96 @@
             <article class="ev-chapter" data-chapter-view data-chapter="venue"
                 aria-labelledby="venue-heading">
             <section id="venue" class="ev-reveal scroll-mt-24" aria-labelledby="venue-heading">
-                <p class="text-xs font-semibold tracking-[0.18em] uppercase text-indigo-600 mb-3">Venue</p>
-                <h2 id="venue-heading" class="font-display font-bold text-3xl md:text-4xl text-slate-800 mb-3">
-                    Brisbane, on the river
-                </h2>
-                <p class="text-slate-600 max-w-2xl mb-12 leading-relaxed">
-                    The primary programme runs at UQ St Lucia, with QUT and UniSQ hosting additional events
-                    through the week.
-                </p>
+                <header class="ev-venue-heading">
+                    <div>
+                        <p class="ev-section-kicker">Venue</p>
+                        <h2 id="venue-heading">Brisbane, on the river</h2>
+                    </div>
+                    <p>The primary programme runs at UQ St Lucia, with a welcome event at QUT and
+                        additional events hosted across the week.</p>
+                </header>
 
-                <div id="host" class="scroll-mt-24 grid grid-cols-1 sm:grid-cols-3 gap-10 mb-14 items-end">
-                    <div class="text-center">
-                        <img src="../../assets/img/Logo_of_the_University_of_Queensland.png"
-                            alt="University of Queensland" loading="lazy" width="320" height="112"
-                            class="h-16 w-auto mx-auto mb-3 object-contain dark:brightness-0 dark:invert">
-                        <p class="text-xs text-slate-500 tracking-wide">Co-host</p>
-                    </div>
-                    <div class="text-center">
-                        <img src="../../assets/img/Queensland_University_of_Technology_logo.png"
-                            alt="Queensland University of Technology" loading="lazy" width="320" height="112"
-                            class="h-14 w-auto mx-auto mb-3 object-contain dark:brightness-0 dark:invert">
-                        <p class="text-xs text-slate-500 tracking-wide">Co-host</p>
-                    </div>
-                    <div class="text-center">
-                        <img src="../../assets/img/University_of_Southern_Queensland_Logo.png"
-                            alt="University of Southern Queensland" loading="lazy" width="320" height="114"
-                            class="h-14 w-auto mx-auto mb-3 object-contain dark:brightness-0 dark:invert">
-                        <p class="text-xs text-slate-500 tracking-wide">Co-host</p>
-                    </div>
+                <div class="ev-venue-locations" aria-label="Event locations">
+                    <figure class="ev-primary-venue">
+                        <img src="../../assets/img/news/ASAASM2027/st-lucia-campus-hero.jpg"
+                            alt="Sandstone cloisters and lawns at the Great Court, UQ St Lucia"
+                            width="764" height="336" loading="lazy" decoding="async">
+                        <figcaption>
+                            <p class="ev-primary-venue__label">Primary venue</p>
+                            <h3>UQ St Lucia</h3>
+                            <p>The main ASM programme will take place at The University of Queensland's
+                                riverside St Lucia campus.</p>
+                            <div class="ev-venue-card__meta">
+                                <span>St Lucia · Main programme</span>
+                                <a href="https://about.uq.edu.au/campuses-facilities/parking-transport-and-maps/campus-maps"
+                                    target="_blank" rel="noopener">Campus map <span aria-hidden="true">↗</span></a>
+                            </div>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="ev-secondary-venue">
+                        <img src="../../assets/img/news/ASAASM2027/qut_city.jpg"
+                            alt="Queensland University of Technology's city campus beside the Brisbane River"
+                            width="1024" height="683" loading="lazy" decoding="async">
+                        <figcaption>
+                            <p class="ev-primary-venue__label">Welcome event</p>
+                            <h3>QUT</h3>
+                            <p>Queensland University of Technology will welcome delegates in central Brisbane
+                                before the main programme begins.</p>
+                            <div class="ev-venue-card__meta">
+                                <span>Central Brisbane · Welcome event</span>
+                                <a href="https://www.qut.edu.au/about/campuses-and-facilities/maps-and-getting-here/gardens-point"
+                                    target="_blank" rel="noopener">Campus information <span aria-hidden="true">↗</span></a>
+                            </div>
+                        </figcaption>
+                    </figure>
                 </div>
 
-                <div id="travel" class="scroll-mt-24">
-                    <h3 class="font-display font-bold text-xl text-slate-800 mb-6">Getting there &amp; staying</h3>
+                <aside class="ev-venue-additional">
+                    <div>
+                        <p class="ev-section-kicker">Proposed optional excursion</p>
+                        <h3>UniSQ Mount Kent Observatory</h3>
+                    </div>
+                    <p>An evening observatory visit in the Darling Downs is being developed as part of the
+                        social programme. Transport, capacity and booking details will be confirmed closer
+                        to the meeting.</p>
+                </aside>
+
+                <div id="travel" class="ev-venue-travel scroll-mt-24">
+                    <div class="ev-venue-travel__heading">
+                        <div>
+                            <p class="ev-section-kicker">Visitor information</p>
+                            <h3>Plan your stay</h3>
+                        </div>
+                        <p>Practical information for arriving in Brisbane, travelling to the venues,
+                            and choosing accommodation.</p>
+                    </div>
                     <div class="ev-card-grid">
-                        <article class="ev-card">
+                        <button type="button" class="ev-card ev-travel-card" data-travel-dialog="airport"
+                            aria-haspopup="dialog">
                             <h3 class="ev-card__title">From the airport</h3>
                             <p class="ev-card__body">
-                                About 30&ndash;40 minutes by taxi or rideshare, or take the Airtrain to the CBD.
+                                Take the Airtrain to the CBD, or travel directly by taxi or rideshare.
                             </p>
-                        </article>
-                        <article class="ev-card">
+                            <span class="ev-travel-card__action" aria-hidden="true">View travel options <span>→</span></span>
+                        </button>
+                        <button type="button" class="ev-card ev-travel-card" data-travel-dialog="transport"
+                            aria-haspopup="dialog">
                             <h3 class="ev-card__title">Getting around</h3>
                             <p class="ev-card__body">
                                 Flat 50¢ fares across the Translink network make ferry, metro, and bus trips between
                                 the venue, South Bank, and the CBD simple and affordable.
                             </p>
-                        </article>
-                        <article class="ev-card">
+                            <span class="ev-travel-card__action" aria-hidden="true">Explore local transport <span>→</span></span>
+                        </button>
+                        <button type="button" class="ev-card ev-travel-card" data-travel-dialog="accommodation"
+                            aria-haspopup="dialog">
                             <h3 class="ev-card__title">Where to stay</h3>
                             <p class="ev-card__body">
-                                CBD and South Bank options such as ibis Styles Brisbane Elizabeth Street,
-                                Mantra South Bank, and Rydges South Bank.
+                                Brisbane has many different locations to stay at a range of prices.
                             </p>
-                        </article>
+                            <span class="ev-travel-card__action" aria-hidden="true">Browse accommodation <span>→</span></span>
+                        </button>
                     </div>
                 </div>
             </section>
@@ -441,6 +519,18 @@
                 <p class="text-slate-600 mb-10 max-w-xl leading-relaxed">
                     The Local Organising Committee spans UQ, QUT, and UniSQ, with the Scientific Organising Committee to follow.
                 </p>
+
+                <div id="host" class="ev-host-strip ev-host-strip--community scroll-mt-24">
+                    <p>Hosted in partnership by</p>
+                    <div class="ev-host-strip__logos">
+                        <img src="../../assets/img/Logo_of_the_University_of_Queensland.png"
+                            alt="University of Queensland" loading="lazy" width="320" height="112">
+                        <img src="../../assets/img/Queensland_University_of_Technology_logo.png"
+                            alt="Queensland University of Technology" loading="lazy" width="320" height="112">
+                        <img src="../../assets/img/University_of_Southern_Queensland_Logo.png"
+                            alt="University of Southern Queensland" loading="lazy" width="320" height="114">
+                    </div>
+                </div>
 
                 <div class="flex gap-6 border-b ev-rule mb-8" role="tablist" aria-label="Committee">
                     <button type="button" role="tab" aria-selected="true" aria-controls="panel-loc" id="tab-loc"
@@ -588,6 +678,92 @@
         </div>
     </main>
 
+    <dialog class="ev-travel-dialog" data-travel-modal aria-labelledby="travel-dialog-title">
+        <div class="ev-travel-dialog__surface">
+            <button type="button" class="ev-travel-dialog__close" data-travel-dialog-close
+                aria-label="Close travel information">
+                <span aria-hidden="true">×</span>
+            </button>
+            <div data-travel-dialog-content></div>
+        </div>
+    </dialog>
+
+    <template data-travel-content="airport">
+        <p class="ev-travel-dialog__eyebrow">Arriving in Brisbane</p>
+        <h2 id="travel-dialog-title">From Brisbane Airport</h2>
+        <p class="ev-travel-dialog__intro">
+            Brisbane Airport is approximately 15 km from the CBD and 25 km from UQ St Lucia.
+            Airtrain uses separate airport fares and is not included in Translink's 50¢ fare.
+        </p>
+        <div class="ev-travel-options">
+            <section>
+                <h3>To Brisbane CBD</h3>
+                <p><strong>Airtrain:</strong> Trains run from both airport terminals to Fortitude Valley,
+                    Central and Roma Street stations. The journey to Central takes about 20 minutes.</p>
+                <p><strong>Taxi or rideshare:</strong> Follow the signed pick-up areas outside each terminal.
+                    The drive usually takes 20&ndash;30 minutes, depending on traffic.</p>
+            </section>
+            <section>
+                <h3>To UQ St Lucia</h3>
+                <p><strong>Public transport:</strong> Take the Airtrain to South Bank station, walk to the
+                    South Bank busway station, then take route 66 to UQ Lakes.</p>
+                <p><strong>Taxi or rideshare:</strong> A direct trip usually takes 30&ndash;40 minutes,
+                    depending on traffic.</p>
+            </section>
+        </div>
+        <p class="ev-travel-dialog__note">Check live services and journey times before travelling.</p>
+        <div class="ev-travel-dialog__links">
+            <a href="https://www.airtrain.com.au/" target="_blank" rel="noopener">Brisbane Airtrain <span aria-hidden="true">↗</span></a>
+            <a href="https://jp.translink.com.au/plan-your-journey/journey-planner" target="_blank" rel="noopener">Plan with Translink <span aria-hidden="true">↗</span></a>
+        </div>
+    </template>
+
+    <template data-travel-content="transport">
+        <p class="ev-travel-dialog__eyebrow">Exploring Brisbane</p>
+        <h2 id="travel-dialog-title">Getting around</h2>
+        <p class="ev-travel-dialog__intro">
+            Translink connects Brisbane by bus, train, ferry and metro. Most public transport journeys
+            across Queensland's Translink network cost a flat 50¢ fare; Airtrain services are excluded.
+        </p>
+        <div class="ev-travel-options">
+            <section>
+                <h3>Using Translink</h3>
+                <p>Use a go card, a contactless Visa, Mastercard or American Express card, or a compatible
+                    smart device. Remember to tap on and tap off with the same card or device.</p>
+            </section>
+            <section>
+                <h3>UQ and the river</h3>
+                <p>UQ Lakes bus station is the main public transport arrival point for the St Lucia campus.
+                    High-frequency buses connect it with the CBD and South Bank, while CityCat ferries
+                    provide a scenic connection from the UQ St Lucia ferry terminal.</p>
+            </section>
+        </div>
+        <p class="ev-travel-dialog__note">Fares and services can change; confirm current details with Translink.</p>
+        <div class="ev-travel-dialog__links">
+            <a href="https://translink.com.au/tickets-and-fares/50-cent-fares" target="_blank" rel="noopener">About 50¢ fares <span aria-hidden="true">↗</span></a>
+            <a href="https://jp.translink.com.au/plan-your-journey/journey-planner" target="_blank" rel="noopener">Translink journey planner <span aria-hidden="true">↗</span></a>
+        </div>
+    </template>
+
+    <template data-travel-content="accommodation">
+        <p class="ev-travel-dialog__eyebrow">Accommodation</p>
+        <h2 id="travel-dialog-title">Where to stay</h2>
+        <p class="ev-travel-dialog__intro">
+            Brisbane has accommodation across the CBD, South Bank and areas near UQ, with options at a
+            range of prices. The suggestions below provide convenient access to the conference venue.
+        </p>
+        <ul class="ev-stay-list">
+            <li><a href="https://all.accor.com/hotel/8835/index.en.shtml" target="_blank" rel="noopener"><strong>ibis Styles Brisbane Elizabeth Street</strong><span>CBD · Mid-range</span></a></li>
+            <li><a href="https://www.mantrahotels.com/mantra-south-bank-brisbane/" target="_blank" rel="noopener"><strong>Mantra South Bank</strong><span>South Bank · Apartment-style</span></a></li>
+            <li><a href="https://www.rydges.com/accommodation/brisbane-qld/brisbane-south-bank/" target="_blank" rel="noopener"><strong>Rydges South Bank</strong><span>South Bank · Hotel</span></a></li>
+            <li><a href="https://www.royalonthepark.com.au/" target="_blank" rel="noopener"><strong>Royal on the Park</strong><span>CBD · Hotel</span></a></li>
+        </ul>
+        <p class="ev-travel-dialog__note">
+            These are suggestions only and are not conference-endorsed. Availability and rates vary;
+            booking early is recommended.
+        </p>
+    </template>
+
     <footer class="ev-site-footer">
         <div class="ev-site-footer__inner">
             <div>
@@ -603,7 +779,8 @@
         </div>
     </footer>
 
-    <script src="../../assets/js/event-page.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="../../assets/js/event-page.js?v=20260915l"></script>
 </body>
 
 </html>

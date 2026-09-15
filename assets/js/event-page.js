@@ -157,10 +157,10 @@
             registration: 'attend',
             abstracts: 'attend',
             venue: 'venue',
-            host: 'venue',
             travel: 'venue',
             location: 'venue',
             community: 'community',
+            host: 'community',
             organisers: 'community',
             loc: 'community',
             soc: 'community',
@@ -402,6 +402,37 @@
         });
     }
 
+    function initTravelDialog() {
+        const dialog = document.querySelector('[data-travel-modal]');
+        const content = dialog && dialog.querySelector('[data-travel-dialog-content]');
+        const closeButton = dialog && dialog.querySelector('[data-travel-dialog-close]');
+        const cards = document.querySelectorAll('[data-travel-dialog]');
+        if (!dialog || !content || !closeButton || !cards.length) return;
+
+        cards.forEach((card) => {
+            card.addEventListener('click', () => {
+                const template = document.querySelector(
+                    '[data-travel-content="' + card.dataset.travelDialog + '"]'
+                );
+                if (!template) return;
+
+                content.replaceChildren(template.content.cloneNode(true));
+                dialog.showModal();
+            });
+        });
+
+        closeButton.addEventListener('click', () => dialog.close());
+        dialog.addEventListener('click', (event) => {
+            if (event.target === dialog) dialog.close();
+        });
+    }
+
+    function initIcons() {
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+    }
+
     async function initMotion() {
         if (reduceMotion.matches) return;
 
@@ -436,6 +467,8 @@
         initTabs();
         initOrbit();
         initHeroCardStack();
+        initTravelDialog();
+        initIcons();
         initMotion();
     }
 
