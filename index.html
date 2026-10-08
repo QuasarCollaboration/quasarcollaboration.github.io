@@ -132,6 +132,7 @@
     <script src="assets/js/theme-toggle.js" defer></script>
     <script src="assets/js/hero-cosmos.js" defer></script>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/home.css">
 </head>
 
 <body class="min-h-screen flex flex-col relative overflow-x-hidden">
@@ -185,26 +186,28 @@
 
             <!-- Hero Content: pointer-events-none so spark stars in the sky remain clickable;
                  re-enable on interactive controls only. -->
-            <div class="relative z-10 px-6 py-20 md:py-32 text-center max-w-5xl mx-auto pointer-events-none">
+            <div class="relative z-10 px-6 py-16 md:py-24 text-center max-w-5xl mx-auto pointer-events-none">
                 <h2
                     class="text-5xl md:text-7xl font-display font-bold text-white mb-8 tracking-tight leading-tight drop-shadow-lg">
                     QUASAR <span
                         class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 animate-gradient bg-[length:300%_auto]">Collaboration</span>
                 </h2>
 
-                <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed font-light">
+                <p class="text-lg md:text-xl text-slate-300 mb-12 max-w-2xl mx-auto leading-relaxed font-light">
                     A union of research excellence from <strong class="text-white font-semibold">UQ</strong>, <strong
                         class="text-white font-semibold">QUT</strong>, and <strong
                         class="text-white font-semibold">UniSQ</strong>. From the mysteries of the Dark Universe to the
                     search for habitable worlds.
                 </p>
 
-                <div class="flex flex-col items-center gap-4 sm:gap-5">
-                    <a href="#key-links"
-                        class="pointer-events-auto inline-flex items-center justify-center px-8 py-4 rounded-xl font-semibold text-base text-white bg-indigo-600 hover:bg-indigo-500 border border-indigo-400/70 transition-all duration-200 hover:-translate-y-1 shadow-lg hover:shadow-indigo-500/40">
-                        Explore QUASAR
-                    </a>
-                </div>
+                <!-- Link tiles live on the banner. (Interactive constellation + schedule feed are parked
+                     in assets/js/home.js and assets/css/home.css.) -->
+<nav id="key-links" aria-label="Explore QUASAR" class="hero-orbs">
+                    <a href="pages/research.html" class="hero-orb">Research<br>Themes</a>
+                    <a href="pages/schedule.html" class="hero-orb">Meeting<br>Schedule</a>
+                    <a href="pages/resources.html" class="hero-orb">Resources</a>
+                    <a href="events/2027/asm.html" class="hero-orb">ASM &amp;<br>HWSA<br>2027</a>
+                </nav>
             </div>
         </section>
 
@@ -254,168 +257,6 @@
             </div>
         </section>
 
-        <!-- Key Initiatives Section -->
-        <section id="key-links" class="mb-16 scroll-mt-24">
-            <h3 class="text-3xl font-display font-bold text-slate-800 text-center mb-8">Take a Closer Look</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                <!-- Featured: ASA ASM & HWSA 2027 (commented out — revisit layout)
-                <div class="glass-panel rounded-2xl p-10 shadow-2xl flex flex-col md:flex-row md:items-center gap-8 md:col-span-2">
-                    <div class="w-16 h-16 shrink-0 bg-indigo-100 rounded-full flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none"
-                            class="w-9 h-9 text-indigo-600" aria-hidden="true">
-                            <g fill="currentColor">
-                                <circle cx="14" cy="16" r="2.4">
-                                    <animate attributeName="cx" values="12;14;12" dur="3.2s"
-                                        repeatCount="indefinite" />
-                                    <animate attributeName="cy" values="14;16;14" dur="3.2s"
-                                        repeatCount="indefinite" />
-                                </circle>
-                                <circle cx="34" cy="16" r="2.4">
-                                    <animate attributeName="cx" values="36;34;36" dur="3.2s"
-                                        repeatCount="indefinite" />
-                                    <animate attributeName="cy" values="14;16;14" dur="3.2s"
-                                        repeatCount="indefinite" />
-                                </circle>
-                                <circle cx="24" cy="34" r="2.4">
-                                    <animate attributeName="cy" values="36;34;36" dur="3.2s"
-                                        repeatCount="indefinite" />
-                                </circle>
-                            </g>
-                            <g stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.45">
-                                <line x1="16" y1="18" x2="22" y2="30">
-                                    <animate attributeName="opacity" values="0.25;0.7;0.25" dur="3.2s"
-                                        repeatCount="indefinite" />
-                                </line>
-                                <line x1="32" y1="18" x2="26" y2="30">
-                                    <animate attributeName="opacity" values="0.25;0.7;0.25" dur="3.2s"
-                                        repeatCount="indefinite" />
-                                </line>
-                                <line x1="16.5" y1="16" x2="31.5" y2="16">
-                                    <animate attributeName="opacity" values="0.2;0.55;0.2" dur="3.2s"
-                                        repeatCount="indefinite" />
-                                </line>
-                            </g>
-                            <circle cx="24" cy="22" r="3.2" fill="currentColor" opacity="0.2">
-                                <animate attributeName="r" values="2.6;4;2.6" dur="3.2s"
-                                    repeatCount="indefinite" />
-                                <animate attributeName="opacity" values="0.12;0.28;0.12" dur="3.2s"
-                                    repeatCount="indefinite" />
-                            </circle>
-                            <polygon
-                                points="24,19.2 24.7,21.4 27,22 24.7,22.6 24,24.8 23.3,22.6 21,22 23.3,21.4"
-                                fill="currentColor">
-                                <animate attributeName="opacity" values="0.55;1;0.55" dur="3.2s"
-                                    repeatCount="indefinite" />
-                            </polygon>
-                        </svg>
-                    </div>
-                    <div class="flex flex-col flex-grow min-w-0">
-                        <p class="text-xs font-bold text-indigo-500 uppercase tracking-wider mb-2">Hosting in 2027</p>
-                        <h4 class="text-2xl font-bold text-slate-800 mb-3">ASA ASM &amp; HWSA 2027</h4>
-                        <p class="text-slate-600 mb-6 flex-grow">
-                            QUASAR is hosting the Astronomical Society of Australia's Annual Scientific Meeting
-                            and the Harley Wood School for Astronomy in Brisbane &mdash; 1&ndash;9 July 2027 at
-                            UQ St Lucia and across Queensland.
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-3">
-                            <a href="events/2027/asm.html" aria-label="Learn more about ASA ASM 2027"
-                                class="inline-block px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-semibold transition-all shadow-lg hover:shadow-indigo-500/30 text-center">
-                                ASM 2027 &rarr;
-                            </a>
-                            <a href="events/2027/hwsa.html" aria-label="Learn more about HWSA 2027"
-                                class="inline-block px-6 py-3 border border-indigo-200 text-indigo-700 hover:bg-indigo-50 rounded-lg font-semibold transition-all text-center">
-                                HWSA 2027
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                -->
-
-                <!-- Card: Research -->
-                <div class="glass-panel rounded-2xl p-10 shadow-2xl flex flex-col h-full">
-                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none"
-                            class="w-9 h-9 text-purple-600" aria-hidden="true">
-                            <!-- Rotating spiral galaxy: two arms winding out from a bright core -->
-                            <g stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.75">
-                                <animateTransform attributeName="transform" type="rotate" from="0 24 24"
-                                    to="360 24 24" dur="26s" repeatCount="indefinite" />
-                                <path d="M24,24 C34,18 42,24 40,34" fill="none" />
-                                <path d="M24,24 C14,30 6,24 8,14" fill="none" />
-                                <circle cx="41" cy="12" r="1.1" fill="currentColor" stroke="none" opacity="0.6" />
-                                <circle cx="7" cy="36" r="1" fill="currentColor" stroke="none" opacity="0.55" />
-                            </g>
-                            <circle cx="24" cy="24" r="7" fill="currentColor" opacity="0.16" />
-                            <circle cx="24" cy="24" r="3.4" fill="currentColor" />
-                        </svg>
-                    </div>
-                    <h4 class="text-2xl font-bold text-slate-800 mb-4">Research Themes</h4>
-                    <p class="text-slate-600 mb-6 flex-grow">
-                        Explore our diverse research themes spanning a wide range of topics in astrophysics, cosmology,
-                        and space science.
-                    </p>
-                    <a href="pages/research.html" aria-label="Learn more about Research Themes"
-                        class="inline-block px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-semibold transition-all shadow-lg hover:shadow-purple-500/30 text-center">
-                        Learn More →
-                    </a>
-                </div>
-
-                <!-- Card: Schedule -->
-                <div class="glass-panel rounded-2xl p-10 shadow-2xl flex flex-col h-full">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none"
-                            class="w-9 h-9 text-blue-600" aria-hidden="true">
-                            <!-- Calendar with a pulsing highlighted date and a small twinkling sparkle -->
-                            <rect x="8" y="11" width="32" height="27" rx="4" stroke="currentColor" stroke-width="1.7"
-                                opacity="0.55" />
-                            <line x1="8" y1="19" x2="40" y2="19" stroke="currentColor" stroke-width="1.5"
-                                opacity="0.5" />
-                            <line x1="16" y1="7" x2="16" y2="14" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" opacity="0.6" />
-                            <line x1="32" y1="7" x2="32" y2="14" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" opacity="0.6" />
-                            <g fill="currentColor" opacity="0.3">
-                                <circle cx="14" cy="24" r="1" />
-                                <circle cx="20.5" cy="24" r="1" />
-                                <circle cx="34" cy="24" r="1" />
-                                <circle cx="14" cy="29.5" r="1" />
-                                <circle cx="27" cy="29.5" r="1" />
-                                <circle cx="34" cy="29.5" r="1" />
-                                <circle cx="14" cy="35" r="1" />
-                                <circle cx="20.5" cy="35" r="1" />
-                                <circle cx="27" cy="35" r="1" />
-                                <circle cx="34" cy="35" r="1" />
-                            </g>
-                            <circle cx="27" cy="24" r="2.2" fill="currentColor">
-                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2.4s"
-                                    repeatCount="indefinite" />
-                                <animate attributeName="r" values="1.9;2.5;1.9" dur="2.4s" repeatCount="indefinite" />
-                            </circle>
-                            <polygon
-                                points="34,17.6 34.64,19.36 36.4,20 34.64,20.64 34,22.4 33.36,20.64 31.6,20 33.36,19.36"
-                                fill="currentColor">
-                                <animate attributeName="opacity" values="0;0;1;0;0" dur="2.4s"
-                                    repeatCount="indefinite" />
-                            </polygon>
-                        </svg>
-                    </div>
-                    <h4 class="text-2xl font-bold text-slate-800 mb-4">Schedule</h4>
-                    <p class="text-slate-600 mb-6 flex-grow">
-                        Upcoming seminars, workshops, and events. Browse past slides and recordings on Resources.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-3">
-                        <a href="pages/schedule.html" aria-label="View schedule"
-                            class="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-semibold transition-all shadow-lg hover:shadow-blue-500/30 text-center">
-                            View Schedule &rarr;
-                        </a>
-                        <a href="pages/resources.html" aria-label="View resources"
-                            class="inline-block px-6 py-3 border border-blue-200 text-blue-700 hover:bg-blue-50 rounded-lg font-semibold transition-all text-center">
-                            Resources
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
     <layout-footer custom-classes="mt-auto"></layout-footer>
