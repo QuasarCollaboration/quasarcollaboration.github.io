@@ -562,5 +562,53 @@ window.membersData = [
     "role": "in MPhil",
     "career_stage": "Masters Student",
     "email": "c.martinezharris@qut.edu.au"
+  },
+  {
+    "name": "Grace Hiley",
+    "affiliation": "QUT",
+    "location": "Brisbane",
+    "interests": "",
+    "primary_field": "Galaxies",
+    "photo": "",
+    "website": "",
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": "g.hiley@hdr.qut.edu.au"
+  },
+  {
+    "name": "Vicente Kabeer Pedreros Aballay",
+    "affiliation": "QUT",
+    "location": "Brisbane",
+    "interests": "",
+    "primary_field": "Cosmology",
+    "photo": "",
+    "website": "",
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": "vicente.pedreros@hdr.qut.edu.au"
+  },
+  {
+    "name": "Violet Hsu",
+    "affiliation": "QUT",
+    "location": "Brisbane",
+    "interests": "",
+    "primary_field": "Instrumentation",
+    "photo": "",
+    "website": "",
+    "role": "in MPhil",
+    "career_stage": "Masters Student",
+    "email": "yuchieh.hsu@hdr.qut.edu.au"
+  },
+  {
+    "name": "Kyungdo Ko",
+    "affiliation": "UQ",
+    "location": "Brisbane",
+    "interests": "",
+    "primary_field": "Galaxies",
+    "photo": "",
+    "website": "",
+    "role": "in PhD",
+    "career_stage": "PhD Student",
+    "email": "kyungdo.ko@uq.edu.au"
   }
 ];

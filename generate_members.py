@@ -43,6 +43,8 @@ def parse_xlsx(file_path):
                             value = shared_strings[int(value)]
                         except (ValueError, IndexError):
                             value = ""
+                    elif t == 'inlineStr': # Inline string (e.g. files saved by openpyxl)
+                        value = "".join(x.text or "" for x in cell.findall('.//{*}is//{*}t'))
                     
                     # Store by column letter
                     col_match = re.match(r"([A-Z]+)([0-9]+)", ref)
