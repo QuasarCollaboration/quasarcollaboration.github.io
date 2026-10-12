@@ -135,10 +135,9 @@
         const status = document.querySelector('[data-chapter-status]');
         if (!views.length) return;
 
-        const chapterOrder = ['top', 'overview', 'programme', 'attend', 'venue', 'community'];
+        const chapterOrder = ['top', 'programme', 'attend', 'venue', 'community'];
         const chapterLabels = {
             top: 'Event home',
-            overview: 'Overview',
             programme: 'Programme',
             attend: 'Attend',
             venue: 'Venue',
@@ -146,10 +145,10 @@
         };
         const anchorToChapter = {
             top: 'top',
-            overview: 'overview',
-            theme: 'overview',
-            about: 'overview',
-            who: 'overview',
+            overview: 'top',
+            theme: 'top',
+            about: 'top',
+            who: 'top',
             programme: 'programme',
             'key-dates': 'programme',
             schedule: 'programme',
